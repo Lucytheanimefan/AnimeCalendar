@@ -63,8 +63,9 @@ extension ViewController:NSCollectionViewDataSource
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = collectionView.makeItem(withIdentifier: "Date", for: indexPath)
-        if let collectionViewItem = item as? NSCollectionViewItem{
-            collectionViewItem.textField?.stringValue = "foo"//String(describing:self.days[indexPath.count])
+        item.textField?.stringValue = "foo1"
+        if let collectionViewItem = item as? CollectionViewItem{
+            collectionViewItem.textField?.stringValue = "foo2"//String(describing:self.days[indexPath.count])
             return collectionViewItem
         }
         return item

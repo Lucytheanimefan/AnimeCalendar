@@ -687,14 +687,14 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView wantsLayer="YES" fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3L-dL-GQc">
-                                <rect key="frame" x="180" y="204" width="250" height="160"/>
+                                <rect key="frame" x="177" y="0.0" width="546" height="442"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" ambiguous="YES" drawsBackground="NO" id="lI0-oR-x8A">
-                                    <rect key="frame" x="1" y="1" width="248" height="158"/>
+                                    <rect key="frame" x="1" y="1" width="544" height="440"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <collectionView ambiguous="YES" id="o1W-3l-mSx">
-                                            <rect key="frame" x="0.0" y="0.0" width="248" height="158"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="544" height="440"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="gmf-s0-Byd">
                                                 <size key="itemSize" width="50" height="50"/>
@@ -709,11 +709,11 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="uid-Sm-MWU">
-                                    <rect key="frame" x="1" y="144" width="233" height="15"/>
+                                    <rect key="frame" x="1" y="424" width="533" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="yyg-JT-hcO">
-                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                    <rect key="frame" x="518" y="1" width="16" height="432"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
@@ -730,14 +730,26 @@
         <!--Collection View Item-->
         <scene sceneID="HOj-pg-7Us">
             <objects>
-                <collectionViewItem id="SOw-LW-zaI" sceneMemberID="viewController">
+                <collectionViewItem storyboardIdentifier="Date" id="SOw-LW-zaI" customClass="CollectionViewItem" customModule="AnimeCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="WrO-jj-hgK">
                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhY-cj-8SU">
+                                <rect key="frame" x="27" y="41" width="46" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Anime!" id="DdI-gI-ErF">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
                     </view>
                 </collectionViewItem>
                 <customObject id="mIE-8s-ePN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-52" y="1102"/>
         </scene>
     </scenes>
 </document>
