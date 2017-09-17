@@ -15,7 +15,7 @@ class ViewController: NSViewController {
     
     let calendar = Calendar.current
     
-    var days:[Int]!
+    var days = [Int]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ class ViewController: NSViewController {
         let newDate = calendar.date(from: components)
         let range = calendar.range(of: .day, in: .month, for: newDate!)!
         let numDays = range.count
-        self.days = Array(0...numDays)
+        self.days = Array(1...numDays)
         return numDays
     }
 }
@@ -64,7 +64,8 @@ extension ViewController:NSCollectionViewDataSource
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = collectionView.makeItem(withIdentifier: "CalendarViewItem", for: indexPath)
         if let collectionViewItem = item as? CalendarViewItem{
-            collectionViewItem.textField?.stringValue = "FOOOOOO!"
+            let index = (indexPath.section*7) + indexPath.item
+            collectionViewItem.textField?.stringValue = String(describing:self.days[index])
             return collectionViewItem
         }
         return item

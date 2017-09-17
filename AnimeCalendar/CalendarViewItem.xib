@@ -18,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09i-cN-c4K">
-                    <rect key="frame" x="-2" y="0.0" width="484" height="272"/>
+                    <rect key="frame" x="-2" y="246" width="150" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="5S7-R6-qU1">
                         <font key="font" metaFont="system"/>
@@ -26,10 +26,16 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sJR-qC-4Pi">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="246"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="E70-a8-3Ju"/>
+                </imageView>
             </subviews>
         </customView>
         <collectionViewItem id="vYd-Pb-jaz" customClass="CalendarViewItem" customModule="AnimeCalendar" customModuleProvider="target">
             <connections>
+                <outlet property="imageView" destination="sJR-qC-4Pi" id="8iI-iM-3bc"/>
                 <outlet property="textField" destination="09i-cN-c4K" id="ByL-fx-lFe"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="cPi-MR-Dbv"/>
             </connections>
