@@ -29,7 +29,7 @@ class ViewController: NSViewController {
         }
     }
     
-    func daysInMonth() -> Int{
+    func daysInMonth() -> Double{
         let today = Date()
         let year = calendar.component(.year, from: today)
         let month = calendar.component(.month, from: today)
@@ -40,7 +40,7 @@ class ViewController: NSViewController {
         let range = calendar.range(of: .day, in: .month, for: newDate!)!
         let numDays = range.count
         self.days = Array(1...numDays)
-        return numDays
+        return Double(numDays)
     }
 }
 
@@ -54,18 +54,27 @@ extension ViewController:NSCollectionViewDataSource
 {
     @available(OSX 10.11, *)
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Int((daysInMonth()/4))
+        return 7
     }
 
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
-        return 4
+        let sections = Int((daysInMonth()/7).rounded(.up))
+        print (sections)
+        return sections
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = collectionView.makeItem(withIdentifier: "CalendarViewItem", for: indexPath)
         if let collectionViewItem = item as? CalendarViewItem{
             let index = (indexPath.section*7) + indexPath.item
-            collectionViewItem.textField?.stringValue = String(describing:self.days[index])
+            if (index < self.days.count)
+            {
+                collectionViewItem.textField?.stringValue = String(describing:self.days[index])
+            }
+            else
+            {
+                collectionViewItem.textField?.stringValue = ""
+            }
             return collectionViewItem
         }
         return item
