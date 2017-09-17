@@ -12,6 +12,7 @@
 		7C63B2BB1F6E0DCE00FF4996 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C63B2BA1F6E0DCE00FF4996 /* Assets.xcassets */; };
 		7C63B2BE1F6E0DCE00FF4996 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C63B2BC1F6E0DCE00FF4996 /* Main.storyboard */; };
 		7C63B2C91F6E0DCE00FF4996 /* AnimeCalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C63B2C81F6E0DCE00FF4996 /* AnimeCalendarTests.swift */; };
+		7C63B2D51F6E125E00FF4996 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C63B2D41F6E125E00FF4996 /* AppKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 		7C63B2C41F6E0DCE00FF4996 /* AnimeCalendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnimeCalendarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C63B2C81F6E0DCE00FF4996 /* AnimeCalendarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeCalendarTests.swift; sourceTree = "<group>"; };
 		7C63B2CA1F6E0DCE00FF4996 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C63B2D41F6E125E00FF4996 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C63B2D51F6E125E00FF4996 /* AppKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +63,7 @@
 				7C63B2B51F6E0DCE00FF4996 /* AnimeCalendar */,
 				7C63B2C71F6E0DCE00FF4996 /* AnimeCalendarTests */,
 				7C63B2B41F6E0DCE00FF4996 /* Products */,
+				7C63B2D31F6E125E00FF4996 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,6 +95,14 @@
 				7C63B2CA1F6E0DCE00FF4996 /* Info.plist */,
 			);
 			path = AnimeCalendarTests;
+			sourceTree = "<group>";
+		};
+		7C63B2D31F6E125E00FF4996 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7C63B2D41F6E125E00FF4996 /* AppKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
