@@ -19,9 +19,9 @@ class ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let list = NewAnimeList(clientID: "kowaretasekai-xquxb", clientSecret: "T5yjmG9hn3x5LvLK7lKTP")
-        list.authenticate()
+        collectionView.isSelectable = true
+        //let list = NewAnimeList(clientID: "kowaretasekai-xquxb", clientSecret: "T5yjmG9hn3x5LvLK7lKTP")
+        //list.authenticate()
         // Do any additional setup after loading the view.
     }
 
@@ -49,7 +49,9 @@ class ViewController: NSViewController {
 
 extension ViewController:NSCollectionViewDelegate
 {
-    
+    func collectionView(_ collectionView: NSCollectionView, didChangeItemsAt indexPaths: Set<IndexPath>, to highlightState: NSCollectionViewItemHighlightState) {
+        print("Change item at to highlight state")
+    }
 }
 
 extension ViewController:NSCollectionViewDataSource

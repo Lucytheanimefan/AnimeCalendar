@@ -679,6 +679,32 @@
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
         <!--View Controller-->
+        <scene sceneID="3gb-aM-Q0x">
+            <objects>
+                <viewController id="BYT-e8-bBP" sceneMemberID="viewController">
+                    <view key="view" id="pr9-qy-5Ts">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="tJP-Vx-eEp" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2726" y="451"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="qvy-a9-Zof">
+            <objects>
+                <viewController id="2Gy-8Y-0wF" sceneMemberID="viewController">
+                    <view key="view" id="1sL-Qz-bZ0">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="MOz-3v-L5m" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2726" y="812"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="AnimeCalendar" customModuleProvider="target" sceneMemberID="viewController">
@@ -686,38 +712,73 @@
                         <rect key="frame" x="0.0" y="0.0" width="790" height="442"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView wantsLayer="YES" fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3L-dL-GQc">
-                                <rect key="frame" x="177" y="0.0" width="546" height="442"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <clipView key="contentView" ambiguous="YES" drawsBackground="NO" id="lI0-oR-x8A">
-                                    <rect key="frame" x="1" y="1" width="544" height="440"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <collectionView ambiguous="YES" id="o1W-3l-mSx">
-                                            <rect key="frame" x="0.0" y="0.0" width="544" height="440"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="gmf-s0-Byd">
-                                                <size key="itemSize" width="50" height="50"/>
-                                            </collectionViewFlowLayout>
-                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <connections>
-                                                <outlet property="dataSource" destination="XfG-lQ-9wD" id="o8H-C4-Yah"/>
-                                                <outlet property="delegate" destination="XfG-lQ-9wD" id="yAo-03-XMN"/>
-                                            </connections>
-                                        </collectionView>
-                                    </subviews>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="uid-Sm-MWU">
-                                    <rect key="frame" x="1" y="-15" width="0.0" height="16"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="yyg-JT-hcO">
-                                    <rect key="frame" x="-15" y="1" width="16" height="0.0"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                            </scrollView>
+                            <splitView arrangesAllSubviews="NO" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rhN-Yc-AED">
+                                <rect key="frame" x="0.0" y="0.0" width="790" height="442"/>
+                                <subviews>
+                                    <customView fixedFrame="YES" id="ZJs-Uy-pot">
+                                        <rect key="frame" x="0.0" y="0.0" width="208" height="442"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </customView>
+                                    <customView fixedFrame="YES" id="nRU-NE-XhT">
+                                        <rect key="frame" x="209" y="0.0" width="249" height="442"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </customView>
+                                    <customView id="ydu-nT-0Pv">
+                                        <rect key="frame" x="459" y="0.0" width="331" height="442"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <subviews>
+                                            <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3L-dL-GQc">
+                                                <rect key="frame" x="0.0" y="0.0" width="331" height="442"/>
+                                                <clipView key="contentView" drawsBackground="NO" id="lI0-oR-x8A">
+                                                    <rect key="frame" x="1" y="1" width="329" height="440"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <collectionView selectable="YES" id="o1W-3l-mSx">
+                                                            <rect key="frame" x="0.0" y="0.0" width="329" height="440"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="gmf-s0-Byd">
+                                                                <size key="itemSize" width="50" height="50"/>
+                                                            </collectionViewFlowLayout>
+                                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            <connections>
+                                                                <outlet property="dataSource" destination="XfG-lQ-9wD" id="o8H-C4-Yah"/>
+                                                                <outlet property="delegate" destination="XfG-lQ-9wD" id="yAo-03-XMN"/>
+                                                            </connections>
+                                                        </collectionView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </clipView>
+                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="uid-Sm-MWU">
+                                                    <rect key="frame" x="1" y="425" width="0.0" height="16"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="yyg-JT-hcO">
+                                                    <rect key="frame" x="436" y="1" width="16" height="414"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                            </scrollView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Q3L-dL-GQc" secondAttribute="bottom" id="5Cw-By-8yZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="Q3L-dL-GQc" secondAttribute="trailing" id="L3H-UI-Owg"/>
+                                            <constraint firstItem="Q3L-dL-GQc" firstAttribute="top" secondItem="ydu-nT-0Pv" secondAttribute="top" id="R5P-8d-B1P"/>
+                                            <constraint firstItem="Q3L-dL-GQc" firstAttribute="leading" secondItem="ydu-nT-0Pv" secondAttribute="leading" id="bdS-l1-pBk"/>
+                                        </constraints>
+                                    </customView>
+                                </subviews>
+                                <holdingPriorities>
+                                    <real value="250"/>
+                                    <real value="250"/>
+                                    <real value="250"/>
+                                </holdingPriorities>
+                            </splitView>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="rhN-Yc-AED" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="E58-tm-JBu"/>
+                            <constraint firstAttribute="bottom" secondItem="rhN-Yc-AED" secondAttribute="bottom" id="PWA-9M-c2v"/>
+                            <constraint firstItem="rhN-Yc-AED" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="Sol-Za-ZNf"/>
+                            <constraint firstAttribute="trailing" secondItem="rhN-Yc-AED" secondAttribute="trailing" id="zlv-Vb-HQV"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="o1W-3l-mSx" id="Fsj-To-ltj"/>
