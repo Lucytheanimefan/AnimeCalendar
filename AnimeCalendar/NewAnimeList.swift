@@ -12,6 +12,7 @@ class NewAnimeList: NSObject {
     
     let baseURL = "https://anilist.co/api/"
     let authEndpoint = "auth/access_token"
+    let genreList = "genre_list"
     var clientID:String!
     var clientSecret:String!
     var accessToken:String!
@@ -27,9 +28,42 @@ class NewAnimeList: NSObject {
             if let data = response as? [String:Any]{
                 self.accessToken = data["access_token"] as! String
                 print(self.accessToken)
+                
+                //self.genres()
+                self.animeToDate(completion: { (data) in
+                    print(data)
+                })
             }
         }
-        
+    }
+    
+    func genres(){
+        let auth = "?access_token=" + self.accessToken
+        makeGeneralRequest(url: baseURL + genreList + auth, parameters: nil, type: "GET") { (genres) in
+            //print(genres)
+        }
+    }
+    
+    func animeToDate(completion:@escaping (_ data:[String:Any]) -> Void){
+        let endPoint =  "browse/anime?access_token=" + self.accessToken + "&year=2017&season=summer&full_page=true"
+        makeGeneralRequest(url: baseURL + endPoint, parameters: nil, type: "GET") { (data) in
+            if let animez = data as? [[String:Any]]{
+                for anime:[String:Any] in animez{
+                    var time:NSDate!
+                    var name:String!
+                    if let date = anime["updated_at"] as? NSNumber{
+                        time = NSDate(timeIntervalSince1970: TimeInterval(date))
+                    }
+                    if let title = anime["title_english"] as? String{
+                        name = title
+                    }
+                    if (time != nil && name != nil)
+                    {
+                        completion([name:time])
+                    }
+                }
+            }
+        }
     }
     
     private func makeGeneralRequest(url:String, parameters:Data?, type:String, completion:@escaping ((_ data:/*[String:Any]*/Any)->Void)){
