@@ -22,17 +22,15 @@ class NewAnimeList: NSObject {
         self.clientSecret = clientSecret
     }
     
-    func authenticate(){
+    func authenticate(completion:@escaping (_ accessToken:String) -> Void){
         let auth = "grant_type=client_credentials&client_id=" + clientID + "&client_secret=" + clientSecret
         makeGeneralRequest(url: baseURL + authEndpoint, parameters: auth.data(using: .utf8), type: "POST") { (response) in
             if let data = response as? [String:Any]{
                 self.accessToken = data["access_token"] as! String
                 print(self.accessToken)
-                
+                completion(self.accessToken)
                 //self.genres()
-                self.animeToDate(completion: { (data) in
-                    print(data)
-                })
+               
             }
         }
     }
@@ -44,24 +42,40 @@ class NewAnimeList: NSObject {
         }
     }
     
-    func animeToDate(completion:@escaping (_ data:[String:Any]) -> Void){
+    func generateThisMonthAnime(){
+        self.animeToDate { (animez) in
+            for anime:[String:Any] in animez{
+                if let id = anime["id"] as? NSNumber{
+                    self.makeGeneralRequest(url: self.baseURL + "anime/" + String(describing:id) + "?access_token=" + self.accessToken, parameters: nil, type: "GET") { (data) in
+                        if let animeData = data as? [String:Any]{
+                            print(animeData)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func animeToDate(completion:@escaping (_ data:[[String:Any]]) -> Void){
         let endPoint =  "browse/anime?access_token=" + self.accessToken + "&year=2017&season=summer&full_page=true"
         makeGeneralRequest(url: baseURL + endPoint, parameters: nil, type: "GET") { (data) in
             if let animez = data as? [[String:Any]]{
-                for anime:[String:Any] in animez{
-                    var time:NSDate!
-                    var name:String!
-                    if let date = anime["updated_at"] as? NSNumber{
-                        time = NSDate(timeIntervalSince1970: TimeInterval(date))
-                    }
-                    if let title = anime["title_english"] as? String{
-                        name = title
-                    }
-                    if (time != nil && name != nil)
-                    {
-                        completion([name:time])
-                    }
-                }
+                completion(animez)
+                //for anime:[String:Any] in animez{
+                    //var time:NSDate!
+                    //var name:String!
+                    //completion(anime)
+//                    if let date = anime["updated_at"] as? NSNumber{
+//                        time = NSDate(timeIntervalSince1970: TimeInterval(date))
+//                    }
+//                    if let title = anime["title_english"] as? String{
+//                        name = title
+//                    }
+//                    if (time != nil && name != nil)
+//                    {
+//                        completion([name:time])
+//                    }
+               // }
             }
         }
     }

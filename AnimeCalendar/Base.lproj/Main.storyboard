@@ -737,7 +737,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="329" height="440"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="gmf-s0-Byd">
-                                                                <size key="itemSize" width="50" height="50"/>
+                                                                <size key="itemSize" width="70" height="60"/>
                                                             </collectionViewFlowLayout>
                                                             <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             <connections>
