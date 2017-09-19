@@ -43,7 +43,7 @@ class NewAnimeList: NSObject {
         }
     }
     
-    func generateThisMonthAnime(month:Int){
+    func generateThisMonthAnime(month:Int,completion:@escaping (_ calendarDict:[Int:Any]) -> Void){
         //var calendarDict = [Int:Any]()
         self.animeToDate { (animez) in
             for anime:[String:Any] in animez{
@@ -60,6 +60,7 @@ class NewAnimeList: NSObject {
                                     let day = Calendar.current.component(.day, from: date)
                                     if (month == dateMonth){
                                         self.calendarDict[day] = animeData
+                                        completion(self.calendarDict)
                                     }
                                 }
                                 

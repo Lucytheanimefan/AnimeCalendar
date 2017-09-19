@@ -19,7 +19,7 @@ class ViewController: NSViewController {
     
     var newAniList:NewAnimeList!
     
-    var animeSchedule=[[String:Any]]()
+    var animeSchedule=[Int:Any]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,15 +36,20 @@ class ViewController: NSViewController {
     func setUpAniList(){
         newAniList = NewAnimeList(clientID: "kowaretasekai-xquxb", clientSecret: "T5yjmG9hn3x5LvLK7lKTP")
         newAniList.authenticate { (accessToken) in
-            self.newAniList.animeToDate(completion: { (animeDict) in
-                //print(animeDict)
-                self.animeSchedule = animeDict
+//            self.newAniList.animeToDate(completion: { (animeDict) in
+//                //print(animeDict)
+//                self.animeSchedule = animeDict
+//                DispatchQueue.main.async {
+//                    self.collectionView.reloadData()
+//                }
+//            })
+            
+             self.newAniList.generateThisMonthAnime(month: 9, completion: { (calendarDict) in
+                self.animeSchedule = calendarDict
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
-            })
-            
-             self.newAniList.generateThisMonthAnime(month: 9)
+             })
         }
         
        
@@ -92,12 +97,11 @@ extension ViewController:NSCollectionViewDataSource
             let index = (indexPath.section*7) + indexPath.item
             if (index < self.days.count)
             {
-//                let animeSched = self.animeSchedule as NSArray
-//                let predicate = NSPredicate(format: "updated_at==%i", 1505766602)
-//                let filteredEntries = animeSched.filtered(using: predicate)
-//                print(filteredEntries)
-                if (self.animeSchedule.indices.contains(index)){
-                    let anime = self.animeSchedule[index]
+                //                let animeSched = self.animeSchedule as NSArray
+                //                let predicate = NSPredicate(format: "updated_at==%i", 1505766602)
+                //                let filteredEntries = animeSched.filtered(using: predicate)
+                //                print(filteredEntries)
+                if let anime = self.animeSchedule[index] as? [String:Any]{
                     if let date = anime["updated_at"] as? NSNumber{
                         let time = NSDate(timeIntervalSince1970: TimeInterval(date))
                         collectionViewItem.textField?.stringValue = time.description
@@ -113,14 +117,15 @@ extension ViewController:NSCollectionViewDataSource
                             collectionViewItem.imageView?.image = NSImage(byReferencing: url)
                         }
                     }
-                    //collectionViewItem.textField?.stringValue = self.animeSchedule[index]//String(describing:self.days[index])
                 }
                 else
                 {
-                    collectionViewItem.textField?.stringValue = ""
+                    collectionViewItem.textField?.stringValue = String(describing:self.days[index])
                 }
-                return collectionViewItem
+                //collectionViewItem.textField?.stringValue = self.animeSchedule[index]//String(describing:self.days[index])
             }
+            
+            return collectionViewItem
         }
         return item
     }
