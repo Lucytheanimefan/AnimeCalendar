@@ -16,6 +16,7 @@ class NewAnimeList: NSObject {
     var clientID:String!
     var clientSecret:String!
     var accessToken:String!
+    var calendarDict = [Int:Any]()
     
     init(clientID:String, clientSecret:String) {
         self.clientID = clientID
@@ -42,22 +43,39 @@ class NewAnimeList: NSObject {
         }
     }
     
-    func generateThisMonthAnime(){
+    func generateThisMonthAnime(month:Int){
+        //var calendarDict = [Int:Any]()
         self.animeToDate { (animez) in
             for anime:[String:Any] in animez{
                 if let id = anime["id"] as? NSNumber{
                     self.makeGeneralRequest(url: self.baseURL + "anime/" + String(describing:id) + "?access_token=" + self.accessToken, parameters: nil, type: "GET") { (data) in
                         if let animeData = data as? [String:Any]{
-                            print(animeData)
+                            //print(animeData)
+                            if let airingInfo = animeData["airing"] as? [String:Any]{
+                                if let time = airingInfo["time"] as? String{
+                                    let dateFormatter = DateFormatter()
+                                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+                                    let date = dateFormatter.date(from: time)!
+                                    let dateMonth = Calendar.current.component(.month, from: date)
+                                    let day = Calendar.current.component(.day, from: date)
+                                    if (month == dateMonth){
+                                        self.calendarDict[day] = animeData
+                                    }
+                                }
+                                
+                            }
                         }
+                        
                     }
                 }
             }
+            //return calendarDict
         }
+        //return nil
     }
     
     func animeToDate(completion:@escaping (_ data:[[String:Any]]) -> Void){
-        let endPoint =  "browse/anime?access_token=" + self.accessToken + "&year=2017&season=summer&full_page=true"
+        let endPoint =  "browse/anime?access_token=" + self.accessToken + "&year=2017&season=summer"
         makeGeneralRequest(url: baseURL + endPoint, parameters: nil, type: "GET") { (data) in
             if let animez = data as? [[String:Any]]{
                 completion(animez)

@@ -44,7 +44,7 @@ class ViewController: NSViewController {
                 }
             })
             
-             self.newAniList.generateThisMonthAnime()
+             self.newAniList.generateThisMonthAnime(month: 9)
         }
         
        
