@@ -26,7 +26,7 @@
                     </textFieldCell>
                 </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sJR-qC-4Pi">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="246"/>
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="E70-a8-3Ju"/>
                 </imageView>

@@ -16,7 +16,7 @@ class NewAnimeList: NSObject {
     var clientID:String!
     var clientSecret:String!
     var accessToken:String!
-    var calendarDict = [Int:Any]()
+    var calendarDict = [Int:[[String:Any]]]()
     
     init(clientID:String, clientSecret:String) {
         self.clientID = clientID
@@ -43,7 +43,7 @@ class NewAnimeList: NSObject {
         }
     }
     
-    func generateThisMonthAnime(month:Int,completion:@escaping (_ calendarDict:[Int:Any]) -> Void){
+    func generateThisMonthAnime(month:Int,completion:@escaping (_ calendarDict:[Int:[[String:Any]]]) -> Void){
         //var calendarDict = [Int:Any]()
         self.animeToDate { (animez) in
             for anime:[String:Any] in animez{
@@ -59,7 +59,14 @@ class NewAnimeList: NSObject {
                                     let dateMonth = Calendar.current.component(.month, from: date)
                                     let day = Calendar.current.component(.day, from: date)
                                     if (month == dateMonth){
-                                        self.calendarDict[day] = animeData
+                                        if (self.calendarDict[day] != nil)
+                                        {
+                                            self.calendarDict[day]?.append(animeData)
+                                        }
+                                        else
+                                        {
+                                            self.calendarDict[day] = [animeData]
+                                        }
                                         completion(self.calendarDict)
                                     }
                                 }

@@ -19,8 +19,10 @@ class ViewController: NSViewController {
     
     var newAniList:NewAnimeList!
     
-    var animeSchedule=[Int:Any]()
+    var animeSchedule=[Int:[[String:Any]]]()
 
+    @IBOutlet weak var tableView: NSTableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.isSelectable = true
@@ -75,6 +77,7 @@ extension ViewController:NSCollectionViewDelegate
 {
     func collectionView(_ collectionView: NSCollectionView, didChangeItemsAt indexPaths: Set<IndexPath>, to highlightState: NSCollectionViewItemHighlightState) {
         //print("Change item to highlight state")
+    
     }
 }
 
@@ -87,7 +90,6 @@ extension ViewController:NSCollectionViewDataSource
     
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
         let sections = Int((daysInMonth()/7).rounded(.up))
-        print (sections)
         return sections
     }
     
@@ -101,20 +103,29 @@ extension ViewController:NSCollectionViewDataSource
                 //                let predicate = NSPredicate(format: "updated_at==%i", 1505766602)
                 //                let filteredEntries = animeSched.filtered(using: predicate)
                 //                print(filteredEntries)
-                if let anime = self.animeSchedule[index] as? [String:Any]{
-                    if let date = anime["updated_at"] as? NSNumber{
-                        let time = NSDate(timeIntervalSince1970: TimeInterval(date))
-                        collectionViewItem.textField?.stringValue = time.description
-                    }
-                    if let title = anime["title_english"] as? String{
-                        //(collectionViewItem.sourceItemView as? NSTextView)?.string = title
-                        collectionViewItem.textField?.stringValue = title
+                if let animez = self.animeSchedule[index]{
+//                    if let date = anime["updated_at"] as? NSNumber{
+//                        let time = NSDate(timeIntervalSince1970: TimeInterval(date))
+//                        collectionViewItem.textField?.stringValue = time.description
+                    //                    }
+                    for anime in animez{
+                        if let title = anime["title_english"] as? String{
+                            
+                            if ( collectionViewItem.textField?.stringValue  != nil)
+                            {
+                                collectionViewItem.textField?.stringValue  = ( collectionViewItem.textField?.stringValue )! + title
+                            }
+                            else
+                            {
+                                collectionViewItem.textField?.stringValue = title
+                            }
+                            
+                        }
                         
-                    }
-                    
-                    if let imageURL = anime["image_url_banner"] as? String{
-                        if let url = URL(string: imageURL){
-                            collectionViewItem.imageView?.image = NSImage(byReferencing: url)
+                        if let imageURL = anime["image_url_banner"] as? String{
+                            if let url = URL(string: imageURL){
+                                collectionViewItem.imageView?.image = NSImage(byReferencing: url)
+                            }
                         }
                     }
                 }
@@ -122,7 +133,6 @@ extension ViewController:NSCollectionViewDataSource
                 {
                     collectionViewItem.textField?.stringValue = String(describing:self.days[index])
                 }
-                //collectionViewItem.textField?.stringValue = self.animeSchedule[index]//String(describing:self.days[index])
             }
             
             return collectionViewItem
@@ -131,4 +141,19 @@ extension ViewController:NSCollectionViewDataSource
     }
 }
 
+
+extension ViewController: NSTableViewDataSource{
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        // Return number of anime airing for that day
+        return 0
+    }
+}
+
+extension ViewController: NSTableViewDelegate{
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        let view = tableView.make(withIdentifier: "animeViewID", owner: nil)
+        
+        return view
+    }
+}
 

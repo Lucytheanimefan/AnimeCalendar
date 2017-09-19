@@ -11,7 +11,6 @@ import Cocoa
 class CalendarViewItem: NSCollectionViewItem {
     @IBOutlet weak var label: NSTextField!
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
