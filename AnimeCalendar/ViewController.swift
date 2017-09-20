@@ -19,8 +19,9 @@ class ViewController: NSViewController {
     
     var newAniList:NewAnimeList!
     
-    var animeSchedule=[Int:[[String:Any]]]()
-
+    var animeSchedule = [Int:[[String:Any]]]()
+    
+    var animeDailySchedule = [[String:Any]]()
     @IBOutlet weak var tableView: NSTableView!
     
     override func viewDidLoad() {
@@ -38,14 +39,6 @@ class ViewController: NSViewController {
     func setUpAniList(){
         newAniList = NewAnimeList(clientID: "kowaretasekai-xquxb", clientSecret: "T5yjmG9hn3x5LvLK7lKTP")
         newAniList.authenticate { (accessToken) in
-//            self.newAniList.animeToDate(completion: { (animeDict) in
-//                //print(animeDict)
-//                self.animeSchedule = animeDict
-//                DispatchQueue.main.async {
-//                    self.collectionView.reloadData()
-//                }
-//            })
-            
              self.newAniList.generateThisMonthAnime(month: 9, completion: { (calendarDict) in
                 self.animeSchedule = calendarDict
                 DispatchQueue.main.async {
@@ -76,8 +69,25 @@ class ViewController: NSViewController {
 extension ViewController:NSCollectionViewDelegate
 {
     func collectionView(_ collectionView: NSCollectionView, didChangeItemsAt indexPaths: Set<IndexPath>, to highlightState: NSCollectionViewItemHighlightState) {
-        //print("Change item to highlight state")
+        // [[row, column]]
+        print("Change item to highlight state")
+        //print(indexPaths)
+        let first = indexPaths.first!
+        let index = (first.section * 7) + (first.item)
+        
+        if let anime = self.animeSchedule[index]
+        {
+            self.animeDailySchedule = anime
+            DispatchQueue.main.async
+            {
+                self.tableView.reloadData()
+            }
+        }
+        
+    }
     
+    func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
+        
     }
 }
 
@@ -99,15 +109,8 @@ extension ViewController:NSCollectionViewDataSource
             let index = (indexPath.section*7) + indexPath.item
             if (index < self.days.count)
             {
-                //                let animeSched = self.animeSchedule as NSArray
-                //                let predicate = NSPredicate(format: "updated_at==%i", 1505766602)
-                //                let filteredEntries = animeSched.filtered(using: predicate)
-                //                print(filteredEntries)
                 if let animez = self.animeSchedule[index]{
-//                    if let date = anime["updated_at"] as? NSNumber{
-//                        let time = NSDate(timeIntervalSince1970: TimeInterval(date))
-//                        collectionViewItem.textField?.stringValue = time.description
-                    //                    }
+
                     for anime in animez{
                         if let title = anime["title_english"] as? String{
                             
@@ -145,15 +148,27 @@ extension ViewController:NSCollectionViewDataSource
 extension ViewController: NSTableViewDataSource{
     func numberOfRows(in tableView: NSTableView) -> Int {
         // Return number of anime airing for that day
-        return 0
+        return (self.animeDailySchedule.count)
     }
 }
 
 extension ViewController: NSTableViewDelegate{
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let view = tableView.make(withIdentifier: "animeViewID", owner: nil)
+        if let cellView = tableView.make(withIdentifier: "animeViewID", owner: nil) as? NSTableCellView{
+            if let title = self.animeDailySchedule[row]["title_english"] as? String
+            {
+                cellView.textField?.stringValue = title
+            }
+            
+            return cellView
+        }
+        else
+        {
+            return nil
+        }
         
-        return view
+        //let rowIndex = tableView.selectedRow
     }
+
 }
 
