@@ -10,6 +10,8 @@
 		7C3E5C031F6F3911002D5AD6 /* CalendarViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3E5C011F6F3911002D5AD6 /* CalendarViewItem.swift */; };
 		7C3E5C041F6F3911002D5AD6 /* CalendarViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C3E5C021F6F3911002D5AD6 /* CalendarViewItem.xib */; };
 		7C3E5C061F6F4496002D5AD6 /* NewAnimeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3E5C051F6F4496002D5AD6 /* NewAnimeList.swift */; };
+		7C56DFBB1F7368A2005DD6DB /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C56DFBA1F7368A2005DD6DB /* EventKit.framework */; };
+		7C56DFBD1F7368D8005DD6DB /* AnimeEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C56DFBC1F7368D8005DD6DB /* AnimeEventController.swift */; };
 		7C63B2B71F6E0DCE00FF4996 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C63B2B61F6E0DCE00FF4996 /* AppDelegate.swift */; };
 		7C63B2B91F6E0DCE00FF4996 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C63B2B81F6E0DCE00FF4996 /* ViewController.swift */; };
 		7C63B2BB1F6E0DCE00FF4996 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C63B2BA1F6E0DCE00FF4996 /* Assets.xcassets */; };
@@ -32,6 +34,8 @@
 		7C3E5C011F6F3911002D5AD6 /* CalendarViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewItem.swift; sourceTree = "<group>"; };
 		7C3E5C021F6F3911002D5AD6 /* CalendarViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarViewItem.xib; sourceTree = "<group>"; };
 		7C3E5C051F6F4496002D5AD6 /* NewAnimeList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAnimeList.swift; sourceTree = "<group>"; };
+		7C56DFBA1F7368A2005DD6DB /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		7C56DFBC1F7368D8005DD6DB /* AnimeEventController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimeEventController.swift; sourceTree = "<group>"; };
 		7C63B2B31F6E0DCE00FF4996 /* AnimeCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimeCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C63B2B61F6E0DCE00FF4996 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C63B2B81F6E0DCE00FF4996 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C56DFBB1F7368A2005DD6DB /* EventKit.framework in Frameworks */,
 				7C63B2D51F6E125E00FF4996 /* AppKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -93,6 +98,7 @@
 				7C3E5C011F6F3911002D5AD6 /* CalendarViewItem.swift */,
 				7C3E5C021F6F3911002D5AD6 /* CalendarViewItem.xib */,
 				7C3E5C051F6F4496002D5AD6 /* NewAnimeList.swift */,
+				7C56DFBC1F7368D8005DD6DB /* AnimeEventController.swift */,
 			);
 			path = AnimeCalendar;
 			sourceTree = "<group>";
@@ -109,6 +115,7 @@
 		7C63B2D31F6E125E00FF4996 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7C56DFBA1F7368A2005DD6DB /* EventKit.framework */,
 				7C63B2D41F6E125E00FF4996 /* AppKit.framework */,
 			);
 			name = Frameworks;
@@ -221,6 +228,7 @@
 			files = (
 				7C63B2B91F6E0DCE00FF4996 /* ViewController.swift in Sources */,
 				7C3E5C061F6F4496002D5AD6 /* NewAnimeList.swift in Sources */,
+				7C56DFBD1F7368D8005DD6DB /* AnimeEventController.swift in Sources */,
 				7C3E5C031F6F3911002D5AD6 /* CalendarViewItem.swift in Sources */,
 				7C63B2B71F6E0DCE00FF4996 /* AppDelegate.swift in Sources */,
 			);
