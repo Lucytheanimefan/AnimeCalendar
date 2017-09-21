@@ -22,7 +22,14 @@ class ViewController: NSViewController {
     var animeSchedule = [Int:[[String:Any]]]()
     
     var animeDailySchedule = [[String:Any]]()
+    
+    // The today's anime table
     @IBOutlet weak var tableView: NSTableView!
+    
+    // Today's normal events
+    @IBOutlet weak var normieTableView: NSTableView!
+    
+    @IBOutlet var dateTextView: NSTextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +85,8 @@ extension ViewController:NSCollectionViewDelegate
         if let anime = self.animeSchedule[index]
         {
             self.animeDailySchedule = anime
+            self.dateTextView.string = calendar.component(.month, from: Date()).description + "-" + (index+1).description + "-" + calendar.component(.year, from: Date()).description
+                
             DispatchQueue.main.async
             {
                 self.tableView.reloadData()
@@ -109,6 +118,7 @@ extension ViewController:NSCollectionViewDataSource
             let index = (indexPath.section*7) + indexPath.item
             if (index < self.days.count)
             {
+                collectionViewItem.textField?.stringValue = String(describing:self.days[index]) + "  "
                 if let animez = self.animeSchedule[index]{
 
                     for anime in animez{
@@ -132,10 +142,10 @@ extension ViewController:NSCollectionViewDataSource
                         }
                     }
                 }
-                else
-                {
-                    collectionViewItem.textField?.stringValue = String(describing:self.days[index])
-                }
+//                else
+//                {
+//                    collectionViewItem.textField?.stringValue = String(describing:self.days[index])
+//                }
             }
             
             return collectionViewItem
