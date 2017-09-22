@@ -31,16 +31,25 @@ class ViewController: NSViewController {
     
     @IBOutlet var dateTextView: NSTextView!
     
+    var animeEventController:AnimeEventController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.isSelectable = true
         setUpAniList()
+        
+
     }
 
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
         }
+    }
+    
+    override func viewDidAppear() {
+        self.animeEventController = AnimeEventController(window: NSApplication.shared().windows.first!)
+        self.animeEventController.updateAuthStatusToAccessEventStore()
     }
     
     func setUpAniList(){
