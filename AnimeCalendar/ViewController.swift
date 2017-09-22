@@ -49,12 +49,15 @@ class ViewController: NSViewController {
     
     override func viewDidAppear() {
         self.animeEventController = AnimeEventController(window: NSApplication.shared().windows.first!)
-        self.animeEventController.updateAuthStatusToAccessEventStore()
+        //self.animeEventController.eventAuthFailAlert()
+        self.animeEventController.updateAuthStatusToAccessEventStore(eventType: true)
+        
+        print(self.animeEventController.calendar)
     }
     
     func setUpAniList(){
-        newAniList = NewAnimeList(clientID: "kowaretasekai-xquxb", clientSecret: "T5yjmG9hn3x5LvLK7lKTP")
-        newAniList.authenticate { (accessToken) in
+        self.newAniList = NewAnimeList(clientID: "kowaretasekai-xquxb", clientSecret: "T5yjmG9hn3x5LvLK7lKTP")
+        self.newAniList.authenticate { (accessToken) in
              self.newAniList.generateThisMonthAnime(month: 9, completion: { (calendarDict) in
                 self.animeSchedule = calendarDict
                 DispatchQueue.main.async {
@@ -62,8 +65,6 @@ class ViewController: NSViewController {
                 }
              })
         }
-        
-       
     }
     
     func daysInMonth() -> Double{
