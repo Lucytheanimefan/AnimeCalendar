@@ -36,6 +36,8 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.isSelectable = true
+        self.dateTextView.alignment = .center
+        self.dateTextView.font = NSFont(name: "Helvetica Neue", size: 20)
         setUpAniList()
         
 
@@ -93,7 +95,8 @@ extension ViewController:NSCollectionViewDelegate
         let first = indexPaths.first!
         let index = (first.section * 7) + (first.item)
         
-         self.dateTextView.string = calendar.component(.month, from: Date()).description + "-" + (index+1).description + "-" + calendar.component(.year, from: Date()).description
+        let monthName = DateFormatter().monthSymbols[calendar.component(.month, from: Date())]
+         self.dateTextView.string = monthName + " " + (index+1).description + ", " + calendar.component(.year, from: Date()).description
         
         if let anime = self.animeSchedule[index]
         {
@@ -146,16 +149,16 @@ extension ViewController:NSCollectionViewDataSource
                             }
                             
                             // Set image indicating there's anime on this day
-                            collectionViewItem.imageView?.image = #imageLiteral(resourceName: "AnimeDayIcon")
+                            //collectionViewItem.imageView?.image = #imageLiteral(resourceName: "AnimeDayIcon")
             
                             
                         }
                         
-//                        if let imageURL = anime["image_url_banner"] as? String{
-//                            if let url = URL(string: imageURL){
-//                                collectionViewItem.imageView?.image = NSImage(byReferencing: url)
-//                            }
-//                        }
+                        if let imageURL = anime["image_url_banner"] as? String{
+                            if let url = URL(string: imageURL){
+                                collectionViewItem.imageView?.image = NSImage(byReferencing: url)
+                            }
+                        }
                     }
                 }
 //                else
@@ -197,4 +200,5 @@ extension ViewController: NSTableViewDelegate{
     }
 
 }
+
 
