@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09i-cN-c4K">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="09i-cN-c4K">
                     <rect key="frame" x="-2" y="255" width="484" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="5S7-R6-qU1">
                         <font key="font" metaFont="system"/>
@@ -25,16 +25,19 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sJR-qC-4Pi">
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sJR-qC-4Pi">
                     <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="E70-a8-3Ju"/>
                 </imageView>
             </subviews>
             <constraints>
                 <constraint firstItem="09i-cN-c4K" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="40N-do-p5o"/>
+                <constraint firstAttribute="trailing" secondItem="sJR-qC-4Pi" secondAttribute="trailing" id="YcD-IZ-bg4"/>
                 <constraint firstItem="09i-cN-c4K" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="bW3-s5-aaL"/>
+                <constraint firstItem="sJR-qC-4Pi" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="dxn-wm-TQv"/>
+                <constraint firstAttribute="bottom" secondItem="sJR-qC-4Pi" secondAttribute="bottom" id="hKi-N4-MIZ"/>
                 <constraint firstAttribute="trailing" secondItem="09i-cN-c4K" secondAttribute="trailing" id="hbX-aN-m2A"/>
+                <constraint firstItem="sJR-qC-4Pi" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="oIm-5q-DBG"/>
             </constraints>
         </customView>
         <collectionViewItem id="vYd-Pb-jaz" customClass="CalendarViewItem" customModule="AnimeCalendar" customModuleProvider="target">

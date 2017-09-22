@@ -80,6 +80,7 @@ class ViewController: NSViewController {
         self.days = Array(1...numDays)
         return Double(numDays)
     }
+    
 }
 
 
@@ -88,14 +89,15 @@ extension ViewController:NSCollectionViewDelegate
     func collectionView(_ collectionView: NSCollectionView, didChangeItemsAt indexPaths: Set<IndexPath>, to highlightState: NSCollectionViewItemHighlightState) {
         // [[row, column]]
         print("Change item to highlight state")
-        //print(indexPaths)
+
         let first = indexPaths.first!
         let index = (first.section * 7) + (first.item)
+        
+         self.dateTextView.string = calendar.component(.month, from: Date()).description + "-" + (index+1).description + "-" + calendar.component(.year, from: Date()).description
         
         if let anime = self.animeSchedule[index]
         {
             self.animeDailySchedule = anime
-            self.dateTextView.string = calendar.component(.month, from: Date()).description + "-" + (index+1).description + "-" + calendar.component(.year, from: Date()).description
                 
             DispatchQueue.main.async
             {
@@ -132,7 +134,7 @@ extension ViewController:NSCollectionViewDataSource
                 if let animez = self.animeSchedule[index]{
 
                     for anime in animez{
-                        if let title = anime["title_english"] as? String{
+                       if let title = anime["title_english"] as? String{
                             
                             if ( collectionViewItem.textField?.stringValue  != nil)
                             {
@@ -143,13 +145,17 @@ extension ViewController:NSCollectionViewDataSource
                                 collectionViewItem.textField?.stringValue = title
                             }
                             
+                            // Set image indicating there's anime on this day
+                            collectionViewItem.imageView?.image = #imageLiteral(resourceName: "AnimeDayIcon")
+            
+                            
                         }
                         
-                        if let imageURL = anime["image_url_banner"] as? String{
-                            if let url = URL(string: imageURL){
-                                collectionViewItem.imageView?.image = NSImage(byReferencing: url)
-                            }
-                        }
+//                        if let imageURL = anime["image_url_banner"] as? String{
+//                            if let url = URL(string: imageURL){
+//                                collectionViewItem.imageView?.image = NSImage(byReferencing: url)
+//                            }
+//                        }
                     }
                 }
 //                else

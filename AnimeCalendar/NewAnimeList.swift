@@ -30,15 +30,15 @@ class NewAnimeList: NSObject {
         var season:String!
         let month = Calendar.current.component(.month, from: Date())
         let day = Calendar.current.component(.day, from: Date())
-        if (month >= 9 && month <= 12)
+        if (month >= 10 && month <= 12)
         {
             season = "fall"
         }
-        else if (month >= 12 && month <= 3)
+        else if (month >= 1 && month <= 3)
         {
             season = "winter"
         }
-        else if (month >= 3 && month <= 6)
+        else if (month >= 4 && month <= 6)
         {
             season = "spring"
         }
