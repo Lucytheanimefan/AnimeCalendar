@@ -18,6 +18,37 @@ class NewAnimeList: NSObject {
     var accessToken:String!
     var calendarDict = [Int:[[String:Any]]]()
     
+ 
+    
+    lazy var currentYear:String = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY"
+        return dateFormatter.string(from: Date())
+    }()
+    
+    lazy var currentSeason:String = {
+        var season:String!
+        let month = Calendar.current.component(.month, from: Date())
+        let day = Calendar.current.component(.day, from: Date())
+        if (month >= 9 && month <= 12)
+        {
+            season = "fall"
+        }
+        else if (month >= 12 && month <= 3)
+        {
+            season = "winter"
+        }
+        else if (month >= 3 && month <= 6)
+        {
+            season = "spring"
+        }
+        else
+        {
+            season = "summer"
+        }
+        return season
+    }()
+    
     init(clientID:String, clientSecret:String) {
         self.clientID = clientID
         self.clientSecret = clientSecret
@@ -83,25 +114,10 @@ class NewAnimeList: NSObject {
     }
     
     func animeToDate(completion:@escaping (_ data:[[String:Any]]) -> Void){
-        let endPoint =  "browse/anime?access_token=" + self.accessToken + "&year=2017&season=summer"
+        let endPoint =  "browse/anime?access_token=" + self.accessToken + "&year=" + self.currentYear + "&season=" + self.currentSeason
         makeGeneralRequest(url: baseURL + endPoint, parameters: nil, type: "GET") { (data) in
             if let animez = data as? [[String:Any]]{
                 completion(animez)
-                //for anime:[String:Any] in animez{
-                    //var time:NSDate!
-                    //var name:String!
-                    //completion(anime)
-//                    if let date = anime["updated_at"] as? NSNumber{
-//                        time = NSDate(timeIntervalSince1970: TimeInterval(date))
-//                    }
-//                    if let title = anime["title_english"] as? String{
-//                        name = title
-//                    }
-//                    if (time != nil && name != nil)
-//                    {
-//                        completion([name:time])
-//                    }
-               // }
             }
         }
     }

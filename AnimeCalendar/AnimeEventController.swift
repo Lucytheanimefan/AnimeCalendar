@@ -14,7 +14,7 @@ class AnimeEventController: NSObject {
     //static let shared = AnimeEventController()
     
     let eventStore = EKEventStore()
-    var isAccessToEventStoreGranted = false
+    var grantedAccess = [EKEntityType.event: false, EKEntityType.reminder: false]
     var window:NSWindow?
     var entityType:EKEntityType = EKEntityType.reminder
     
@@ -31,8 +31,22 @@ class AnimeEventController: NSObject {
         self.updateAuthStatusToAccessEventStore(entityType: EKEntityType.event)
     }
     
-    func createCalendars() {
+    func createCalendars(){
+        if (self.grantedAccess[EKEntityType.event])!
+        {
+            self.createEventCalendar()
+        }
+        if (self.grantedAccess[EKEntityType.reminder])!
+        {
+            self.createReminderCalendar()
+        }
+    }
+    
+    func createReminderCalendar(){
         self.reminderCalendar = self.createCalendar(entityType: EKEntityType.reminder)
+    }
+    
+    func createEventCalendar(){
         self.eventCalendar = self.createCalendar(entityType: EKEntityType.event)
     }
     
@@ -42,12 +56,12 @@ class AnimeEventController: NSObject {
         switch authStatus {
         case EKAuthorizationStatus.denied, EKAuthorizationStatus.restricted:
             print("Denied/restricted!")
-            self.isAccessToEventStoreGranted = false
+            self.grantedAccess[entityType] = false
             self.eventAuthFailAlert()
             break
         case EKAuthorizationStatus.authorized:
             print("Authorized!")
-            self.isAccessToEventStoreGranted = true
+            self.grantedAccess[entityType] = true
             break
         case EKAuthorizationStatus.notDetermined:
             print("Not determined EKAuth status")
@@ -95,6 +109,8 @@ class AnimeEventController: NSObject {
         }
         else
         {
+            // Create the calendar if it doesn't exist
+            
             calendar = EKCalendar(for: entityType, eventStore: self.eventStore)
             calendar.title = "Anime"
             if (entityType == EKEntityType.event)
@@ -113,7 +129,7 @@ class AnimeEventController: NSObject {
                 calendar.source = self.eventStore.defaultCalendarForNewEvents.source
             }
             
-            // Create the calendar if it doesn't exist
+            // Save the calendar
             do
             {
                 try self.eventStore.saveCalendar(calendar, commit: true)
