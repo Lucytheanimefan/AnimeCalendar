@@ -18,45 +18,26 @@ class AnimeEventController: NSObject {
     var window:NSWindow?
     var entityType:EKEntityType = EKEntityType.reminder
     
-    lazy var calendar:EKCalendar? = {
-        let calendarTitle = "Anime"
-        let calendars = self.eventStore.calendars(for: self.entityType)
-        let predicate = NSPredicate.init(format: "title matches %@", calendarTitle)
-        let filtered = (calendars as NSArray).filtered(using: predicate)
-        
-        var calendar:EKCalendar!
-        if (filtered.count > 0)
-        {
-            calendar = filtered.first as! EKCalendar
-        }
-        else
-        {
-            calendar = EKCalendar(for: self.entityType, eventStore: self.eventStore)
-            calendar.title = "Anime"
-            calendar.source = self.eventStore.defaultCalendarForNewEvents.source
-            
-            // Create the calendar if it doesn't exist
-            do{
-                try self.eventStore.saveCalendar(calendar, commit: true)
-            }
-            catch
-            {
-                print(error)
-            }
-        }
-        return calendar
-    }()
+    var reminderCalendar:EKCalendar!
+    var eventCalendar:EKCalendar!
     
     convenience init(window:NSWindow) {
         self.init()
         self.window = window
     }
     
-    func updateAuthStatusToAccessEventStore(eventType:Bool){
-        var type:EKEntityType = EKEntityType.reminder
-        if (eventType){ type = EKEntityType.event}
-
-        let authStatus = EKEventStore.authorizationStatus(for: type)
+    func updateAuthStatus(){
+        self.updateAuthStatusToAccessEventStore(entityType: EKEntityType.reminder)
+        self.updateAuthStatusToAccessEventStore(entityType: EKEntityType.event)
+    }
+    
+    func createCalendars() {
+        self.reminderCalendar = self.createCalendar(entityType: EKEntityType.reminder)
+        self.eventCalendar = self.createCalendar(entityType: EKEntityType.event)
+    }
+    
+    private func updateAuthStatusToAccessEventStore(entityType:EKEntityType){
+        let authStatus = EKEventStore.authorizationStatus(for: entityType)
         
         switch authStatus {
         case EKAuthorizationStatus.denied, EKAuthorizationStatus.restricted:
@@ -70,7 +51,7 @@ class AnimeEventController: NSObject {
             break
         case EKAuthorizationStatus.notDetermined:
             print("Not determined EKAuth status")
-            self.eventStore.requestAccess(to: EKEntityType.reminder, completion: { (granted, error) in
+            self.eventStore.requestAccess(to: entityType, completion: { (granted, error) in
                 if (error != nil)
                 {
                     print(error.debugDescription)
@@ -86,7 +67,7 @@ class AnimeEventController: NSObject {
         }
     }
     
-    func eventAuthFailAlert(){
+    private func eventAuthFailAlert(){
         let alert = NSAlert()
         alert.messageText = "Access denied."
         alert.informativeText = "This app doesn't have access to your Reminders."
@@ -102,30 +83,48 @@ class AnimeEventController: NSObject {
         }
     }
     
-//    func getCalendar(){
-//        let calendarTitle = "Anime"
-//        let calendars = self.eventStore.calendars(for: self.entityType)
-//        let predicate = NSPredicate.init(format: "title matches %@", calendarTitle)
-//        let filtered = (calendars as NSArray).filtered(using: predicate)
-//        
-//        if (filtered.count > 0)
-//        {
-//            self.calendar = filtered.first as! EKCalendar
-//        }
-//        else
-//        {
-//            self.calendar = EKCalendar(for: self.entityType, eventStore: self.eventStore)
-//            self.calendar.title = "Anime"
-//            self.calendar.source = self.eventStore.defaultCalendarForNewEvents.source
-//            
-//            // Create the calendar if it doesn't exist
-//            do{
-//                try self.eventStore.saveCalendar(self.calendar, commit: true)
-//            }
-//            catch
-//            {
-//            }
-//        }
-//    }
+    private func createCalendar(entityType:EKEntityType) -> EKCalendar?{
+        let calendarTitle = "Anime"
+        let calendars = self.eventStore.calendars(for: entityType)
+        let predicate = NSPredicate.init(format: "title matches %@", calendarTitle)
+        let filtered = (calendars as NSArray).filtered(using: predicate)
+        var calendar:EKCalendar!
+        if (filtered.count > 0)
+        {
+            calendar = filtered.first as! EKCalendar
+        }
+        else
+        {
+            calendar = EKCalendar(for: entityType, eventStore: self.eventStore)
+            calendar.title = "Anime"
+            if (entityType == EKEntityType.event)
+            {
+                for source in self.eventStore.sources
+                {
+                    if (source.sourceType == EKSourceType.calDAV && source.title == "iCloud")
+                    {
+                        calendar.source = source
+                        break
+                    }
+                }
+            }
+            else
+            {
+                calendar.source = self.eventStore.defaultCalendarForNewEvents.source
+            }
+            
+            // Create the calendar if it doesn't exist
+            do
+            {
+                try self.eventStore.saveCalendar(calendar, commit: true)
+            }
+            catch
+            {
+                print("Failed to save calendar due to: ")
+                print(error)
+            }
+        }
+        return calendar
+    }
 
 }
