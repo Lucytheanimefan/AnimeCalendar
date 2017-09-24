@@ -706,6 +706,9 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="switchViews:" target="B8D-0N-5wS" id="vPN-gs-pdO"/>
+                            </connections>
                         </button>
                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dQG-Wk-9LI">
                             <rect key="frame" x="364" y="11" width="53" height="25"/>
@@ -714,6 +717,9 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="switchViews:" target="B8D-0N-5wS" id="L2v-ev-BCT"/>
+                            </connections>
                         </button>
                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5n5-g6-FaT">
                             <rect key="frame" x="274" y="11" width="38" height="25"/>
@@ -722,6 +728,9 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="switchViews:" target="B8D-0N-5wS" id="aYM-bG-DD5"/>
+                            </connections>
                         </button>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2a8-po-fby">
                             <rect key="frame" x="488" y="10" width="76" height="27"/>
@@ -754,6 +763,9 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="switchViews:" target="B8D-0N-5wS" id="8gZ-jT-5oS"/>
+                            </connections>
                         </button>
                     </subviews>
                 </customView>
@@ -763,7 +775,7 @@
         <!--Week View Controller-->
         <scene sceneID="PgK-ZA-oAC">
             <objects>
-                <viewController id="90d-jD-pCo" customClass="WeekViewController" customModule="AnimeCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="weekViewControllerID" id="90d-jD-pCo" customClass="WeekViewController" customModule="AnimeCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Gyu-bV-pxv">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -771,7 +783,7 @@
                 </viewController>
                 <customObject id="h1z-aa-irR" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="976" y="1327"/>
+            <point key="canvasLocation" x="824" y="1406"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -820,6 +832,9 @@
                             <constraint firstAttribute="trailing" secondItem="rhN-Yc-AED" secondAttribute="trailing" id="zlv-Vb-HQV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="containerView" destination="lXf-Bn-ila" id="hei-lH-0if"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -828,7 +843,7 @@
         <!--Day View Controller-->
         <scene sceneID="tqb-Xv-1X1">
             <objects>
-                <viewController id="nkH-L0-mwn" customClass="DayViewController" customModule="AnimeCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="dayViewControllerID" id="nkH-L0-mwn" customClass="DayViewController" customModule="AnimeCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="qxE-7M-Gae">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="479"/>
                         <autoresizingMask key="autoresizingMask"/>

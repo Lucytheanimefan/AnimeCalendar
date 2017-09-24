@@ -17,6 +17,9 @@ class WindowController: NSWindowController {
     
     @IBOutlet var windowBarView: NSView!
     
+    let dayVC = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "dayViewControllerID") as! DayViewController
+    let weekVC = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "weekViewControllerID") as! WeekViewController
+    
     override func windowDidLoad() {
         super.windowDidLoad()
     
@@ -25,6 +28,31 @@ class WindowController: NSWindowController {
         self.toolBar.displayMode = .iconOnly
         
         self.window?.titleVisibility = .hidden
+        
+        if let vc = self.contentViewController as? ViewController{
+            vc.addChildViewController(dayVC)
+            vc.addChildViewController(weekVC)
+        }
+    }
+    
+    
+    @IBAction func switchViews(_ sender: NSButton) {
+        if let vc = self.contentViewController as? ViewController{
+            for sView in vc.containerView.subviews{
+                sView.removeFromSuperview()
+            }
+            
+            if (sender.title == "Day")
+            {
+                self.dayVC.view.frame = vc.containerView.bounds
+                vc.containerView.addSubview(self.dayVC.view)
+            }
+            else if (sender.title == "Week")
+            {
+                self.weekVC.view.frame = vc.containerView.bounds
+                vc.containerView.addSubview(self.weekVC.view)
+            }
+        }
     }
     
     func customToolbarItem(itemForItemIdentifier itemIdentifier: String, label: String, paletteLabel: String, toolTip: String, target: AnyObject, itemContent: AnyObject, action: Selector?, menu: NSMenu?) -> NSToolbarItem? {
