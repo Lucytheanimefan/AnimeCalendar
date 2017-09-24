@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7C340B4B1F773724005A8CA9 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C340B4A1F773724005A8CA9 /* WindowController.swift */; };
+		7C340B4D1F774DBF005A8CA9 /* WeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C340B4C1F774DBF005A8CA9 /* WeekViewController.swift */; };
+		7C340B4F1F775081005A8CA9 /* DayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C340B4E1F775081005A8CA9 /* DayViewController.swift */; };
 		7C3E5C031F6F3911002D5AD6 /* CalendarViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3E5C011F6F3911002D5AD6 /* CalendarViewItem.swift */; };
 		7C3E5C041F6F3911002D5AD6 /* CalendarViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C3E5C021F6F3911002D5AD6 /* CalendarViewItem.xib */; };
 		7C3E5C061F6F4496002D5AD6 /* NewAnimeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3E5C051F6F4496002D5AD6 /* NewAnimeList.swift */; };
@@ -33,6 +35,8 @@
 
 /* Begin PBXFileReference section */
 		7C340B4A1F773724005A8CA9 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		7C340B4C1F774DBF005A8CA9 /* WeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewController.swift; sourceTree = "<group>"; };
+		7C340B4E1F775081005A8CA9 /* DayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewController.swift; sourceTree = "<group>"; };
 		7C3E5C011F6F3911002D5AD6 /* CalendarViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewItem.swift; sourceTree = "<group>"; };
 		7C3E5C021F6F3911002D5AD6 /* CalendarViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarViewItem.xib; sourceTree = "<group>"; };
 		7C3E5C051F6F4496002D5AD6 /* NewAnimeList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAnimeList.swift; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 				7C3E5C051F6F4496002D5AD6 /* NewAnimeList.swift */,
 				7C56DFBC1F7368D8005DD6DB /* AnimeEventController.swift */,
 				7C340B4A1F773724005A8CA9 /* WindowController.swift */,
+				7C340B4C1F774DBF005A8CA9 /* WeekViewController.swift */,
+				7C340B4E1F775081005A8CA9 /* DayViewController.swift */,
 			);
 			path = AnimeCalendar;
 			sourceTree = "<group>";
@@ -229,12 +235,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C340B4D1F774DBF005A8CA9 /* WeekViewController.swift in Sources */,
 				7C63B2B91F6E0DCE00FF4996 /* ViewController.swift in Sources */,
 				7C340B4B1F773724005A8CA9 /* WindowController.swift in Sources */,
 				7C3E5C061F6F4496002D5AD6 /* NewAnimeList.swift in Sources */,
 				7C56DFBD1F7368D8005DD6DB /* AnimeEventController.swift in Sources */,
 				7C3E5C031F6F3911002D5AD6 /* CalendarViewItem.swift in Sources */,
 				7C63B2B71F6E0DCE00FF4996 /* AppDelegate.swift in Sources */,
+				7C340B4F1F775081005A8CA9 /* DayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
