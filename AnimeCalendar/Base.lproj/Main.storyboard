@@ -680,6 +680,9 @@
                             <defaultToolbarItems>
                                 <toolbarItem reference="ErT-m6-nqm"/>
                             </defaultToolbarItems>
+                            <connections>
+                                <outlet property="delegate" destination="B8D-0N-5wS" id="BQJ-bb-cmn"/>
+                            </connections>
                         </toolbar>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="Fl1-RN-QQb"/>
