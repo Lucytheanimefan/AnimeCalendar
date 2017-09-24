@@ -147,7 +147,7 @@ extension ViewController:NSCollectionViewDataSource
                             {
                                 collectionViewItem.textField?.stringValue = title
                             }
-                            
+                        
                             // Set image indicating there's anime on this day
                             //collectionViewItem.imageView?.image = #imageLiteral(resourceName: "AnimeDayIcon")
             
