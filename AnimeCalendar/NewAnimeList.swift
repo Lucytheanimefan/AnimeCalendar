@@ -59,7 +59,7 @@ class NewAnimeList: NSObject {
         makeGeneralRequest(url: baseURL + authEndpoint, parameters: auth.data(using: .utf8), type: "POST") { (response) in
             if let data = response as? [String:Any]{
                 self.accessToken = data["access_token"] as! String
-                print(self.accessToken)
+                //print(self.accessToken)
                 completion(self.accessToken)
                 //self.genres()
                
@@ -123,7 +123,7 @@ class NewAnimeList: NSObject {
     }
     
     private func makeGeneralRequest(url:String, parameters:Data?, type:String, completion:@escaping ((_ data:/*[String:Any]*/Any)->Void)){
-        print(url)
+        //print(url)
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = type
         request.httpBody = parameters
@@ -139,7 +139,7 @@ class NewAnimeList: NSObject {
                 do{
                     let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments)
                     //print(json)
-                    print(type(of:json))
+                    //print(type(of:json))
                     completion(json)
                     
                     

@@ -60,8 +60,9 @@ class DayViewController: NSViewController {
     func setUpAniList(){
         self.newAniList = NewAnimeList(clientID: "kowaretasekai-xquxb", clientSecret: "T5yjmG9hn3x5LvLK7lKTP")
         self.newAniList.authenticate { (accessToken) in
-            self.newAniList.generateThisMonthAnime(month: 9, completion: { (calendarDict) in
+            self.newAniList.generateThisMonthAnime(month: self.calendar.component(.month, from: Date()), completion: { (calendarDict) in
                 self.animeSchedule = calendarDict
+                print(self.animeSchedule)
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
@@ -90,12 +91,13 @@ extension DayViewController:NSCollectionViewDelegate
 {
     func collectionView(_ collectionView: NSCollectionView, didChangeItemsAt indexPaths: Set<IndexPath>, to highlightState: NSCollectionViewItemHighlightState) {
         // [[row, column]]
-        print("Change item to highlight state")
+        //print("Change item to highlight state")
         
         let first = indexPaths.first!
         let index = (first.section * 7) + (first.item)
         
-        let monthName = DateFormatter().monthSymbols[calendar.component(.month, from: Date())]
+        let monthName = DateFormatter().monthSymbols[calendar.component(.month, from: Date())-1]
+        print(monthName)
         self.dateTextView.string = monthName + " " + (index+1).description + ", " + calendar.component(.year, from: Date()).description
         
         if let anime = self.animeSchedule[index]
@@ -119,7 +121,14 @@ extension DayViewController:NSCollectionViewDataSource
 {
     @available(OSX 10.11, *)
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        if (section < (Int((daysInMonth()/7).rounded(.up))-1))
+        {
+            return 7
+        }
+        else
+        {
+            return (Int(daysInMonth().truncatingRemainder(dividingBy: 7)) + 1)
+        }
     }
     
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
@@ -129,42 +138,36 @@ extension DayViewController:NSCollectionViewDataSource
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = collectionView.makeItem(withIdentifier: "CalendarViewItem", for: indexPath)
-        if let collectionViewItem = item as? CalendarViewItem{
+        if let collectionViewItem = item as? CalendarViewItem {
+            
             let index = (indexPath.section*7) + indexPath.item
-            if (index < self.days.count)
-            {
-                collectionViewItem.textField?.stringValue = String(describing:self.days[index]) + "  "
-                if let animez = self.animeSchedule[index]{
-                    
-                    for anime in animez{
-                        if let title = anime["title_english"] as? String{
-                            
-                            if ( collectionViewItem.textField?.stringValue  != nil)
-                            {
-                                collectionViewItem.textField?.stringValue  = ( collectionViewItem.textField?.stringValue )! + title
-                            }
-                            else
-                            {
-                                collectionViewItem.textField?.stringValue = title
-                            }
-                            
-                            // Set image indicating there's anime on this day
-                            //collectionViewItem.imageView?.image = #imageLiteral(resourceName: "AnimeDayIcon")
-                            
-                            
+            collectionViewItem.textField?.stringValue = String(describing:index + 1) + "  "
+            if let animez = self.animeSchedule[index]{
+                
+                for anime in animez{
+                    if let title = anime["title_english"] as? String{
+                        //print(anime)
+                        
+                        if ( collectionViewItem.textField?.stringValue  != nil)
+                        {
+                            collectionViewItem.textField?.stringValue  = ( collectionViewItem.textField?.stringValue )! + title
+                        }
+                        else
+                        {
+                            collectionViewItem.textField?.stringValue = title
                         }
                         
-                        if let imageURL = anime["image_url_banner"] as? String{
-                            if let url = URL(string: imageURL){
-                                collectionViewItem.imageView?.image = NSImage(byReferencing: url)
-                            }
+                        // Set image indicating there's anime on this day
+                        //collectionViewItem.imageView?.image = #imageLiteral(resourceName: "AnimeDayIcon")
+                    }
+                    
+                    if let imageURL = anime["image_url_banner"] as? String{
+                        if let url = URL(string: imageURL){
+                            collectionViewItem.imageView?.image = NSImage(byReferencing: url)
                         }
                     }
                 }
-                //                else
-                //                {
-                //                    collectionViewItem.textField?.stringValue = String(describing:self.days[index])
-                //                }
+                //}
             }
             
             return collectionViewItem

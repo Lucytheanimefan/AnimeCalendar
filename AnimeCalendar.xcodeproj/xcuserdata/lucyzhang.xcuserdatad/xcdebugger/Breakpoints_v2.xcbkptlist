@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AnimeCalendar/AnimeEventController.swift"
-            timestampString = "527921353.042342"
+            timestampString = "527995032.772763"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "122"
@@ -25,46 +25,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AnimeCalendar/NewAnimeList.swift"
-            timestampString = "527921353.042441"
+            filePath = "AnimeCalendar/DayViewController.swift"
+            timestampString = "527995032.773133"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "animeToDate(completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "AnimeCalendar.NewAnimeList.animeToDate(completion: (Swift.Array&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "AnimeCalendar"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lucyzhang/Github/AnimeCalendar/AnimeCalendar/NewAnimeList.swift"
-                  timestampString = "527914287.879356"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "118"
-                  endingLineNumber = "118"
-                  offsetFromSymbolStart = "828">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Any) -&gt; () in AnimeCalendar.NewAnimeList.animeToDate(completion: (Swift.Array&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "AnimeCalendar"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lucyzhang/Github/AnimeCalendar/AnimeCalendar/NewAnimeList.swift"
-                  timestampString = "527914287.882245"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "119"
-                  endingLineNumber = "119"
-                  offsetFromSymbolStart = "29">
-               </Location>
-            </Locations>
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "DayViewController"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -73,45 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AnimeCalendar/NewAnimeList.swift"
-            timestampString = "527921353.042902"
+            filePath = "AnimeCalendar/DayViewController.swift"
+            timestampString = "527995032.77409"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "animeToDate(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AnimeCalendar/WindowController.swift"
-            timestampString = "527921353.043288"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "switchViews(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AnimeCalendar/WindowController.swift"
-            timestampString = "527921353.043376"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "switchViews(_:)"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "collectionView(_:itemForRepresentedObjectAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
