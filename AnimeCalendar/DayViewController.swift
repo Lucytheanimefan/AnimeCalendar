@@ -17,7 +17,7 @@ class DayViewController: NSViewController {
     
     var days = [Int]()
     
-    var newAniList:NewAnimeList!
+    var newAniList:NewAnimeList! = NewAnimeList.sharedInstance
     
     var animeSchedule = [Int:[[String:Any]]]()
     
@@ -58,16 +58,24 @@ class DayViewController: NSViewController {
     }
     
     func setUpAniList(){
-        self.newAniList = NewAnimeList(clientID: "kowaretasekai-xquxb", clientSecret: "T5yjmG9hn3x5LvLK7lKTP")
-        self.newAniList.authenticate { (accessToken) in
-            self.newAniList.generateThisMonthAnime(month: self.calendar.component(.month, from: Date()), completion: { (calendarDict) in
-                self.animeSchedule = calendarDict
-                print(self.animeSchedule)
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-            })
+        
+        self.newAniList.monthAnimeList { (calendarDict) in
+            self.animeSchedule = calendarDict
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
         }
+            
+//            = NewAnimeList(clientID: "kowaretasekai-xquxb", clientSecret: "T5yjmG9hn3x5LvLK7lKTP")
+//        self.newAniList.authenticate { (accessToken) in
+//            self.newAniList.generateThisMonthAnime(month: self.calendar.component(.month, from: Date()), completion: { (calendarDict) in
+//                self.animeSchedule = calendarDict
+//                //print(self.animeSchedule)
+//                DispatchQueue.main.async {
+//                    self.collectionView.reloadData()
+//                }
+//            })
+//        }
     }
     
     func daysInMonth() -> Double{
@@ -97,7 +105,7 @@ extension DayViewController:NSCollectionViewDelegate
         let index = (first.section * 7) + (first.item)
         
         let monthName = DateFormatter().monthSymbols[calendar.component(.month, from: Date())-1]
-        print(monthName)
+        //print(monthName)
         self.dateTextView.string = monthName + " " + (index+1).description + ", " + calendar.component(.year, from: Date()).description
         
         if let anime = self.animeSchedule[index]

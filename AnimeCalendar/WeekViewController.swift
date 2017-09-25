@@ -12,9 +12,23 @@ class WeekViewController: NSViewController {
     
     @IBOutlet weak var tableView: NSTableView!
     
+    var newAniList:NewAnimeList! = NewAnimeList.sharedInstance
+    
+    var animeSchedule = [Int:[[String:Any]]]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+    }
+    
+    func setUpMonthlyAnime()
+    {
+        self.newAniList.monthAnimeList { (calendarDict) in
+            self.animeSchedule = calendarDict
+            DispatchQueue.main.async {
+               self.tableView.reloadData()
+            }
+        }
     }
     
 }

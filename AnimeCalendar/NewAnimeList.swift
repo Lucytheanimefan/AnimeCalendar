@@ -18,6 +18,8 @@ class NewAnimeList: NSObject {
     var accessToken:String!
     var calendarDict = [Int:[[String:Any]]]()
     
+    static let sharedInstance = NewAnimeList(clientID: "kowaretasekai-xquxb", clientSecret: "T5yjmG9hn3x5LvLK7lKTP")
+    
  
     
     lazy var currentYear:String = {
@@ -74,6 +76,15 @@ class NewAnimeList: NSObject {
         }
     }
     
+    func monthAnimeList(completion:@escaping (_ calendarDict:[Int:[[String:Any]]]) -> Void){
+        self.authenticate { (accessToken) in
+            self.generateThisMonthAnime(month: Calendar.current.component(.month, from: Date()), completion: { (calendarDict) in
+                self.calendarDict = calendarDict
+                completion(calendarDict)
+            })
+        }
+    }
+    
     func generateThisMonthAnime(month:Int,completion:@escaping (_ calendarDict:[Int:[[String:Any]]]) -> Void){
         //var calendarDict = [Int:Any]()
         self.animeToDate { (animez) in
@@ -84,12 +95,20 @@ class NewAnimeList: NSObject {
                             //print(animeData)
                             if let airingInfo = animeData["airing"] as? [String:Any]{
                                 if let time = airingInfo["time"] as? String{
+                        
                                     let dateFormatter = DateFormatter()
                                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
                                     let date = dateFormatter.date(from: time)!
+                                    print(date)
                                     let dateMonth = Calendar.current.component(.month, from: date)
                                     let day = Calendar.current.component(.day, from: date)
                                     if (month == dateMonth){
+                                        print(month)
+                                        print(dateMonth)
+                                        print(time)
+                                        print(animeData["title_english"])
+                                        print(day)
+                                        print("-------------------")
                                         if (self.calendarDict[day] != nil)
                                         {
                                             self.calendarDict[day]?.append(animeData)
