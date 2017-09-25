@@ -65,17 +65,19 @@ extension WeekViewController:NSTableViewDelegate
 {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         var view:NSView!
-        var title:String = "dummy"
+        var title:String = ""
         let weekDayColIndex = tableView.tableColumns.index(of: tableColumn!)!
-        print(self.weekDayDict())
+        //print(self.weekDayDict())
         if let dayIndex = self.weekDayDict()[weekDayColIndex]{
             
             if (self.animeSchedule != nil)
             {
-                if let animez = self.animeSchedule[dayIndex]{
-                    
-                    for anime in animez{
-                        // TODO: eventually append all titles
+                if let animez = self.animeSchedule[dayIndex]
+                {
+                    if (row < animez.count)
+                    {
+                        let anime = animez[row] as! [String:Any]
+                        
                         if let aniTitle = anime["title_english"] as? String{
                             title = aniTitle
                         }

@@ -65,17 +65,6 @@ class DayViewController: NSViewController {
                 self.collectionView.reloadData()
             }
         }
-            
-//            = NewAnimeList(clientID: "kowaretasekai-xquxb", clientSecret: "T5yjmG9hn3x5LvLK7lKTP")
-//        self.newAniList.authenticate { (accessToken) in
-//            self.newAniList.generateThisMonthAnime(month: self.calendar.component(.month, from: Date()), completion: { (calendarDict) in
-//                self.animeSchedule = calendarDict
-//                //print(self.animeSchedule)
-//                DispatchQueue.main.async {
-//                    self.collectionView.reloadData()
-//                }
-//            })
-//        }
     }
     
     func daysInMonth() -> Double{
