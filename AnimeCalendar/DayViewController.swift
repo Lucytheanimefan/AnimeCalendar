@@ -147,21 +147,22 @@ extension DayViewController:NSCollectionViewDataSource
                         if ( collectionViewItem.textField?.stringValue  != nil)
                         {
                             collectionViewItem.textField?.stringValue  = ( collectionViewItem.textField?.stringValue )! + title
+                            collectionViewItem.imageView?.image = #imageLiteral(resourceName: "AnimeDayIcon")
                         }
                         else
                         {
                             collectionViewItem.textField?.stringValue = title
+                            // Set image indicating there's anime on this day
+                            
                         }
                         
-                        // Set image indicating there's anime on this day
-                        //collectionViewItem.imageView?.image = #imageLiteral(resourceName: "AnimeDayIcon")
                     }
                     
-                    if let imageURL = anime["image_url_banner"] as? String{
-                        if let url = URL(string: imageURL){
-                            collectionViewItem.imageView?.image = NSImage(byReferencing: url)
-                        }
-                    }
+//                    if let imageURL = anime["image_url_banner"] as? String{
+//                        if let url = URL(string: imageURL){
+//                            collectionViewItem.imageView?.image = NSImage(byReferencing: url)
+//                        }
+//                    }
                 }
             }
             
