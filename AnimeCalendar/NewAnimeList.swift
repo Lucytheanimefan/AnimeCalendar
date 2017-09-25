@@ -86,7 +86,7 @@ class NewAnimeList: NSObject {
     }
     
     func generateThisMonthAnime(month:Int,completion:@escaping (_ calendarDict:[Int:[[String:Any]]]) -> Void){
-        //var calendarDict = [Int:Any]()
+        self.calendarDict = [Int:[[String:Any]]]()
         self.animeToDate { (animez) in
             for anime:[String:Any] in animez{
                 if let id = anime["id"] as? NSNumber{
