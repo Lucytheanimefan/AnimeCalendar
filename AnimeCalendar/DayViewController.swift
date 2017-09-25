@@ -107,7 +107,7 @@ extension DayViewController:NSCollectionViewDelegate
         let monthName = DateFormatter().monthSymbols[calendar.component(.month, from: Date())-1]
         //print(monthName)
         self.dateTextView.string = monthName + " " + (index+1).description + ", " + calendar.component(.year, from: Date()).description
-        
+        self.animeDailySchedule = [[String:Any]]()
         if let anime = self.animeSchedule[index]
         {
             self.animeDailySchedule = anime
@@ -154,7 +154,6 @@ extension DayViewController:NSCollectionViewDataSource
                 
                 for anime in animez{
                     if let title = anime["title_english"] as? String{
-                        //print(anime)
                         
                         if ( collectionViewItem.textField?.stringValue  != nil)
                         {
@@ -175,7 +174,6 @@ extension DayViewController:NSCollectionViewDataSource
                         }
                     }
                 }
-                //}
             }
             
             return collectionViewItem

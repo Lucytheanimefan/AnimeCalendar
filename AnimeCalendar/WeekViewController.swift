@@ -14,11 +14,27 @@ class WeekViewController: NSViewController {
     
     var newAniList:NewAnimeList! = NewAnimeList.sharedInstance
     
-    var animeSchedule = [Int:[[String:Any]]]()
+    var animeSchedule:[Int:[[String:Any]]]!
+    
+    lazy var weekDay = {
+        return Calendar.current.component(.weekday, from: Date())
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        self.setUpMonthlyAnime()
+    }
+    
+    func weekDayDict() -> [Int:Int]
+    {
+        var dict = [Int:Int]()
+        let dayValue = Calendar.current.component(.day, from: Date())
+        dict[weekDay] = dayValue
+        for i in 1...7{
+            let diff = i - weekDay
+            dict[i] = dayValue + diff
+        }
+        return dict
     }
     
     func setUpMonthlyAnime()
@@ -49,6 +65,24 @@ extension WeekViewController:NSTableViewDelegate
 {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         var view:NSView!
+        var title:String = "dummy"
+        let weekDayColIndex = tableView.tableColumns.index(of: tableColumn!)!
+        print(self.weekDayDict())
+        if let dayIndex = self.weekDayDict()[weekDayColIndex]{
+            
+            if (self.animeSchedule != nil)
+            {
+                if let animez = self.animeSchedule[dayIndex]{
+                    
+                    for anime in animez{
+                        // TODO: eventually append all titles
+                        if let aniTitle = anime["title_english"] as? String{
+                            title = aniTitle
+                        }
+                    }
+                }
+            }
+        }
         if (tableColumn?.identifier == "labelColumnID")
         {
             view = tableView.make(withIdentifier: "labelCellViewID", owner: nil) as! NSTableCellView
@@ -57,7 +91,7 @@ extension WeekViewController:NSTableViewDelegate
         else
         {
             view = tableView.make(withIdentifier: "dayCellViewID", owner: nil)
-            (view as! NSTableCellView).textField?.stringValue = "Week day"
+            (view as! NSTableCellView).textField?.stringValue = title
         }
         
         return view

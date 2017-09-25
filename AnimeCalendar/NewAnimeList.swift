@@ -103,12 +103,12 @@ class NewAnimeList: NSObject {
                                     let dateMonth = Calendar.current.component(.month, from: date)
                                     let day = Calendar.current.component(.day, from: date)
                                     if (month == dateMonth){
-                                        print(month)
-                                        print(dateMonth)
-                                        print(time)
-                                        print(animeData["title_english"])
-                                        print(day)
-                                        print("-------------------")
+//                                        print(month)
+//                                        print(dateMonth)
+//                                        print(time)
+//                                        print(animeData["title_english"])
+//                                        print(day)
+//                                        print("-------------------")
                                         if (self.calendarDict[day] != nil)
                                         {
                                             self.calendarDict[day]?.append(animeData)
