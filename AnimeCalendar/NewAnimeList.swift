@@ -105,10 +105,9 @@ class NewAnimeList: NSObject {
                             allAnimeDoneCompletion()
                         }
                         if let animeData = data as? [String:Any]{
-                            //print(animeData)
                             if let airingInfo = animeData["airing"] as? [String:Any]{
                                 if let time = airingInfo["time"] as? String{
-                                    //self.numAnimeToIterateThrough += 1
+ 
                                     let dateFormatter = DateFormatter()
                                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
                                     let date = dateFormatter.date(from: time)!
@@ -130,10 +129,8 @@ class NewAnimeList: NSObject {
                                         
                                     }
                                 }
-                                
                             }
                         }
-                        
                     }
                 }
                 else
