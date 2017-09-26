@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import os.log
 
 class NewAnimeList: NSObject {
     
@@ -91,13 +92,18 @@ class NewAnimeList: NSObject {
     }
     
     func generateThisMonthAnime(month:Int,completion:@escaping () -> Void, allAnimeDoneCompletion:@escaping ()->Void){
+        var i = 0
         self.calendarDict = [Int:[[String:Any]]]()
         self.animeToDate { (animez) in
-            var i = 0
             for anime:[String:Any] in animez{
                 if let id = anime["id"] as? NSNumber{
                     self.makeGeneralRequest(url: self.baseURL + "anime/" + String(describing:id) + "?access_token=" + self.accessToken, parameters: nil, type: "GET") { (data) in
                         i+=1
+                        os_log("%@: i: %@, animez.count: %@", self.className, i.description, animez.count.description)
+                        if (i >= animez.count)
+                        {
+                            allAnimeDoneCompletion()
+                        }
                         if let animeData = data as? [String:Any]{
                             //print(animeData)
                             if let airingInfo = animeData["airing"] as? [String:Any]{
@@ -121,10 +127,7 @@ class NewAnimeList: NSObject {
                                         }
                                         
                                         completion()
-                                        if (i >= animez.count)
-                                        {
-                                            allAnimeDoneCompletion()
-                                        }
+                                        
                                     }
                                 }
                                 
@@ -135,6 +138,7 @@ class NewAnimeList: NSObject {
                 }
                 else
                 {
+                    //os_log("%@: No id i: %@, animez.count: %@", self.className, i.description, animez.count.description)
                     i += 1
                 }
             }
@@ -152,7 +156,7 @@ class NewAnimeList: NSObject {
         }
     }
     
-    private func makeGeneralRequest(url:String, parameters:Data?, type:String, completion:@escaping ((_ data:/*[String:Any]*/Any)->Void)){
+    private func makeGeneralRequest(url:String, parameters:Data?, type:String, completion:@escaping ((_ data:Any)->Void)){
         //print(url)
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = type
@@ -175,6 +179,7 @@ class NewAnimeList: NSObject {
                     
                 }catch let error as NSError{
                     print(error)
+                    completion(["title":err!.localizedDescription])
                 }
             }
             }.resume()

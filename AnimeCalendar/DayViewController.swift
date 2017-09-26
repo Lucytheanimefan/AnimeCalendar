@@ -8,6 +8,7 @@
 
 import Cocoa
 import AppKit
+import os.log
 
 class DayViewController: NSViewController {
     
@@ -61,10 +62,7 @@ class DayViewController: NSViewController {
     
     func setUpAniList(){
         self.newAniList.monthAnimeList(completion: { (calendarDict) in
-            print(calendarDict.keys.count)
-            print(self.newAniList.numAnimeToIterateThrough)
-            print("Anime schedule length: ")
-            print(self.animeSchedule.count)
+            
         }) {
             self.animeSchedule = self.newAniList.calendarDict
             DispatchQueue.main.async {
@@ -156,10 +154,11 @@ extension DayViewController:NSCollectionViewDataSource
                             {
                                 imageCount+=1
                                 collectionViewItem.imageView?.image = #imageLiteral(resourceName: "AnimeDayIcon")
-                                print("Image count:")
-                                print(imageCount)
-                                print("for title: ")
-                                print(title)
+//                                print("Image count:")
+//                                print(imageCount)
+//                                print("for title: ")
+//                                print(title)
+                                os_log("%@: Image count: %@, for index: %@", self.className, imageCount.description, index.description)
                             }
                         }
                         else
