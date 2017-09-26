@@ -26,7 +26,7 @@ class DayViewController: NSViewController {
     
     let userDefaults = UserDefaults.standard
     
-    var selectedColIndex:Int = 0
+    var previousSelectedCellView:NSView!
     
     // The today's anime table
     @IBOutlet weak var tableView: NSTableView!
@@ -213,8 +213,29 @@ class DayViewController: NSViewController {
 
 extension DayViewController:CalendarCellSelectionDelegate{
     func cellViewWasSelected(tableView: NSTableView, row: Int, col: Int) {
+        if (self.previousSelectedCellView != nil)
+        {
+            self.previousSelectedCellView.layer?.backgroundColor = NSColor.clear.cgColor
+        }
         let cellView = tableView.view(atColumn: col, row: row, makeIfNecessary: false)
+        self.previousSelectedCellView = cellView
         cellView?.layer?.backgroundColor = NSColor.red.cgColor
+        
+        // Display the data in anime day tableview
+        let index = (row * 7) + col
+        let monthName = DateFormatter().monthSymbols[calendar.component(.month, from: Date())-1]
+        //print(monthName)
+        self.dateTextView.string = monthName + " " + (index+1).description + ", " + calendar.component(.year, from: Date()).description
+        self.animeDailySchedule = [[String:Any]]()
+        if let anime = self.animeSchedule[index]
+        {
+            self.animeDailySchedule = anime
+            
+            DispatchQueue.main.async
+                {
+                    self.tableView.reloadData()
+            }
+        }
     }
 }
 
@@ -230,22 +251,7 @@ extension DayViewController: NSTableViewDataSource{
 }
 
 extension DayViewController: NSTableViewDelegate{
-//    func tableViewSelectionDidChange(_ notification: Notification) {
-//        let rowIndex = self.calendarTableView.selectedRow
-//        let colIndex = self.selectedColIndex
-//    }
     
-    func tableView(_ tableView: NSTableView, shouldSelect tableColumn: NSTableColumn?) -> Bool {
-        self.selectedColIndex = tableView.tableColumns.index(of: tableColumn!)!
-        return true
-    }
-    
-//    func tableView(_ tableView: NSTableView, willDisplayCell cell: Any, for tableColumn: NSTableColumn?, row: Int) {
-//        if (row == tableView.selectedRow && tableColumn == tableView.tableColumns[tableView.selectedColumn])
-//        {
-//            (cell as! NSTableViewCell)
-//        }
-//    }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         var view:NSView!
