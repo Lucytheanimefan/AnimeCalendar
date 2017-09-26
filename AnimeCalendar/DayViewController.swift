@@ -33,6 +33,8 @@ class DayViewController: NSViewController {
     
     var animeEventController:AnimeEventController!
     
+    var imageCount:Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.isSelectable = true
@@ -58,11 +60,17 @@ class DayViewController: NSViewController {
     }
     
     func setUpAniList(){
-        
         self.newAniList.monthAnimeList { (calendarDict) in
-            self.animeSchedule = calendarDict
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
+            print(calendarDict.keys.count)
+            print(self.newAniList.numAnimeToIterateThrough)
+            if (calendarDict.keys.count >= (self.newAniList.numAnimeToIterateThrough))
+            {
+                self.animeSchedule = calendarDict
+                print("Anime schedule length: ")
+                print(self.animeSchedule.count)
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
             }
         }
     }
@@ -87,8 +95,6 @@ class DayViewController: NSViewController {
 extension DayViewController:NSCollectionViewDelegate
 {
     func collectionView(_ collectionView: NSCollectionView, didChangeItemsAt indexPaths: Set<IndexPath>, to highlightState: NSCollectionViewItemHighlightState) {
-        // [[row, column]]
-        //print("Change item to highlight state")
         
         let first = indexPaths.first!
         let index = (first.section * 7) + (first.item)
@@ -147,7 +153,15 @@ extension DayViewController:NSCollectionViewDataSource
                         if ( collectionViewItem.textField?.stringValue  != nil)
                         {
                             collectionViewItem.textField?.stringValue  = ( collectionViewItem.textField?.stringValue )! + title
-                            collectionViewItem.imageView?.image = #imageLiteral(resourceName: "AnimeDayIcon")
+                            if (collectionViewItem.imageView?.image == nil)
+                            {
+                                imageCount+=1
+                                collectionViewItem.imageView?.image = #imageLiteral(resourceName: "AnimeDayIcon")
+                                print("Image count:")
+                                print(imageCount)
+                                print("for title: ")
+                                print(title)
+                            }
                         }
                         else
                         {

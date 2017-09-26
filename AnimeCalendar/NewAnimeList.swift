@@ -18,6 +18,8 @@ class NewAnimeList: NSObject {
     var accessToken:String!
     var calendarDict = [Int:[[String:Any]]]()
     
+    var numAnimeToIterateThrough:Int = 0
+    
     static let sharedInstance = NewAnimeList(clientID: "kowaretasekai-xquxb", clientSecret: "T5yjmG9hn3x5LvLK7lKTP")
     
  
@@ -78,37 +80,36 @@ class NewAnimeList: NSObject {
     
     func monthAnimeList(completion:@escaping (_ calendarDict:[Int:[[String:Any]]]) -> Void){
         self.authenticate { (accessToken) in
-            self.generateThisMonthAnime(month: Calendar.current.component(.month, from: Date()), completion: { (calendarDict) in
-                self.calendarDict = calendarDict
-                completion(calendarDict)
+            self.generateThisMonthAnime(month: Calendar.current.component(.month, from: Date()), completion: { () in
+                print("Not done yet")
+                completion(self.calendarDict)
+            }, allAnimeDoneCompletion: {() in
+                print("!!!!!!!Fully done!!!!!!")
             })
         }
     }
     
-    func generateThisMonthAnime(month:Int,completion:@escaping (_ calendarDict:[Int:[[String:Any]]]) -> Void){
+    func generateThisMonthAnime(month:Int,completion:@escaping () -> Void, allAnimeDoneCompletion:@escaping ()->Void){
         self.calendarDict = [Int:[[String:Any]]]()
         self.animeToDate { (animez) in
+            var i = 0
             for anime:[String:Any] in animez{
                 if let id = anime["id"] as? NSNumber{
                     self.makeGeneralRequest(url: self.baseURL + "anime/" + String(describing:id) + "?access_token=" + self.accessToken, parameters: nil, type: "GET") { (data) in
+                        i+=1
                         if let animeData = data as? [String:Any]{
                             //print(animeData)
                             if let airingInfo = animeData["airing"] as? [String:Any]{
                                 if let time = airingInfo["time"] as? String{
-                        
+                                    //self.numAnimeToIterateThrough += 1
                                     let dateFormatter = DateFormatter()
                                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
                                     let date = dateFormatter.date(from: time)!
-                                    print(date)
+                                    //print(date)
                                     let dateMonth = Calendar.current.component(.month, from: date)
                                     let day = Calendar.current.component(.day, from: date)
                                     if (month == dateMonth){
-//                                        print(month)
-//                                        print(dateMonth)
-//                                        print(time)
-//                                        print(animeData["title_english"])
-//                                        print(day)
-//                                        print("-------------------")
+
                                         if (self.calendarDict[day] != nil)
                                         {
                                             self.calendarDict[day]?.append(animeData)
@@ -117,7 +118,12 @@ class NewAnimeList: NSObject {
                                         {
                                             self.calendarDict[day] = [animeData]
                                         }
-                                        completion(self.calendarDict)
+                                        
+                                        completion()
+                                        if (i >= animez.count)
+                                        {
+                                            allAnimeDoneCompletion()
+                                        }
                                     }
                                 }
                                 
