@@ -60,17 +60,15 @@ class DayViewController: NSViewController {
     }
     
     func setUpAniList(){
-        self.newAniList.monthAnimeList { (calendarDict) in
+        self.newAniList.monthAnimeList(completion: { (calendarDict) in
             print(calendarDict.keys.count)
             print(self.newAniList.numAnimeToIterateThrough)
-            if (calendarDict.keys.count >= (self.newAniList.numAnimeToIterateThrough))
-            {
-                self.animeSchedule = calendarDict
-                print("Anime schedule length: ")
-                print(self.animeSchedule.count)
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
+            print("Anime schedule length: ")
+            print(self.animeSchedule.count)
+        }) {
+            self.animeSchedule = self.newAniList.calendarDict
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
             }
         }
     }
@@ -153,7 +151,8 @@ extension DayViewController:NSCollectionViewDataSource
                         if ( collectionViewItem.textField?.stringValue  != nil)
                         {
                             collectionViewItem.textField?.stringValue  = ( collectionViewItem.textField?.stringValue )! + title
-                            if (collectionViewItem.imageView?.image == nil)
+                            
+                            if (collectionViewItem.imageView?.image == nil && (collectionViewItem.textField?.stringValue != nil))
                             {
                                 imageCount+=1
                                 collectionViewItem.imageView?.image = #imageLiteral(resourceName: "AnimeDayIcon")

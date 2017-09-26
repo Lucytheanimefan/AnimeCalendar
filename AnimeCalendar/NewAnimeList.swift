@@ -78,13 +78,14 @@ class NewAnimeList: NSObject {
         }
     }
     
-    func monthAnimeList(completion:@escaping (_ calendarDict:[Int:[[String:Any]]]) -> Void){
+    func monthAnimeList(completion:@escaping (_ calendarDict:[Int:[[String:Any]]]) -> Void, fullyDoneCompletion:@escaping () -> Void){
         self.authenticate { (accessToken) in
             self.generateThisMonthAnime(month: Calendar.current.component(.month, from: Date()), completion: { () in
                 print("Not done yet")
                 completion(self.calendarDict)
             }, allAnimeDoneCompletion: {() in
                 print("!!!!!!!Fully done!!!!!!")
+                fullyDoneCompletion()
             })
         }
     }
@@ -131,6 +132,10 @@ class NewAnimeList: NSObject {
                         }
                         
                     }
+                }
+                else
+                {
+                    i += 1
                 }
             }
             //return calendarDict

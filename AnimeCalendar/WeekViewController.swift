@@ -39,11 +39,13 @@ class WeekViewController: NSViewController {
     
     func setUpMonthlyAnime()
     {
-        self.newAniList.monthAnimeList { (calendarDict) in
+        self.newAniList.monthAnimeList(completion: { (calendarDict) in
             self.animeSchedule = calendarDict
             DispatchQueue.main.async {
-               self.tableView.reloadData()
+                self.tableView.reloadData()
             }
+        }) {
+            print("Done")
         }
     }
     
