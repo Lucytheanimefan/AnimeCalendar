@@ -26,6 +26,8 @@ class DayViewController: NSViewController {
     
     let userDefaults = UserDefaults.standard
     
+    var selectedColIndex:Int = 0
+    
     // The today's anime table
     @IBOutlet weak var tableView: NSTableView!
     
@@ -47,6 +49,9 @@ class DayViewController: NSViewController {
         super.viewDidLoad()
         self.dateTextView.alignment = .center
         self.dateTextView.font = NSFont(name: "Helvetica Neue", size: 20)
+        self.calendarTableView.selectionHighlightStyle = .none
+        self.calendarTableView.allowsColumnSelection = true
+        (self.calendarTableView as! CustomTableView).cellSelectionDelegate = self
         setUpAniList()
         
         
@@ -107,6 +112,8 @@ class DayViewController: NSViewController {
         self.days = Array(1...numDays)
         return Double(numDays)
     }
+
+    
     
 }
 
@@ -204,6 +211,12 @@ class DayViewController: NSViewController {
 //    }
 //}
 
+extension DayViewController:CalendarCellSelectionDelegate{
+    func cellViewWasSelected(tableView: NSTableView, row: Int, col: Int) {
+        let cellView = tableView.view(atColumn: col, row: row, makeIfNecessary: false)
+        cellView?.layer?.backgroundColor = NSColor.red.cgColor
+    }
+}
 
 extension DayViewController: NSTableViewDataSource{
     func numberOfRows(in tableView: NSTableView) -> Int {
@@ -217,6 +230,23 @@ extension DayViewController: NSTableViewDataSource{
 }
 
 extension DayViewController: NSTableViewDelegate{
+//    func tableViewSelectionDidChange(_ notification: Notification) {
+//        let rowIndex = self.calendarTableView.selectedRow
+//        let colIndex = self.selectedColIndex
+//    }
+    
+    func tableView(_ tableView: NSTableView, shouldSelect tableColumn: NSTableColumn?) -> Bool {
+        self.selectedColIndex = tableView.tableColumns.index(of: tableColumn!)!
+        return true
+    }
+    
+//    func tableView(_ tableView: NSTableView, willDisplayCell cell: Any, for tableColumn: NSTableColumn?, row: Int) {
+//        if (row == tableView.selectedRow && tableColumn == tableView.tableColumns[tableView.selectedColumn])
+//        {
+//            (cell as! NSTableViewCell)
+//        }
+//    }
+    
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         var view:NSView!
         if (tableView.identifier == "calendarTableViewID")
@@ -270,7 +300,6 @@ extension DayViewController: NSTableViewDelegate{
         
         return view
     }
-    
 }
 
 

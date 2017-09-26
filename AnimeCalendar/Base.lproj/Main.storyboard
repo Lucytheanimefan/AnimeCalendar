@@ -1347,7 +1347,7 @@
                                                     <rect key="frame" x="1" y="0.0" width="394" height="479"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <tableView identifier="calendarTableViewID" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="zk0-Yy-sU3" viewBased="YES" id="l8e-mT-YAm">
+                                                        <tableView identifier="calendarTableViewID" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="zk0-Yy-sU3" viewBased="YES" id="l8e-mT-YAm" customClass="CustomTableView" customModule="AnimeCalendar" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="394" height="456"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -1374,7 +1374,7 @@
                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="USB-VR-QUg">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="42" height="17"/>
                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="DqM-yY-tin">
+                                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" title="Table View Cell" id="DqM-yY-tin">
                                                                                         <font key="font" metaFont="system"/>
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
