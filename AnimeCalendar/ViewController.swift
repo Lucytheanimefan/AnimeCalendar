@@ -55,6 +55,7 @@ class ViewController: NSViewController {
 extension ViewController:NSOutlineViewDataSource
 {
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
+        print(item)
         if let calendarData = item as? [EKCalendar]
         {
             return calendarData.count
@@ -64,18 +65,23 @@ extension ViewController:NSOutlineViewDataSource
     }
     
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
+        print(item)
         if let calendars = item as? [EKCalendar]
         {
             return calendars[index].title
         }
-        
-        let source = self.animeEventController.sources[index]
-        print(source.title)
-        return self.animeEventController.sourceToCalendars()[source.title]
+        else
+        {
+            let source = self.animeEventController.sources[index]
+            print(source.title)
+            print(self.animeEventController.sourceToCalendars()[source.title])
+            return self.animeEventController.sourceToCalendars()[source.title]
+        }
+        //return item
     }
     
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
-        return ((item as? [String:EKCalendar]) != nil)
+        return ((item as? [EKCalendar]) == nil)
     }
 }
 
@@ -88,6 +94,10 @@ extension ViewController:NSOutlineViewDelegate
         
         if let entry = item as? String{
             (cellView as? NSTableCellView)?.textField?.stringValue = entry
+        }
+        else if let entry = item as? [EKCalendar]
+        {
+            (cellView as? NSTableCellView)?.textField?.stringValue = entry[0].source.title
         }
         
         return cellView

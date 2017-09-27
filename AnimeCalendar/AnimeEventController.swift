@@ -72,7 +72,8 @@ class AnimeEventController: NSObject {
     }
     
     func eventCalendars() -> [EKCalendar]{
-        return calendars(entityType: EKEntityType.event, filterMatch: "anime")
+        return self.eventStore.calendars(for: .event)
+        //return calendars(entityType: EKEntityType.event, filterMatch: "anime")
     }
     
     func reminderCalendars() -> [EKCalendar]{
