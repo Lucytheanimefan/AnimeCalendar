@@ -21,6 +21,10 @@ class AnimeEventController: NSObject {
     var reminderCalendar:EKCalendar!
     var eventCalendar:EKCalendar!
     
+    lazy var sources = {
+        return self.eventStore.sources
+    }()
+    
     convenience init(window:NSWindow) {
         self.init()
         self.window = window
@@ -48,6 +52,39 @@ class AnimeEventController: NSObject {
     
     func createEventCalendar(){
         self.eventCalendar = self.createCalendar(entityType: EKEntityType.event)
+    }
+    
+    func sourceToCalendars() -> [String:[EKCalendar]]
+    {
+        var dict = [String:[EKCalendar]]()
+        for cal in eventCalendars(){
+            let sourceTitle = cal.source.title
+            if (dict[sourceTitle] == nil)
+            {
+                dict[sourceTitle] = [cal]
+            }
+            else
+            {
+                dict[sourceTitle]?.append(cal)
+            }
+        }
+        return dict
+    }
+    
+    func eventCalendars() -> [EKCalendar]{
+        return calendars(entityType: EKEntityType.event, filterMatch: "anime")
+    }
+    
+    func reminderCalendars() -> [EKCalendar]{
+        return calendars(entityType: EKEntityType.reminder, filterMatch: "anime")
+    }
+    
+    func calendars(entityType:EKEntityType, filterMatch:String) -> [EKCalendar]
+    {
+        let calendars = self.eventStore.calendars(for: entityType)
+        let predicate = NSPredicate.init(format: "title contains[c] %@", filterMatch)
+        let filtered = (calendars as NSArray).filtered(using: predicate)
+        return filtered as! [EKCalendar]
     }
     
     private func updateAuthStatusToAccessEventStore(entityType:EKEntityType){

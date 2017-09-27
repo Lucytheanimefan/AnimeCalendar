@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AnimeCalendar/AnimeEventController.swift"
-            timestampString = "528161406.501577"
+            timestampString = "528198306.114175"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "createCalendar(entityType:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AnimeCalendar/DayViewController.swift"
-            timestampString = "528161406.501933"
+            timestampString = "528198306.115109"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
-            landmarkName = "tableView(_:viewFor:row:)"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
+            landmarkName = "cellViewWasSelected(tableView:row:col:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AnimeCalendar/DayViewController.swift"
-            timestampString = "528161406.502978"
+            filePath = "AnimeCalendar/ViewController.swift"
+            timestampString = "528198306.115184"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "222"
-            endingLineNumber = "222"
-            landmarkName = "cellViewWasSelected(tableView:row:col:)"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "outlineView(_:viewFor:item:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

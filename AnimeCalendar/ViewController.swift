@@ -8,6 +8,7 @@
 
 import Cocoa
 import AppKit
+import EventKit
 
 class ViewController: NSViewController {
     
@@ -16,6 +17,13 @@ class ViewController: NSViewController {
     var days = [Int]()
 
     @IBOutlet weak var containerView: NSView!
+    
+    @IBOutlet weak var outlineView: NSOutlineView!
+    
+    lazy var animeEventController =
+        {
+            return AnimeEventController(window: NSApp.windows.first!)
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +50,48 @@ class ViewController: NSViewController {
         return Double(numDays)
     }
     
+}
+
+extension ViewController:NSOutlineViewDataSource
+{
+    func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
+        if let calendarData = item as? [EKCalendar]
+        {
+            return calendarData.count
+        }
+        // the number if calendars
+        return self.animeEventController.sourceToCalendars().keys.count
+    }
+    
+    func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
+        if let calendars = item as? [EKCalendar]
+        {
+            return calendars[index].title
+        }
+        
+        let source = self.animeEventController.sources[index]
+        print(source.title)
+        return self.animeEventController.sourceToCalendars()[source.title]
+    }
+    
+    func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
+        return ((item as? [String:EKCalendar]) != nil)
+    }
+}
+
+extension ViewController:NSOutlineViewDelegate
+{
+    func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
+        var cellView:NSView!
+        
+        cellView = outlineView.make(withIdentifier: "AnimeCalendar", owner: nil)
+        
+        if let entry = item as? String{
+            (cellView as? NSTableCellView)?.textField?.stringValue = entry
+        }
+        
+        return cellView
+    }
 }
 
 
