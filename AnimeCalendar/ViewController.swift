@@ -65,10 +65,9 @@ extension ViewController:NSOutlineViewDataSource
     }
     
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
-        //os_log("Item: %@", item.debugDescription)
+
         if let calendars = item as? [EKCalendar]
         {
-            // print(calendars[index].title)
             return calendars[index].title
         }
         else
@@ -83,12 +82,10 @@ extension ViewController:NSOutlineViewDataSource
                 return source.title
             }
         }
-        //return item
     }
     
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
         return ((item as? [EKCalendar]) != nil)
-        //return (item == nil)
     }
 }
 
@@ -105,7 +102,6 @@ extension ViewController:NSOutlineViewDelegate
         }
         else if let entryTitle = item as? String
         {
-            //print(item)
             (cellView as? NSTableCellView)?.textField?.stringValue = entryTitle
         }
         else

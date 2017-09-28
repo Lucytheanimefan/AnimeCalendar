@@ -16,8 +16,6 @@ class DayViewController: NSViewController {
     
     let calendar = Calendar.current
     
-    var days = [Int]()
-    
     var newAniList:NewAnimeList! = NewAnimeList.sharedInstance
     
     var animeSchedule = [Int:[[String:Any]]]()
@@ -28,6 +26,8 @@ class DayViewController: NSViewController {
     
     var previousSelectedCellView:NSView!
     
+    var dateOffset:Int! = 0
+    
     // The today's anime table
     @IBOutlet weak var tableView: NSTableView!
     
@@ -35,14 +35,11 @@ class DayViewController: NSViewController {
     @IBOutlet weak var normieTableView: NSTableView!
     
     @IBOutlet weak var calendarTableView: NSTableView!
-    
-    
+
     @IBOutlet var dateTextView: NSTextView!
     
     var animeEventController:AnimeEventController!
-    
-    
-    
+
     var imageCount:Int = 0
     
     override func viewDidLoad() {
@@ -52,8 +49,8 @@ class DayViewController: NSViewController {
         self.calendarTableView.selectionHighlightStyle = .none
         self.calendarTableView.allowsColumnSelection = true
         (self.calendarTableView as! CustomTableView).cellSelectionDelegate = self
+        calculateDateOffset()
         setUpAniList()
-        
         
     }
     
@@ -80,7 +77,6 @@ class DayViewController: NSViewController {
                 self.animeSchedule = cachedSchedule
                 DispatchQueue.main.async
                     {
-                        //self.collectionView.reloadData()
                         self.calendarTableView.reloadData()
                 }
             }
@@ -109,8 +105,13 @@ class DayViewController: NSViewController {
         let newDate = calendar.date(from: components)
         let range = calendar.range(of: .day, in: .month, for: newDate!)!
         let numDays = range.count
-        self.days = Array(1...numDays)
         return Double(numDays)
+    }
+    
+    func calculateDateOffset(){
+        // Get first day of month
+        let components = calendar.dateComponents([.year, .month, .weekday], from: Date().startOfMonth())
+        self.dateOffset = components.weekday! - 1
     }
 }
 
@@ -126,7 +127,7 @@ extension DayViewController:CalendarCellSelectionDelegate{
         cellView?.layer?.backgroundColor = NSColor.red.cgColor
         
         // Display the data in anime day tableview
-        let index = (row * 7) + col
+        let index = (row * 7) + col - self.dateOffset
         let monthName = DateFormatter().monthSymbols[calendar.component(.month, from: Date())-1]
 
         self.dateTextView.string = monthName + " " + (index+1).description + ", " + calendar.component(.year, from: Date()).description
@@ -158,39 +159,16 @@ extension DayViewController: NSTableViewDelegate{
     
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        var view:NSView!
+        var view:NSView? = nil
         if (tableView.identifier == "calendarTableViewID")
         {
-             if let cellView = tableView.make(withIdentifier: "animeDayViewID", owner: nil) as? NSTableCellView{
-                let index = (row*7) + tableView.tableColumns.index(of: tableColumn!)!
-                cellView.textField?.stringValue = String(describing:index) + " "
-                if let animez = self.animeSchedule[index]{
-                    
-                    for anime in animez{
-                        if let title = anime["title_english"] as? String
-                        {
-                            if ( cellView.textField?.stringValue  != nil)
-                            {
-                                cellView.textField?.stringValue  = ( cellView.textField?.stringValue )! + title
-                                
-//                                if (collectionViewItem.imageView?.image == nil && (collectionViewItem.textField?.stringValue != nil))
-//                                {
-                                    imageCount+=1
-                                    //os_log("%@: Image count: %@, for index: %@", self.className, imageCount.description, index.description)
-                                    //cellView.imageView?.image = #imageLiteral(resourceName: "AnimeDayIcon")
-                                //}
-                            }
-                            else
-                            {
-                                cellView.textField?.stringValue = title
-                            }
-                        }
-                    }
+            if ((row == 0 && tableView.tableColumns.index(of: tableColumn!)! >= self.dateOffset) || row > 0 ){
+                if let cellView = tableView.make(withIdentifier: "animeDayViewID", owner: nil) as? NSTableCellView{
+                    let index = (row*7) + tableView.tableColumns.index(of: tableColumn!)! - self.dateOffset
+                    cellView.textField?.stringValue = String(describing:index + 1)// + " "
+                    view = cellView
                 }
-                view = cellView
             }
-            
-            
         }
         else
         {
@@ -199,7 +177,6 @@ extension DayViewController: NSTableViewDelegate{
                 {
                     cellView.textField?.stringValue = title
                 }
-                
                 view = cellView
             }
             else
@@ -207,8 +184,17 @@ extension DayViewController: NSTableViewDelegate{
                 return nil
             }
         }
-        
         return view
+    }
+}
+
+extension Date {
+    func startOfMonth() -> Date {
+        return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: self)))!
+    }
+    
+    func endOfMonth() -> Date {
+        return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfMonth())!
     }
 }
 
