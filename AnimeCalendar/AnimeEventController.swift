@@ -21,8 +21,21 @@ class AnimeEventController: NSObject {
     var reminderCalendar:EKCalendar!
     var eventCalendar:EKCalendar!
     
-    lazy var sources = {
-        return self.eventStore.sources
+    lazy var sources: [EKSource] = {
+        var finalSources = [String]()
+        var finalCalendars = [EKSource]()
+        for source in self.eventStore.sources
+        {
+            if (!finalSources.contains(source.title))
+            {
+                finalSources.append(source.title)
+                finalCalendars.append(source)
+            }
+        }
+//        print("Source count: ")
+//        print(finalCalendars.count)
+//        print(finalSources)
+        return finalCalendars
     }()
     
     convenience init(window:NSWindow) {

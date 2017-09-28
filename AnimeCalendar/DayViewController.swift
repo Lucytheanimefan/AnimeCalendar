@@ -112,104 +112,8 @@ class DayViewController: NSViewController {
         self.days = Array(1...numDays)
         return Double(numDays)
     }
-
-    
-    
 }
 
-//
-//extension DayViewController:NSCollectionViewDelegate
-//{
-//    func collectionView(_ collectionView: NSCollectionView, didChangeItemsAt indexPaths: Set<IndexPath>, to highlightState: NSCollectionViewItemHighlightState) {
-//
-//        let first = indexPaths.first!
-//        let index = (first.section * 7) + (first.item)
-//
-//        let monthName = DateFormatter().monthSymbols[calendar.component(.month, from: Date())-1]
-//        //print(monthName)
-//        self.dateTextView.string = monthName + " " + (index+1).description + ", " + calendar.component(.year, from: Date()).description
-//        self.animeDailySchedule = [[String:Any]]()
-//        if let anime = self.animeSchedule[index]
-//        {
-//            self.animeDailySchedule = anime
-//
-//            DispatchQueue.main.async
-//                {
-//                    self.tableView.reloadData()
-//            }
-//        }
-//
-//    }
-//
-//    func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
-//
-//    }
-//}
-
-//extension DayViewController:NSCollectionViewDataSource
-//{
-//    @available(OSX 10.11, *)
-//    func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-//        if (section < (Int((daysInMonth()/7).rounded(.up))-1))
-//        {
-//            return 7
-//        }
-//        else
-//        {
-//            return (Int(daysInMonth().truncatingRemainder(dividingBy: 7)) + 1)
-//        }
-//    }
-//
-//    func numberOfSections(in collectionView: NSCollectionView) -> Int {
-//        let sections = Int((daysInMonth()/7).rounded(.up))
-//        return sections
-//    }
-//
-//    func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-//        let item = collectionView.makeItem(withIdentifier: "CalendarViewItem", for: indexPath)
-//        if let collectionViewItem = item as? CalendarViewItem {
-//
-//            let index = (indexPath.section*7) + indexPath.item
-//            collectionViewItem.textField?.stringValue = String(describing:index + 1) + "  "
-//            if let animez = self.animeSchedule[index]{
-//
-//                for anime in animez{
-//                    if let title = anime["title_english"] as? String
-//                    {
-//
-//                        if ( collectionViewItem.textField?.stringValue  != nil)
-//                        {
-//                            collectionViewItem.textField?.stringValue  = ( collectionViewItem.textField?.stringValue )! + title
-//
-//                            if (collectionViewItem.imageView?.image == nil && (collectionViewItem.textField?.stringValue != nil))
-//                            {
-//                                imageCount+=1
-//                                os_log("%@: Image count: %@, for index: %@", self.className, imageCount.description, index.description)
-//                                collectionViewItem.imageView?.image = #imageLiteral(resourceName: "AnimeDayIcon")
-//                            }
-//                        }
-//                        else
-//                        {
-//                            collectionViewItem.textField?.stringValue = title
-//                            // Set image indicating there's anime on this day
-//
-//                        }
-//
-//                    }
-//
-////                    if let imageURL = anime["image_url_banner"] as? String{
-////                        if let url = URL(string: imageURL){
-////                            collectionViewItem.imageView?.image = NSImage(byReferencing: url)
-////                        }
-////                    }
-//                }
-//            }
-//
-//            return collectionViewItem
-//        }
-//        return item
-//    }
-//}
 
 extension DayViewController:CalendarCellSelectionDelegate{
     func cellViewWasSelected(tableView: NSTableView, row: Int, col: Int) {
@@ -224,7 +128,7 @@ extension DayViewController:CalendarCellSelectionDelegate{
         // Display the data in anime day tableview
         let index = (row * 7) + col
         let monthName = DateFormatter().monthSymbols[calendar.component(.month, from: Date())-1]
-        //print(monthName)
+
         self.dateTextView.string = monthName + " " + (index+1).description + ", " + calendar.component(.year, from: Date()).description
         self.animeDailySchedule = [[String:Any]]()
         if let anime = self.animeSchedule[index]
@@ -272,7 +176,7 @@ extension DayViewController: NSTableViewDelegate{
 //                                if (collectionViewItem.imageView?.image == nil && (collectionViewItem.textField?.stringValue != nil))
 //                                {
                                     imageCount+=1
-                                    os_log("%@: Image count: %@, for index: %@", self.className, imageCount.description, index.description)
+                                    //os_log("%@: Image count: %@, for index: %@", self.className, imageCount.description, index.description)
                                     //cellView.imageView?.image = #imageLiteral(resourceName: "AnimeDayIcon")
                                 //}
                             }

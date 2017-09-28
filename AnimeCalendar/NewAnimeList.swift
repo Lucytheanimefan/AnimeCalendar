@@ -99,7 +99,7 @@ class NewAnimeList: NSObject {
                 if let id = anime["id"] as? NSNumber{
                     self.makeGeneralRequest(url: self.baseURL + "anime/" + String(describing:id) + "?access_token=" + self.accessToken, parameters: nil, type: "GET") { (data) in
                         i+=1
-                        os_log("%@: i: %@, animez.count: %@", self.className, i.description, animez.count.description)
+                        //os_log("%@: i: %@, animez.count: %@", self.className, i.description, animez.count.description)
                         if (i >= animez.count)
                         {
                             allAnimeDoneCompletion()

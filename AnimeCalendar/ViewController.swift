@@ -9,6 +9,7 @@
 import Cocoa
 import AppKit
 import EventKit
+import os.log
 
 class ViewController: NSViewController {
     
@@ -55,33 +56,39 @@ class ViewController: NSViewController {
 extension ViewController:NSOutlineViewDataSource
 {
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
-        print(item)
         if let calendarData = item as? [EKCalendar]
         {
             return calendarData.count
         }
-        // the number if calendars
-        return self.animeEventController.sourceToCalendars().keys.count
+        // the number of calendars
+        return self.animeEventController.sources.count
     }
     
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
-        print(item)
+        //os_log("Item: %@", item.debugDescription)
         if let calendars = item as? [EKCalendar]
         {
+            // print(calendars[index].title)
             return calendars[index].title
         }
         else
         {
             let source = self.animeEventController.sources[index]
-            print(source.title)
-            print(self.animeEventController.sourceToCalendars()[source.title])
-            return self.animeEventController.sourceToCalendars()[source.title]
+            if let calendarInfo = self.animeEventController.sourceToCalendars()[source.title]
+            {
+                return calendarInfo
+            }
+            else
+            {
+                return source.title
+            }
         }
         //return item
     }
     
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
-        return ((item as? [EKCalendar]) == nil)
+        return ((item as? [EKCalendar]) != nil)
+        //return (item == nil)
     }
 }
 
@@ -92,12 +99,18 @@ extension ViewController:NSOutlineViewDelegate
         
         cellView = outlineView.make(withIdentifier: "AnimeCalendar", owner: nil)
         
-        if let entry = item as? String{
-            (cellView as? NSTableCellView)?.textField?.stringValue = entry
-        }
-        else if let entry = item as? [EKCalendar]
+        if let entry = item as? [EKCalendar]
         {
             (cellView as? NSTableCellView)?.textField?.stringValue = entry[0].source.title
+        }
+        else if let entryTitle = item as? String
+        {
+            //print(item)
+            (cellView as? NSTableCellView)?.textField?.stringValue = entryTitle
+        }
+        else
+        {
+            (cellView as? NSTableCellView)?.textField?.stringValue = "No title"
         }
         
         return cellView
