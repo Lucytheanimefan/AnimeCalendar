@@ -35,12 +35,15 @@ class DayViewController: NSViewController {
     @IBOutlet weak var normieTableView: NSTableView!
     
     @IBOutlet weak var calendarTableView: NSTableView!
-
+    @IBOutlet weak var calendarHeaderView: NSTableHeaderView!
+    
     @IBOutlet var dateTextView: NSTextView!
     
     var animeEventController:AnimeEventController!
 
     var imageCount:Int = 0
+    
+    var currentDate:Date = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +52,7 @@ class DayViewController: NSViewController {
         self.calendarTableView.selectionHighlightStyle = .none
         self.calendarTableView.allowsColumnSelection = true
         (self.calendarTableView as! CustomTableView).cellSelectionDelegate = self
+        self.calendarHeaderView.layer?.backgroundColor = NSColor.clear.cgColor
         calculateDateOffset()
         setUpAniList()
         
@@ -96,7 +100,7 @@ class DayViewController: NSViewController {
     }
     
     func daysInMonth() -> Double{
-        let today = Date()
+        let today = self.currentDate
         let year = calendar.component(.year, from: today)
         let month = calendar.component(.month, from: today)
         var components = DateComponents()
@@ -110,9 +114,30 @@ class DayViewController: NSViewController {
     
     func calculateDateOffset(){
         // Get first day of month
-        let components = calendar.dateComponents([.year, .month, .weekday], from: Date().startOfMonth())
+        let components = calendar.dateComponents([.year, .month, .weekday], from: self.currentDate.startOfMonth())
         self.dateOffset = components.weekday! - 1
     }
+    
+    @IBAction func previousMonth(_ sender: NSButton) {
+        if let prevMonth = Calendar.current.date(byAdding: .month, value: -1, to: self.currentDate)
+        {
+            self.currentDate = prevMonth
+            calculateDateOffset()
+            self.calendarTableView.reloadData()
+            setUpAniList()
+        }
+    }
+    
+    @IBAction func nextMonth(_ sender: NSButton) {
+        if let nextMonth = Calendar.current.date(byAdding: .month, value: 1, to: self.currentDate)
+        {
+            self.currentDate = nextMonth
+            calculateDateOffset()
+            self.calendarTableView.reloadData()
+            setUpAniList()
+        }
+    }
+    
 }
 
 
@@ -124,11 +149,11 @@ extension DayViewController:CalendarCellSelectionDelegate{
         }
         let cellView = tableView.view(atColumn: col, row: row, makeIfNecessary: false)
         self.previousSelectedCellView = cellView
-        cellView?.layer?.backgroundColor = NSColor.red.cgColor
+        cellView?.layer?.backgroundColor = NSColor.gray.cgColor
         
         // Display the data in anime day tableview
         let index = (row * 7) + col - self.dateOffset
-        let monthName = DateFormatter().monthSymbols[calendar.component(.month, from: Date())-1]
+        let monthName = DateFormatter().monthSymbols[calendar.component(.month, from: self.currentDate)-1]
 
         self.dateTextView.string = monthName + " " + (index+1).description + ", " + calendar.component(.year, from: Date()).description
         self.animeDailySchedule = [[String:Any]]()
@@ -157,6 +182,11 @@ extension DayViewController: NSTableViewDataSource{
 
 extension DayViewController: NSTableViewDelegate{
     
+    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        return 20
+    }
+    
+
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         var view:NSView? = nil
@@ -166,6 +196,7 @@ extension DayViewController: NSTableViewDelegate{
                 if let cellView = tableView.make(withIdentifier: "animeDayViewID", owner: nil) as? NSTableCellView{
                     let index = (row*7) + tableView.tableColumns.index(of: tableColumn!)! - self.dateOffset
                     cellView.textField?.stringValue = String(describing:index + 1)// + " "
+                    //cellView.textField?.textColor = NSColor.black
                     view = cellView
                 }
             }

@@ -85,7 +85,7 @@ class NewAnimeList: NSObject {
                 print("Not done yet")
                 completion(self.calendarDict)
             }, allAnimeDoneCompletion: {() in
-                print("!!!!!!!Fully done!!!!!!")
+                print("!----Fully done----!")
                 fullyDoneCompletion()
             })
         }
