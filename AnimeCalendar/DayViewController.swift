@@ -195,7 +195,9 @@ extension DayViewController: NSTableViewDelegate{
             if ((row == 0 && tableView.tableColumns.index(of: tableColumn!)! >= self.dateOffset) || row > 0 ){
                 if let cellView = tableView.make(withIdentifier: "animeDayViewID", owner: nil) as? NSTableCellView{
                     let index = (row*7) + tableView.tableColumns.index(of: tableColumn!)! - self.dateOffset
-                    cellView.textField?.stringValue = String(describing:index + 1)// + " "
+                    if (index < Int((daysInMonth()).rounded(.up))){
+                        cellView.textField?.stringValue = String(describing:index + 1)// + " "
+                    }
                     //cellView.textField?.textColor = NSColor.black
                     view = cellView
                 }
