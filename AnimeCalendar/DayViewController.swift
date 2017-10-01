@@ -183,6 +183,10 @@ extension DayViewController: NSTableViewDataSource{
 extension DayViewController: NSTableViewDelegate{
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        if (tableView.identifier == "calendarTableViewID")
+        {
+            return 50
+        }
         return 20
     }
     
@@ -193,12 +197,17 @@ extension DayViewController: NSTableViewDelegate{
         if (tableView.identifier == "calendarTableViewID")
         {
             if ((row == 0 && tableView.tableColumns.index(of: tableColumn!)! >= self.dateOffset) || row > 0 ){
-                if let cellView = tableView.make(withIdentifier: "animeDayViewID", owner: nil) as? NSTableCellView{
+                if let cellView = tableView.make(withIdentifier: "animeDayViewID", owner: nil) as? CustomCalendarCell{
                     let index = (row*7) + tableView.tableColumns.index(of: tableColumn!)! - self.dateOffset
                     if (index < Int((daysInMonth()).rounded(.up))){
                         cellView.textField?.stringValue = String(describing:index + 1)// + " "
                     }
-                    //cellView.textField?.textColor = NSColor.black
+                    if let animez = self.animeSchedule[index]{
+                        if (animez.count > 0)
+                        {
+                            cellView.iconImageView.image = #imageLiteral(resourceName: "AnimeDayIcon")
+                        }
+                    }
                     view = cellView
                 }
             }
