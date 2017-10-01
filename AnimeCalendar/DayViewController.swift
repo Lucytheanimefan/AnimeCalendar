@@ -160,11 +160,14 @@ extension DayViewController:CalendarCellSelectionDelegate{
         if let anime = self.animeSchedule[index]
         {
             self.animeDailySchedule = anime
-            
-            DispatchQueue.main.async
-                {
-                    self.tableView.reloadData()
-            }
+        }
+        else
+        {
+            self.animeDailySchedule = [[String:Any]]()
+        }
+        DispatchQueue.main.async
+            {
+                self.tableView.reloadData()
         }
     }
 }
