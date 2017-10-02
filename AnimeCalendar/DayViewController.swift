@@ -121,21 +121,23 @@ class DayViewController: NSViewController {
     @IBAction func previousMonth(_ sender: NSButton) {
         if let prevMonth = Calendar.current.date(byAdding: .month, value: -1, to: self.currentDate)
         {
-            self.currentDate = prevMonth
-            calculateDateOffset()
-            self.calendarTableView.reloadData()
-            setUpAniList()
+            resetCalendarTable(month: prevMonth)
         }
     }
     
     @IBAction func nextMonth(_ sender: NSButton) {
         if let nextMonth = Calendar.current.date(byAdding: .month, value: 1, to: self.currentDate)
         {
-            self.currentDate = nextMonth
-            calculateDateOffset()
-            self.calendarTableView.reloadData()
-            setUpAniList()
+            resetCalendarTable(month: nextMonth)
         }
+    }
+    
+    func resetCalendarTable(month: Date)
+    {
+        self.currentDate = month
+        calculateDateOffset()
+        self.calendarTableView.reloadData()
+        setUpAniList()
     }
     
 }

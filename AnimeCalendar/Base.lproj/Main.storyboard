@@ -1411,14 +1411,41 @@
                                         <rect key="frame" x="269" y="0.0" width="401" height="480"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
-                                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNR-BJ-1SD">
-                                                <rect key="frame" x="4" y="268" width="362" height="167"/>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jkb-Fn-TGV">
+                                                <rect key="frame" x="266" y="438" width="77" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Today" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vfS-9Z-W5G">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </button>
+                                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wO3-zu-Enh">
+                                                <rect key="frame" x="240" y="443" width="19" height="25"/>
+                                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSLeftFacingTriangleTemplate" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fI8-J1-L5i">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="previousMonth:" target="nkH-L0-mwn" id="11j-we-Vd9"/>
+                                                </connections>
+                                            </button>
+                                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NMZ-se-mbx">
+                                                <rect key="frame" x="347" y="443" width="19" height="25"/>
+                                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSRightFacingTriangleTemplate" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WXK-Gi-WWT">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="nextMonth:" target="nkH-L0-mwn" id="X0w-cu-K5I"/>
+                                                </connections>
+                                            </button>
+                                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNR-BJ-1SD">
+                                                <rect key="frame" x="26" y="111" width="355" height="326"/>
                                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="ZLh-Vu-eff">
-                                                    <rect key="frame" x="0.0" y="0.0" width="362" height="167"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="326"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <tableView identifier="calendarTableViewID" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="zk0-Yy-sU3" viewBased="YES" id="l8e-mT-YAm" customClass="CustomTableView" customModule="AnimeCalendar" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="362" height="144"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="355" height="303"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <size key="intercellSpacing" width="3" height="2"/>
                                                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
@@ -1704,59 +1731,32 @@
                                                     </subviews>
                                                 </clipView>
                                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="CVR-Wy-S8N">
-                                                    <rect key="frame" x="1" y="273" width="342" height="16"/>
+                                                    <rect key="frame" x="-100" y="-100" width="342" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="xqY-NJ-xee">
-                                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                                    <rect key="frame" x="-100" y="-100" width="15" height="102"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                                 <tableHeaderView key="headerView" id="zk0-Yy-sU3">
-                                                    <rect key="frame" x="0.0" y="0.0" width="362" height="23"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="23"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableHeaderView>
                                             </scrollView>
-                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jkb-Fn-TGV">
-                                                <rect key="frame" x="266" y="438" width="77" height="32"/>
-                                                <buttonCell key="cell" type="push" title="Today" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vfS-9Z-W5G">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                            </button>
-                                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wO3-zu-Enh">
-                                                <rect key="frame" x="240" y="443" width="19" height="25"/>
-                                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSLeftFacingTriangleTemplate" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fI8-J1-L5i">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="previousMonth:" target="nkH-L0-mwn" id="11j-we-Vd9"/>
-                                                </connections>
-                                            </button>
-                                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NMZ-se-mbx">
-                                                <rect key="frame" x="347" y="443" width="19" height="25"/>
-                                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSRightFacingTriangleTemplate" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WXK-Gi-WWT">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="nextMonth:" target="nkH-L0-mwn" id="X0w-cu-K5I"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="YNR-BJ-1SD" firstAttribute="top" secondItem="wO3-zu-Enh" secondAttribute="bottom" constant="10" id="1tI-vI-arM"/>
+                                            <constraint firstItem="YNR-BJ-1SD" firstAttribute="top" secondItem="wO3-zu-Enh" secondAttribute="bottom" constant="8" id="1tI-vI-arM"/>
                                             <constraint firstItem="NMZ-se-mbx" firstAttribute="leading" secondItem="Jkb-Fn-TGV" secondAttribute="trailing" constant="10" id="8Cs-fJ-joD"/>
                                             <constraint firstAttribute="trailing" secondItem="NMZ-se-mbx" secondAttribute="trailing" constant="35" id="9Tt-hN-QcZ"/>
-                                            <constraint firstItem="YNR-BJ-1SD" firstAttribute="top" secondItem="Jkb-Fn-TGV" secondAttribute="bottom" constant="10" id="MQo-XR-nAS"/>
+                                            <constraint firstItem="YNR-BJ-1SD" firstAttribute="top" secondItem="Jkb-Fn-TGV" secondAttribute="bottom" constant="8" id="MQo-XR-nAS"/>
                                             <constraint firstItem="NMZ-se-mbx" firstAttribute="leading" secondItem="Jkb-Fn-TGV" secondAttribute="trailing" constant="10" id="ORe-3T-S50"/>
                                             <constraint firstItem="Jkb-Fn-TGV" firstAttribute="top" secondItem="NXj-s0-vx9" secondAttribute="top" constant="14" id="TCL-a3-X6v"/>
-                                            <constraint firstAttribute="bottom" secondItem="YNR-BJ-1SD" secondAttribute="bottom" constant="268" id="Vl2-Gp-C4y"/>
-                                            <constraint firstItem="YNR-BJ-1SD" firstAttribute="leading" secondItem="NXj-s0-vx9" secondAttribute="leading" constant="4" id="Zmm-Iq-eJb"/>
+                                            <constraint firstAttribute="bottom" secondItem="YNR-BJ-1SD" secondAttribute="bottom" constant="111" id="Vl2-Gp-C4y"/>
+                                            <constraint firstItem="YNR-BJ-1SD" firstAttribute="leading" secondItem="NXj-s0-vx9" secondAttribute="leading" constant="26" id="Zmm-Iq-eJb"/>
                                             <constraint firstItem="Jkb-Fn-TGV" firstAttribute="leading" secondItem="wO3-zu-Enh" secondAttribute="trailing" constant="13" id="cay-s8-C4Z"/>
                                             <constraint firstItem="Jkb-Fn-TGV" firstAttribute="leading" secondItem="wO3-zu-Enh" secondAttribute="trailing" constant="13" id="dkR-sI-V7H"/>
-                                            <constraint firstItem="YNR-BJ-1SD" firstAttribute="top" secondItem="NMZ-se-mbx" secondAttribute="bottom" constant="10" id="ehn-ce-EPv"/>
-                                            <constraint firstItem="YNR-BJ-1SD" firstAttribute="trailing" secondItem="NMZ-se-mbx" secondAttribute="trailing" id="fvB-pR-MbT"/>
+                                            <constraint firstItem="YNR-BJ-1SD" firstAttribute="top" secondItem="NMZ-se-mbx" secondAttribute="bottom" constant="8" id="ehn-ce-EPv"/>
+                                            <constraint firstItem="YNR-BJ-1SD" firstAttribute="trailing" secondItem="NMZ-se-mbx" secondAttribute="trailing" constant="15" id="fvB-pR-MbT"/>
                                             <constraint firstItem="wO3-zu-Enh" firstAttribute="leading" secondItem="NXj-s0-vx9" secondAttribute="leading" constant="240" id="ioG-0P-KSs"/>
                                             <constraint firstItem="NMZ-se-mbx" firstAttribute="top" secondItem="NXj-s0-vx9" secondAttribute="top" constant="13" id="lbL-UT-Aom"/>
                                             <constraint firstItem="wO3-zu-Enh" firstAttribute="top" secondItem="NXj-s0-vx9" secondAttribute="top" constant="13" id="ojY-sg-cV4"/>
