@@ -207,7 +207,11 @@ extension DayViewController: NSTableViewDelegate{
                 
                 if let description = anime["description"] as? String
                 {
-                    self.dayDetailsView.string = description
+                    let html = description.data(using: .utf8)
+                    let attributedString = NSAttributedString(html: html!, options: [String : Any](), documentAttributes: nil)
+                    let storage = NSTextStorage(attributedString: attributedString!)
+                    self.dayDetailsView.layoutManager?.replaceTextStorage(storage)
+                    //self.dayDetailsView.string = description
                 }
             }
         }

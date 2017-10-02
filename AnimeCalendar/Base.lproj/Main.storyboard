@@ -1434,14 +1434,14 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="355" height="193"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <tableView identifier="calendarTableViewID" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="zk0-Yy-sU3" viewBased="YES" id="l8e-mT-YAm" customClass="CustomTableView" customModule="AnimeCalendar" customModuleProvider="target">
+                                                        <tableView identifier="calendarTableViewID" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="zk0-Yy-sU3" viewBased="YES" id="l8e-mT-YAm" customClass="CustomTableView" customModule="AnimeCalendar" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="355" height="170"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <size key="intercellSpacing" width="3" height="2"/>
                                                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                             <tableColumns>
-                                                                <tableColumn width="47" minWidth="40" maxWidth="51" id="9by-ti-Vg3">
+                                                                <tableColumn width="47" minWidth="40" maxWidth="101" id="9by-ti-Vg3">
                                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="S">
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1452,7 +1452,7 @@
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
-                                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                                     <prototypeCellViews>
                                                                         <tableCellView identifier="animeDayViewID" id="brn-iB-SE2" customClass="CustomCalendarCell" customModule="AnimeCalendar" customModuleProvider="target">
                                                                             <rect key="frame" x="1" y="1" width="47" height="35"/>
@@ -1490,7 +1490,7 @@
                                                                         </tableCellView>
                                                                     </prototypeCellViews>
                                                                 </tableColumn>
-                                                                <tableColumn width="47" minWidth="40" maxWidth="51" id="vFD-00-Yuz">
+                                                                <tableColumn width="47" minWidth="40" maxWidth="101" id="vFD-00-Yuz">
                                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="M">
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1501,7 +1501,7 @@
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
-                                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                                     <prototypeCellViews>
                                                                         <tableCellView id="Tfo-Mc-viN">
                                                                             <rect key="frame" x="51" y="1" width="47" height="17"/>
@@ -1527,7 +1527,7 @@
                                                                         </tableCellView>
                                                                     </prototypeCellViews>
                                                                 </tableColumn>
-                                                                <tableColumn width="47" minWidth="40" maxWidth="51" id="9DD-Ub-c9U">
+                                                                <tableColumn width="47" minWidth="37" maxWidth="101" id="9DD-Ub-c9U">
                                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="T">
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1538,7 +1538,7 @@
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
-                                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                                     <prototypeCellViews>
                                                                         <tableCellView id="tBs-kO-bwB">
                                                                             <rect key="frame" x="101" y="1" width="47" height="17"/>
@@ -1564,7 +1564,7 @@
                                                                         </tableCellView>
                                                                     </prototypeCellViews>
                                                                 </tableColumn>
-                                                                <tableColumn width="47" minWidth="40" maxWidth="51" id="Vby-V4-nae">
+                                                                <tableColumn width="47" minWidth="40" maxWidth="101" id="Vby-V4-nae">
                                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="W">
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1575,7 +1575,7 @@
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
-                                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                                     <prototypeCellViews>
                                                                         <tableCellView id="g5r-aX-wk1">
                                                                             <rect key="frame" x="151" y="1" width="47" height="17"/>
@@ -1601,7 +1601,7 @@
                                                                         </tableCellView>
                                                                     </prototypeCellViews>
                                                                 </tableColumn>
-                                                                <tableColumn width="47" minWidth="40" maxWidth="51" id="eJA-qd-tih">
+                                                                <tableColumn width="47" minWidth="40" maxWidth="101" id="eJA-qd-tih">
                                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="T">
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1612,7 +1612,7 @@
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
-                                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                                     <prototypeCellViews>
                                                                         <tableCellView id="q6u-b5-lNb">
                                                                             <rect key="frame" x="201" y="1" width="47" height="17"/>
@@ -1638,7 +1638,7 @@
                                                                         </tableCellView>
                                                                     </prototypeCellViews>
                                                                 </tableColumn>
-                                                                <tableColumn width="47" minWidth="40" maxWidth="51" id="FYB-52-cuK">
+                                                                <tableColumn width="47" minWidth="40" maxWidth="101" id="FYB-52-cuK">
                                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="F">
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1649,7 +1649,7 @@
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
-                                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                                     <prototypeCellViews>
                                                                         <tableCellView id="ThK-GW-kS8">
                                                                             <rect key="frame" x="251" y="1" width="47" height="17"/>
@@ -1675,7 +1675,7 @@
                                                                         </tableCellView>
                                                                     </prototypeCellViews>
                                                                 </tableColumn>
-                                                                <tableColumn width="51" minWidth="40" maxWidth="51" id="E54-GX-KL8">
+                                                                <tableColumn width="51" minWidth="40" maxWidth="101" id="E54-GX-KL8">
                                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="S">
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1686,7 +1686,7 @@
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
-                                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                                     <prototypeCellViews>
                                                                         <tableCellView id="9nt-hm-IgB">
                                                                             <rect key="frame" x="301" y="1" width="51" height="17"/>
@@ -1777,6 +1777,9 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </clipView>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="355" id="NUC-DF-drH"/>
+                                                </constraints>
                                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="gJm-fv-nn6">
                                                     <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
@@ -1787,7 +1790,7 @@
                                                 </scroller>
                                             </scrollView>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qVx-zs-bhC">
-                                                <rect key="frame" x="24" y="217" width="44" height="19"/>
+                                                <rect key="frame" x="24" y="217" width="359" height="19"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="NGD-Zr-Jpt">
                                                     <font key="font" metaFont="system" size="16"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1797,7 +1800,7 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="YNR-BJ-1SD" firstAttribute="top" secondItem="wO3-zu-Enh" secondAttribute="bottom" constant="8" id="1tI-vI-arM"/>
-                                            <constraint firstAttribute="trailing" secondItem="qVx-zs-bhC" secondAttribute="trailing" constant="335" id="6Z6-0j-2YH"/>
+                                            <constraint firstAttribute="trailing" secondItem="qVx-zs-bhC" secondAttribute="trailing" constant="20" id="6Z6-0j-2YH"/>
                                             <constraint firstItem="NMZ-se-mbx" firstAttribute="leading" secondItem="Jkb-Fn-TGV" secondAttribute="trailing" constant="10" id="8Cs-fJ-joD"/>
                                             <constraint firstAttribute="trailing" secondItem="NMZ-se-mbx" secondAttribute="trailing" constant="35" id="9Tt-hN-QcZ"/>
                                             <constraint firstItem="kqm-tZ-2mo" firstAttribute="leading" secondItem="qVx-zs-bhC" secondAttribute="leading" id="EUu-qo-FKD"/>
