@@ -696,11 +696,11 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <customView id="eYs-Mx-d11">
-                    <rect key="frame" x="0.0" y="0.0" width="676" height="48"/>
+                    <rect key="frame" x="0.0" y="0.0" width="676" height="42"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tip-Au-rKF">
-                            <rect key="frame" x="314" y="11" width="48" height="25"/>
+                            <rect key="frame" x="314" y="5" width="48" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" title="Week" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5Iy-im-7Q7">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -711,7 +711,7 @@
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dQG-Wk-9LI">
-                            <rect key="frame" x="364" y="11" width="53" height="25"/>
+                            <rect key="frame" x="364" y="5" width="53" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" title="Month" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5qR-h9-yTe">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -721,8 +721,19 @@
                                 <action selector="switchViews:" target="B8D-0N-5wS" id="L2v-ev-BCT"/>
                             </connections>
                         </button>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qRT-CK-Kwc">
+                            <rect key="frame" x="425" y="5" width="53" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" title="Year" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bCP-pu-W9q">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="switchViews:" target="B8D-0N-5wS" id="8gZ-jT-5oS"/>
+                            </connections>
+                        </button>
                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5n5-g6-FaT">
-                            <rect key="frame" x="274" y="11" width="38" height="25"/>
+                            <rect key="frame" x="274" y="5" width="38" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" title="Day" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NWx-Cd-cCy">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -733,7 +744,7 @@
                             </connections>
                         </button>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2a8-po-fby">
-                            <rect key="frame" x="488" y="10" width="76" height="27"/>
+                            <rect key="frame" x="488" y="4" width="76" height="27"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="VOo-s1-4gv" id="Wdx-MM-0jZ">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -748,7 +759,7 @@
                             </popUpButtonCell>
                         </popUpButton>
                         <searchField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJn-j9-dtW">
-                            <rect key="frame" x="569" y="13" width="87" height="22"/>
+                            <rect key="frame" x="569" y="7" width="87" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="en7-cN-nCC">
                                 <font key="font" metaFont="system"/>
@@ -756,15 +767,15 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </searchFieldCell>
                         </searchField>
-                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qRT-CK-Kwc">
-                            <rect key="frame" x="425" y="11" width="53" height="25"/>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EfL-oR-OYu">
+                            <rect key="frame" x="6" y="1" width="90" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" title="Year" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bCP-pu-W9q">
+                            <buttonCell key="cell" type="push" title="Calendars" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zm3-n7-DlG">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                             <connections>
-                                <action selector="switchViews:" target="B8D-0N-5wS" id="8gZ-jT-5oS"/>
+                                <action selector="showCalendarsSideView:" target="B8D-0N-5wS" id="gSR-Vd-CDP"/>
                             </connections>
                         </button>
                     </subviews>
@@ -1100,14 +1111,13 @@
                             <splitView arrangesAllSubviews="NO" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rhN-Yc-AED">
                                 <rect key="frame" x="0.0" y="0.0" width="790" height="442"/>
                                 <subviews>
-                                    <customView fixedFrame="YES" id="ZJs-Uy-pot">
+                                    <customView id="ZJs-Uy-pot">
                                         <rect key="frame" x="0.0" y="0.0" width="186" height="442"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
-                                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5eK-Yj-8P4">
+                                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5eK-Yj-8P4">
                                                 <rect key="frame" x="0.0" y="0.0" width="186" height="442"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <clipView key="contentView" ambiguous="YES" id="v0H-gB-HAp">
+                                                <clipView key="contentView" id="v0H-gB-HAp">
                                                     <rect key="frame" x="1" y="0.0" width="184" height="441"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
@@ -1173,6 +1183,12 @@
                                                 </tableHeaderView>
                                             </scrollView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="5eK-Yj-8P4" firstAttribute="top" secondItem="ZJs-Uy-pot" secondAttribute="top" id="0Pn-yh-hmH"/>
+                                            <constraint firstItem="5eK-Yj-8P4" firstAttribute="leading" secondItem="ZJs-Uy-pot" secondAttribute="leading" id="KgY-wo-UUp"/>
+                                            <constraint firstAttribute="bottom" secondItem="5eK-Yj-8P4" secondAttribute="bottom" id="mNO-w1-oON"/>
+                                            <constraint firstAttribute="trailing" secondItem="5eK-Yj-8P4" secondAttribute="trailing" id="y8T-pu-sFA"/>
+                                        </constraints>
                                     </customView>
                                     <customView id="nRU-NE-XhT">
                                         <rect key="frame" x="187" y="0.0" width="603" height="442"/>
@@ -1207,6 +1223,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="calendarSideView" destination="ZJs-Uy-pot" id="1Z6-Ao-tXY"/>
                         <outlet property="containerView" destination="lXf-Bn-ila" id="hei-lH-0if"/>
                         <outlet property="outlineView" destination="efL-rK-64g" id="WKY-rn-wgE"/>
                     </connections>
@@ -1750,6 +1767,7 @@
                                             <constraint firstAttribute="trailing" secondItem="NMZ-se-mbx" secondAttribute="trailing" constant="35" id="9Tt-hN-QcZ"/>
                                             <constraint firstItem="YNR-BJ-1SD" firstAttribute="top" secondItem="Jkb-Fn-TGV" secondAttribute="bottom" constant="8" id="MQo-XR-nAS"/>
                                             <constraint firstItem="NMZ-se-mbx" firstAttribute="leading" secondItem="Jkb-Fn-TGV" secondAttribute="trailing" constant="10" id="ORe-3T-S50"/>
+                                            <constraint firstAttribute="trailing" secondItem="YNR-BJ-1SD" secondAttribute="trailing" constant="20" id="Q2n-RA-6wk"/>
                                             <constraint firstItem="Jkb-Fn-TGV" firstAttribute="top" secondItem="NXj-s0-vx9" secondAttribute="top" constant="14" id="TCL-a3-X6v"/>
                                             <constraint firstAttribute="bottom" secondItem="YNR-BJ-1SD" secondAttribute="bottom" constant="111" id="Vl2-Gp-C4y"/>
                                             <constraint firstItem="YNR-BJ-1SD" firstAttribute="leading" secondItem="NXj-s0-vx9" secondAttribute="leading" constant="26" id="Zmm-Iq-eJb"/>

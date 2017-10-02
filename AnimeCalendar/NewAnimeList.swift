@@ -75,7 +75,7 @@ class NewAnimeList: NSObject {
     func genres(){
         let auth = "?access_token=" + self.accessToken
         makeGeneralRequest(url: baseURL + genreList + auth, parameters: nil, type: "GET") { (genres) in
-            //print(genres)
+
         }
     }
     

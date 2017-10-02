@@ -21,6 +21,8 @@ class ViewController: NSViewController {
     
     @IBOutlet weak var outlineView: NSOutlineView!
     
+    @IBOutlet weak var calendarSideView: NSView!
+    
     lazy var animeEventController =
         {
             return AnimeEventController(window: NSApp.windows.first!)

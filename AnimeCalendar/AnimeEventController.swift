@@ -32,9 +32,6 @@ class AnimeEventController: NSObject {
                 finalCalendars.append(source)
             }
         }
-//        print("Source count: ")
-//        print(finalCalendars.count)
-//        print(finalSources)
         return finalCalendars
     }()
     

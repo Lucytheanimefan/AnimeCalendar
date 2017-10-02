@@ -12,8 +12,6 @@ import os.log
 
 class DayViewController: NSViewController {
     
-    //@IBOutlet weak var collectionView: NSCollectionView!
-    
     let calendar = Calendar.current
     
     var newAniList:NewAnimeList! = NewAnimeList.sharedInstance
@@ -93,7 +91,6 @@ class DayViewController: NSViewController {
             self.userDefaults.set(NSKeyedArchiver.archivedData(withRootObject: self.animeSchedule), forKey: "animeSchedule")
             DispatchQueue.main.async
             {
-                //self.collectionView.reloadData()
                 self.calendarTableView.reloadData()
             }
         }
@@ -212,6 +209,14 @@ extension DayViewController: NSTableViewDelegate{
                         {
                             cellView.iconImageView.image = #imageLiteral(resourceName: "AnimeDayIcon")
                         }
+                        else
+                        {
+                            cellView.iconImageView.image = nil
+                        }
+                    }
+                    else
+                    {
+                        cellView.iconImageView.image = nil
                     }
                     view = cellView
                 }

@@ -55,6 +55,12 @@ class WindowController: NSWindowController {
         }
     }
     
+    @IBAction func showCalendarsSideView(_ sender: NSButton) {
+        if let vc = self.contentViewController as? ViewController{
+            vc.calendarSideView.isHidden = !vc.calendarSideView.isHidden
+        }
+    }
+    
     func customToolbarItem(itemForItemIdentifier itemIdentifier: String, label: String, paletteLabel: String, toolTip: String, target: AnyObject, itemContent: AnyObject, action: Selector?, menu: NSMenu?) -> NSToolbarItem? {
         
         let toolbarItem = NSToolbarItem(itemIdentifier: itemIdentifier)
