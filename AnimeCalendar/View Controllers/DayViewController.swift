@@ -37,6 +37,10 @@ class DayViewController: NSViewController {
     
     @IBOutlet var dateTextView: NSTextView!
     
+    // Left bottom side view
+    @IBOutlet weak var dayTitle: NSTextField!
+    @IBOutlet var dayDetailsView: NSTextView!
+    
     var animeEventController:AnimeEventController!
 
     var imageCount:Int = 0
@@ -187,12 +191,27 @@ extension DayViewController: NSTableViewDelegate{
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         if (tableView.identifier == "calendarTableViewID")
         {
-            return 50
+            return 40
         }
         return 20
     }
-    
 
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        if ((notification.object as? NSTableView) == self.tableView)
+        {
+            let row = self.tableView.selectedRow
+            let anime = self.animeDailySchedule[row]
+            if let title = anime["title_english"] as? String
+            {
+                self.dayTitle.stringValue = title
+                
+                if let description = anime["description"] as? String
+                {
+                    self.dayDetailsView.string = description
+                }
+            }
+        }
+    }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         var view:NSView? = nil

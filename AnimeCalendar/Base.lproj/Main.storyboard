@@ -1253,7 +1253,7 @@
                                                     <rect key="frame" x="1" y="0.0" width="266" height="309"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="WBR-xS-ZWM" viewBased="YES" id="r1J-EW-d7H">
+                                                        <tableView identifier="animeListTableID" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="WBR-xS-ZWM" viewBased="YES" id="r1J-EW-d7H">
                                                             <rect key="frame" x="0.0" y="0.0" width="266" height="286"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -1428,41 +1428,14 @@
                                         <rect key="frame" x="269" y="0.0" width="401" height="480"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
-                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jkb-Fn-TGV">
-                                                <rect key="frame" x="266" y="438" width="77" height="32"/>
-                                                <buttonCell key="cell" type="push" title="Today" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vfS-9Z-W5G">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                            </button>
-                                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wO3-zu-Enh">
-                                                <rect key="frame" x="240" y="443" width="19" height="25"/>
-                                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSLeftFacingTriangleTemplate" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fI8-J1-L5i">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="previousMonth:" target="nkH-L0-mwn" id="11j-we-Vd9"/>
-                                                </connections>
-                                            </button>
-                                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NMZ-se-mbx">
-                                                <rect key="frame" x="347" y="443" width="19" height="25"/>
-                                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSRightFacingTriangleTemplate" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WXK-Gi-WWT">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="nextMonth:" target="nkH-L0-mwn" id="X0w-cu-K5I"/>
-                                                </connections>
-                                            </button>
                                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNR-BJ-1SD">
-                                                <rect key="frame" x="26" y="111" width="355" height="326"/>
+                                                <rect key="frame" x="26" y="244" width="355" height="193"/>
                                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="ZLh-Vu-eff">
-                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="326"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="193"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <tableView identifier="calendarTableViewID" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="zk0-Yy-sU3" viewBased="YES" id="l8e-mT-YAm" customClass="CustomTableView" customModule="AnimeCalendar" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="355" height="303"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="355" height="170"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <size key="intercellSpacing" width="3" height="2"/>
                                                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
@@ -1482,11 +1455,11 @@
                                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                     <prototypeCellViews>
                                                                         <tableCellView identifier="animeDayViewID" id="brn-iB-SE2" customClass="CustomCalendarCell" customModule="AnimeCalendar" customModuleProvider="target">
-                                                                            <rect key="frame" x="1" y="1" width="47" height="41"/>
+                                                                            <rect key="frame" x="1" y="1" width="47" height="35"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="USB-VR-QUg">
-                                                                                    <rect key="frame" x="0.0" y="24" width="22" height="17"/>
+                                                                                    <rect key="frame" x="0.0" y="18" width="22" height="17"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" id="DqM-yY-tin">
                                                                                         <font key="font" metaFont="system"/>
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1494,7 +1467,7 @@
                                                                                     </textFieldCell>
                                                                                 </textField>
                                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b9Z-Tz-fJK">
-                                                                                    <rect key="frame" x="12" y="3" width="22" height="22"/>
+                                                                                    <rect key="frame" x="12" y="3" width="19" height="16"/>
                                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Z57-RV-7f9"/>
                                                                                     <connections>
                                                                                         <binding destination="brn-iB-SE2" name="hidden" keyPath="objectValue" id="RDp-KL-gPz"/>
@@ -1506,7 +1479,7 @@
                                                                                 <constraint firstItem="USB-VR-QUg" firstAttribute="leading" secondItem="brn-iB-SE2" secondAttribute="leading" constant="2" id="Nch-rI-MGe"/>
                                                                                 <constraint firstItem="b9Z-Tz-fJK" firstAttribute="top" secondItem="brn-iB-SE2" secondAttribute="top" constant="16" id="ReH-XC-EsE"/>
                                                                                 <constraint firstItem="b9Z-Tz-fJK" firstAttribute="leading" secondItem="brn-iB-SE2" secondAttribute="leading" constant="12" id="Y9O-a4-4EA"/>
-                                                                                <constraint firstItem="b9Z-Tz-fJK" firstAttribute="centerX" secondItem="brn-iB-SE2" secondAttribute="centerX" id="lnc-Vm-wm5"/>
+                                                                                <constraint firstItem="b9Z-Tz-fJK" firstAttribute="centerX" secondItem="brn-iB-SE2" secondAttribute="centerX" constant="-2" id="lnc-Vm-wm5"/>
                                                                                 <constraint firstAttribute="trailing" secondItem="USB-VR-QUg" secondAttribute="trailing" constant="27" id="qw4-Ei-dnT"/>
                                                                                 <constraint firstItem="USB-VR-QUg" firstAttribute="top" secondItem="brn-iB-SE2" secondAttribute="top" id="tbm-bn-AN1"/>
                                                                             </constraints>
@@ -1760,24 +1733,92 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableHeaderView>
                                             </scrollView>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jkb-Fn-TGV">
+                                                <rect key="frame" x="266" y="438" width="77" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Today" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vfS-9Z-W5G">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </button>
+                                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wO3-zu-Enh">
+                                                <rect key="frame" x="240" y="443" width="19" height="25"/>
+                                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSLeftFacingTriangleTemplate" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fI8-J1-L5i">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="previousMonth:" target="nkH-L0-mwn" id="11j-we-Vd9"/>
+                                                </connections>
+                                            </button>
+                                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NMZ-se-mbx">
+                                                <rect key="frame" x="347" y="443" width="19" height="25"/>
+                                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSRightFacingTriangleTemplate" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WXK-Gi-WWT">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="nextMonth:" target="nkH-L0-mwn" id="X0w-cu-K5I"/>
+                                                </connections>
+                                            </button>
+                                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqm-tZ-2mo">
+                                                <rect key="frame" x="26" y="0.0" width="355" height="209"/>
+                                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="spX-8y-f7F">
+                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="209"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <textView drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="VDK-Qn-uob">
+                                                            <rect key="frame" x="0.0" y="0.0" width="355" height="209"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <size key="minSize" width="355" height="209"/>
+                                                            <size key="maxSize" width="463" height="10000000"/>
+                                                            <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        </textView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </clipView>
+                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="gJm-fv-nn6">
+                                                    <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Wsm-1x-jfK">
+                                                    <rect key="frame" x="339" y="0.0" width="16" height="209"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                            </scrollView>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qVx-zs-bhC">
+                                                <rect key="frame" x="24" y="217" width="44" height="19"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="NGD-Zr-Jpt">
+                                                    <font key="font" metaFont="system" size="16"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="YNR-BJ-1SD" firstAttribute="top" secondItem="wO3-zu-Enh" secondAttribute="bottom" constant="8" id="1tI-vI-arM"/>
+                                            <constraint firstAttribute="trailing" secondItem="qVx-zs-bhC" secondAttribute="trailing" constant="335" id="6Z6-0j-2YH"/>
                                             <constraint firstItem="NMZ-se-mbx" firstAttribute="leading" secondItem="Jkb-Fn-TGV" secondAttribute="trailing" constant="10" id="8Cs-fJ-joD"/>
                                             <constraint firstAttribute="trailing" secondItem="NMZ-se-mbx" secondAttribute="trailing" constant="35" id="9Tt-hN-QcZ"/>
+                                            <constraint firstItem="kqm-tZ-2mo" firstAttribute="leading" secondItem="qVx-zs-bhC" secondAttribute="leading" id="EUu-qo-FKD"/>
                                             <constraint firstItem="YNR-BJ-1SD" firstAttribute="top" secondItem="Jkb-Fn-TGV" secondAttribute="bottom" constant="8" id="MQo-XR-nAS"/>
                                             <constraint firstItem="NMZ-se-mbx" firstAttribute="leading" secondItem="Jkb-Fn-TGV" secondAttribute="trailing" constant="10" id="ORe-3T-S50"/>
                                             <constraint firstAttribute="trailing" secondItem="YNR-BJ-1SD" secondAttribute="trailing" constant="20" id="Q2n-RA-6wk"/>
                                             <constraint firstItem="Jkb-Fn-TGV" firstAttribute="top" secondItem="NXj-s0-vx9" secondAttribute="top" constant="14" id="TCL-a3-X6v"/>
-                                            <constraint firstAttribute="bottom" secondItem="YNR-BJ-1SD" secondAttribute="bottom" constant="111" id="Vl2-Gp-C4y"/>
+                                            <constraint firstItem="kqm-tZ-2mo" firstAttribute="top" secondItem="qVx-zs-bhC" secondAttribute="bottom" constant="8" id="TVx-e2-Q1x"/>
+                                            <constraint firstItem="qVx-zs-bhC" firstAttribute="leading" secondItem="NXj-s0-vx9" secondAttribute="leading" constant="26" id="Yfc-Xa-smd"/>
                                             <constraint firstItem="YNR-BJ-1SD" firstAttribute="leading" secondItem="NXj-s0-vx9" secondAttribute="leading" constant="26" id="Zmm-Iq-eJb"/>
                                             <constraint firstItem="Jkb-Fn-TGV" firstAttribute="leading" secondItem="wO3-zu-Enh" secondAttribute="trailing" constant="13" id="cay-s8-C4Z"/>
                                             <constraint firstItem="Jkb-Fn-TGV" firstAttribute="leading" secondItem="wO3-zu-Enh" secondAttribute="trailing" constant="13" id="dkR-sI-V7H"/>
                                             <constraint firstItem="YNR-BJ-1SD" firstAttribute="top" secondItem="NMZ-se-mbx" secondAttribute="bottom" constant="8" id="ehn-ce-EPv"/>
+                                            <constraint firstItem="qVx-zs-bhC" firstAttribute="top" secondItem="YNR-BJ-1SD" secondAttribute="bottom" constant="8" id="fBs-h8-O99"/>
                                             <constraint firstItem="YNR-BJ-1SD" firstAttribute="trailing" secondItem="NMZ-se-mbx" secondAttribute="trailing" constant="15" id="fvB-pR-MbT"/>
                                             <constraint firstItem="wO3-zu-Enh" firstAttribute="leading" secondItem="NXj-s0-vx9" secondAttribute="leading" constant="240" id="ioG-0P-KSs"/>
                                             <constraint firstItem="NMZ-se-mbx" firstAttribute="top" secondItem="NXj-s0-vx9" secondAttribute="top" constant="13" id="lbL-UT-Aom"/>
                                             <constraint firstItem="wO3-zu-Enh" firstAttribute="top" secondItem="NXj-s0-vx9" secondAttribute="top" constant="13" id="ojY-sg-cV4"/>
+                                            <constraint firstItem="kqm-tZ-2mo" firstAttribute="top" secondItem="NXj-s0-vx9" secondAttribute="top" constant="271" id="qwR-S8-qC3"/>
+                                            <constraint firstItem="kqm-tZ-2mo" firstAttribute="trailing" secondItem="YNR-BJ-1SD" secondAttribute="trailing" id="zFo-2A-v8Q"/>
+                                            <constraint firstAttribute="bottom" secondItem="kqm-tZ-2mo" secondAttribute="bottom" id="zmT-nZ-izZ"/>
                                         </constraints>
                                     </customView>
                                 </subviews>
@@ -1798,6 +1839,8 @@
                         <outlet property="calendarHeaderView" destination="zk0-Yy-sU3" id="hTf-ch-ozR"/>
                         <outlet property="calendarTableView" destination="l8e-mT-YAm" id="6zI-3b-wGN"/>
                         <outlet property="dateTextView" destination="Kt2-7Q-HXp" id="1pk-G5-2ag"/>
+                        <outlet property="dayDetailsView" destination="VDK-Qn-uob" id="iQn-x4-W7D"/>
+                        <outlet property="dayTitle" destination="qVx-zs-bhC" id="5qN-dF-WpO"/>
                         <outlet property="normieTableView" destination="yC9-0q-5Mh" id="5oq-nz-D90"/>
                         <outlet property="tableView" destination="r1J-EW-d7H" id="yHR-m1-ab5"/>
                     </connections>
