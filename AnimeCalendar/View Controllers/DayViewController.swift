@@ -31,15 +31,18 @@ class DayViewController: NSViewController {
     
     // Today's normal events
     @IBOutlet weak var normieTableView: NSTableView!
+    // Middle date view
+    @IBOutlet var dateTextView: NSTextView!
+    var currentlySelectedDateString:String!
     
+    // Left calendar view
     @IBOutlet weak var calendarTableView: NSTableView!
     @IBOutlet weak var calendarHeaderView: NSTableHeaderView!
-    
-    @IBOutlet var dateTextView: NSTextView!
     
     // Left bottom side view
     @IBOutlet weak var dayTitle: NSTextField!
     @IBOutlet var dayDetailsView: NSTextView!
+    @IBOutlet weak var dateLabel: NSTextField!
     
     var animeEventController:AnimeEventController!
 
@@ -157,8 +160,8 @@ extension DayViewController:CalendarCellSelectionDelegate{
         // Display the data in anime day tableview
         let index = (row * 7) + col - self.dateOffset
         let monthName = DateFormatter().monthSymbols[calendar.component(.month, from: self.currentDate)-1]
-
-        self.dateTextView.string = monthName + " " + (index+1).description + ", " + calendar.component(.year, from: Date()).description
+        self.currentlySelectedDateString = monthName + " " + (index+1).description + ", " + calendar.component(.year, from: Date()).description
+        self.dateTextView.string = self.currentlySelectedDateString
         self.animeDailySchedule = [[String:Any]]()
         if let anime = self.animeSchedule[index]
         {
@@ -171,6 +174,8 @@ extension DayViewController:CalendarCellSelectionDelegate{
         DispatchQueue.main.async
             {
                 self.tableView.reloadData()
+                // Select the first anime in the Anime table
+                self.tableView.selectRowIndexes(IndexSet(integer:0), byExtendingSelection: false)
         }
     }
 }
@@ -204,7 +209,7 @@ extension DayViewController: NSTableViewDelegate{
             if let title = anime["title_english"] as? String
             {
                 self.dayTitle.stringValue = title
-                
+                self.dateLabel.stringValue = self.currentlySelectedDateString
                 if let description = anime["description"] as? String
                 {
                     let html = description.data(using: .utf8)

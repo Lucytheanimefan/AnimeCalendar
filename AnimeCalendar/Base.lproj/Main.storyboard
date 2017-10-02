@@ -1761,16 +1761,16 @@
                                                 </connections>
                                             </button>
                                             <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqm-tZ-2mo">
-                                                <rect key="frame" x="26" y="0.0" width="355" height="209"/>
+                                                <rect key="frame" x="26" y="0.0" width="355" height="181"/>
                                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="spX-8y-f7F">
-                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="209"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="181"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textView drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="VDK-Qn-uob">
-                                                            <rect key="frame" x="0.0" y="0.0" width="355" height="209"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="355" height="181"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <size key="minSize" width="355" height="209"/>
+                                                            <size key="minSize" width="355" height="181"/>
                                                             <size key="maxSize" width="463" height="10000000"/>
                                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         </textView>
@@ -1785,7 +1785,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Wsm-1x-jfK">
-                                                    <rect key="frame" x="339" y="0.0" width="16" height="209"/>
+                                                    <rect key="frame" x="339" y="0.0" width="16" height="181"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                             </scrollView>
@@ -1793,6 +1793,15 @@
                                                 <rect key="frame" x="24" y="217" width="359" height="19"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="NGD-Zr-Jpt">
                                                     <font key="font" metaFont="system" size="16"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ABl-FT-KGr">
+                                                <rect key="frame" x="24" y="192" width="359" height="17"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="vNr-qi-s6Z">
+                                                    <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
@@ -1808,7 +1817,7 @@
                                             <constraint firstItem="NMZ-se-mbx" firstAttribute="leading" secondItem="Jkb-Fn-TGV" secondAttribute="trailing" constant="10" id="ORe-3T-S50"/>
                                             <constraint firstAttribute="trailing" secondItem="YNR-BJ-1SD" secondAttribute="trailing" constant="20" id="Q2n-RA-6wk"/>
                                             <constraint firstItem="Jkb-Fn-TGV" firstAttribute="top" secondItem="NXj-s0-vx9" secondAttribute="top" constant="14" id="TCL-a3-X6v"/>
-                                            <constraint firstItem="kqm-tZ-2mo" firstAttribute="top" secondItem="qVx-zs-bhC" secondAttribute="bottom" constant="8" id="TVx-e2-Q1x"/>
+                                            <constraint firstItem="kqm-tZ-2mo" firstAttribute="top" secondItem="qVx-zs-bhC" secondAttribute="bottom" constant="36" id="TVx-e2-Q1x"/>
                                             <constraint firstItem="qVx-zs-bhC" firstAttribute="leading" secondItem="NXj-s0-vx9" secondAttribute="leading" constant="26" id="Yfc-Xa-smd"/>
                                             <constraint firstItem="YNR-BJ-1SD" firstAttribute="leading" secondItem="NXj-s0-vx9" secondAttribute="leading" constant="26" id="Zmm-Iq-eJb"/>
                                             <constraint firstItem="Jkb-Fn-TGV" firstAttribute="leading" secondItem="wO3-zu-Enh" secondAttribute="trailing" constant="13" id="cay-s8-C4Z"/>
@@ -1819,7 +1828,7 @@
                                             <constraint firstItem="wO3-zu-Enh" firstAttribute="leading" secondItem="NXj-s0-vx9" secondAttribute="leading" constant="240" id="ioG-0P-KSs"/>
                                             <constraint firstItem="NMZ-se-mbx" firstAttribute="top" secondItem="NXj-s0-vx9" secondAttribute="top" constant="13" id="lbL-UT-Aom"/>
                                             <constraint firstItem="wO3-zu-Enh" firstAttribute="top" secondItem="NXj-s0-vx9" secondAttribute="top" constant="13" id="ojY-sg-cV4"/>
-                                            <constraint firstItem="kqm-tZ-2mo" firstAttribute="top" secondItem="NXj-s0-vx9" secondAttribute="top" constant="271" id="qwR-S8-qC3"/>
+                                            <constraint firstItem="kqm-tZ-2mo" firstAttribute="top" secondItem="NXj-s0-vx9" secondAttribute="top" constant="299" id="qwR-S8-qC3"/>
                                             <constraint firstItem="kqm-tZ-2mo" firstAttribute="trailing" secondItem="YNR-BJ-1SD" secondAttribute="trailing" id="zFo-2A-v8Q"/>
                                             <constraint firstAttribute="bottom" secondItem="kqm-tZ-2mo" secondAttribute="bottom" id="zmT-nZ-izZ"/>
                                         </constraints>
@@ -1841,6 +1850,7 @@
                     <connections>
                         <outlet property="calendarHeaderView" destination="zk0-Yy-sU3" id="hTf-ch-ozR"/>
                         <outlet property="calendarTableView" destination="l8e-mT-YAm" id="6zI-3b-wGN"/>
+                        <outlet property="dateLabel" destination="ABl-FT-KGr" id="fK6-pP-FY5"/>
                         <outlet property="dateTextView" destination="Kt2-7Q-HXp" id="1pk-G5-2ag"/>
                         <outlet property="dayDetailsView" destination="VDK-Qn-uob" id="iQn-x4-W7D"/>
                         <outlet property="dayTitle" destination="qVx-zs-bhC" id="5qN-dF-WpO"/>
