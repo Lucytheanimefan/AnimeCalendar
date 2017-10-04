@@ -79,7 +79,7 @@ class DayViewController: NSViewController {
         self.animeEventController.updateAuthStatus()
         self.animeEventController.createCalendars()
          // Testing
-        self.animeEventController.createEvent(title: "Lucy's test", startDate: Date(), endDate: Date())
+        self.animeEventController.createEvent(title: "Lucy's test", startDate: Date(), endDate: Date(), window: NSApp.keyWindow)
         
     }
     

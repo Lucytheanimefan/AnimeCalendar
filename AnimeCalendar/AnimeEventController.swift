@@ -98,7 +98,7 @@ class AnimeEventController: NSObject {
         return filtered as! [EKCalendar]
     }
     
-    func createEvent(title:String, startDate:Date, endDate:Date)
+    func createEvent(title:String, startDate:Date, endDate:Date, window:NSWindow?)
     {
         let calendars = self.calendars(entityType: EKEntityType.event, filterMatch: "anime")
         if (calendars.count > 0)
@@ -117,7 +117,20 @@ class AnimeEventController: NSObject {
                 
             } catch {
                 let alert = NSAlert(error: error)
-                alert.runModal()
+                
+                // TODO: make this a sheet?
+                if ((window) != nil)
+                {
+                    alert.beginSheetModal(for: window!, completionHandler: { (response) in
+                        print(response)
+                    })
+                }
+                else
+                {
+                    alert.runModal()
+                }
+                
+                
                 
             }
         }
