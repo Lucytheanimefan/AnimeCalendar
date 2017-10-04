@@ -98,6 +98,31 @@ class AnimeEventController: NSObject {
         return filtered as! [EKCalendar]
     }
     
+    func createEvent(title:String, startDate:Date, endDate:Date)
+    {
+        let calendars = self.calendars(entityType: EKEntityType.event, filterMatch: "anime")
+        if (calendars.count > 0)
+        {
+            let calendar = calendars[0]
+            let newEvent = EKEvent(eventStore: self.eventStore)
+            newEvent.title = title
+            newEvent.calendar = calendar
+            newEvent.startDate = startDate
+            newEvent.endDate = endDate
+            
+            // Save the calendar using the Event Store instance
+            
+            do {
+                try self.eventStore.save(newEvent, span: .thisEvent, commit: true)
+                
+            } catch {
+                let alert = NSAlert(error: error)
+                alert.runModal()
+                
+            }
+        }
+    }
+    
     private func updateAuthStatusToAccessEventStore(entityType:EKEntityType){
         let authStatus = EKEventStore.authorizationStatus(for: entityType)
         

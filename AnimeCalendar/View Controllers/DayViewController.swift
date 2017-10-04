@@ -61,6 +61,10 @@ class DayViewController: NSViewController {
         calculateDateOffset()
         setUpAniList()
         
+        
+       
+        
+        
     }
     
     override var representedObject: Any? {
@@ -74,6 +78,8 @@ class DayViewController: NSViewController {
         //self.animeEventController.eventAuthFailAlert()
         self.animeEventController.updateAuthStatus()
         self.animeEventController.createCalendars()
+         // Testing
+        self.animeEventController.createEvent(title: "Lucy's test", startDate: Date(), endDate: Date())
         
     }
     
@@ -219,6 +225,11 @@ extension DayViewController: NSTableViewDelegate{
                     //self.dayDetailsView.string = description
                 }
             }
+        }
+        else if ((notification.object as? NSTableView) == self.calendarTableView)
+        {
+            // double click => save to actuall iCal
+            
         }
     }
     
