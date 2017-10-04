@@ -78,9 +78,6 @@ class DayViewController: NSViewController {
         //self.animeEventController.eventAuthFailAlert()
         self.animeEventController.updateAuthStatus()
         self.animeEventController.createCalendars()
-         // Testing
-        self.animeEventController.createEvent(title: "Lucy's test", startDate: Date(), endDate: Date(), window: NSApp.keyWindow)
-        
     }
     
     func setUpAniList(){
@@ -141,6 +138,26 @@ class DayViewController: NSViewController {
             resetCalendarTable(month: nextMonth)
         }
     }
+    
+    @IBAction func doubleClickDailyAnimeTable(_ sender: NSTableView) {
+        let row = self.calendarTableView.selectedRow
+        let animeData = self.animeDailySchedule[row]
+        if let airingInfo = animeData["airing"] as? [String:Any]{
+            if let time = airingInfo["time"] as? String{
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+                let date = dateFormatter.date(from: time)!
+                
+                if let title = animeData["title_english"] as? String{
+                    // double click => save to actuall iCal
+                    // Testing
+                    self.animeEventController.createEvent(title: title, startDate: date, endDate: date, window: NSApp.keyWindow)
+                }
+            }
+        }
+    }
+    
     
     func resetCalendarTable(month: Date)
     {
@@ -228,10 +245,25 @@ extension DayViewController: NSTableViewDelegate{
         }
         else if ((notification.object as? NSTableView) == self.calendarTableView)
         {
-            // double click => save to actuall iCal
-            
+//            let row = self.calendarTableView.selectedRow
+//            let animeData = self.animeDailySchedule[row]
+//            if let airingInfo = animeData["airing"] as? [String:Any]{
+//                if let time = airingInfo["time"] as? String{
+//
+//                    let dateFormatter = DateFormatter()
+//                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+//                    let date = dateFormatter.date(from: time)!
+//
+//                    let title = animeData["title_english"] as? String
+//
+//                    // double click => save to actuall iCal
+//                    // Testing
+//                    self.animeEventController.createEvent(title: title, startDate: date, endDate: date, window: NSApp.keyWindow)
+//                }
+//            }
         }
     }
+    
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         var view:NSView? = nil

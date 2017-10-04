@@ -129,9 +129,6 @@ class AnimeEventController: NSObject {
                 {
                     alert.runModal()
                 }
-                
-                
-                
             }
         }
     }

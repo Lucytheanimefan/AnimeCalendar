@@ -1299,6 +1299,7 @@
                                                                 </tableColumn>
                                                             </tableColumns>
                                                             <connections>
+                                                                <action trigger="doubleAction" selector="doubleClickDailyAnimeTable:" target="nkH-L0-mwn" id="gLN-c5-ww2"/>
                                                                 <outlet property="dataSource" destination="nkH-L0-mwn" id="waH-ga-3Ey"/>
                                                                 <outlet property="delegate" destination="nkH-L0-mwn" id="0VY-Xf-lUu"/>
                                                             </connections>
