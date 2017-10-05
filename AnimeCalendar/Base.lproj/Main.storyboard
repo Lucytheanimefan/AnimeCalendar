@@ -1299,7 +1299,6 @@
                                                                 </tableColumn>
                                                             </tableColumns>
                                                             <connections>
-                                                                <action trigger="doubleAction" selector="doubleClickDailyAnimeTable:" target="nkH-L0-mwn" id="gLN-c5-ww2"/>
                                                                 <outlet property="dataSource" destination="nkH-L0-mwn" id="waH-ga-3Ey"/>
                                                                 <outlet property="delegate" destination="nkH-L0-mwn" id="0VY-Xf-lUu"/>
                                                             </connections>
@@ -1408,6 +1407,17 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                             </scrollView>
+                                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vdo-qh-dYL">
+                                                <rect key="frame" x="143" y="281" width="128" height="32"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <buttonCell key="cell" type="push" title="Save to iCloud" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="d3K-y1-r7Z">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="saveAnimeEventToiCloud:" target="nkH-L0-mwn" id="6TU-Cn-9JL"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="7JU-u5-wid" secondAttribute="bottom" id="7mu-gF-VYa"/>
@@ -1761,7 +1771,7 @@
                                                     <action selector="nextMonth:" target="nkH-L0-mwn" id="X0w-cu-K5I"/>
                                                 </connections>
                                             </button>
-                                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqm-tZ-2mo">
+                                            <scrollView misplaced="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqm-tZ-2mo">
                                                 <rect key="frame" x="26" y="0.0" width="355" height="181"/>
                                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="spX-8y-f7F">
                                                     <rect key="frame" x="0.0" y="0.0" width="355" height="181"/>
@@ -1818,7 +1828,7 @@
                                             <constraint firstItem="NMZ-se-mbx" firstAttribute="leading" secondItem="Jkb-Fn-TGV" secondAttribute="trailing" constant="10" id="ORe-3T-S50"/>
                                             <constraint firstAttribute="trailing" secondItem="YNR-BJ-1SD" secondAttribute="trailing" constant="20" id="Q2n-RA-6wk"/>
                                             <constraint firstItem="Jkb-Fn-TGV" firstAttribute="top" secondItem="NXj-s0-vx9" secondAttribute="top" constant="14" id="TCL-a3-X6v"/>
-                                            <constraint firstItem="kqm-tZ-2mo" firstAttribute="top" secondItem="qVx-zs-bhC" secondAttribute="bottom" constant="36" id="TVx-e2-Q1x"/>
+                                            <constraint firstItem="kqm-tZ-2mo" firstAttribute="top" secondItem="qVx-zs-bhC" secondAttribute="bottom" constant="8" id="TVx-e2-Q1x"/>
                                             <constraint firstItem="qVx-zs-bhC" firstAttribute="leading" secondItem="NXj-s0-vx9" secondAttribute="leading" constant="26" id="Yfc-Xa-smd"/>
                                             <constraint firstItem="YNR-BJ-1SD" firstAttribute="leading" secondItem="NXj-s0-vx9" secondAttribute="leading" constant="26" id="Zmm-Iq-eJb"/>
                                             <constraint firstItem="Jkb-Fn-TGV" firstAttribute="leading" secondItem="wO3-zu-Enh" secondAttribute="trailing" constant="13" id="cay-s8-C4Z"/>
@@ -1829,7 +1839,7 @@
                                             <constraint firstItem="wO3-zu-Enh" firstAttribute="leading" secondItem="NXj-s0-vx9" secondAttribute="leading" constant="240" id="ioG-0P-KSs"/>
                                             <constraint firstItem="NMZ-se-mbx" firstAttribute="top" secondItem="NXj-s0-vx9" secondAttribute="top" constant="13" id="lbL-UT-Aom"/>
                                             <constraint firstItem="wO3-zu-Enh" firstAttribute="top" secondItem="NXj-s0-vx9" secondAttribute="top" constant="13" id="ojY-sg-cV4"/>
-                                            <constraint firstItem="kqm-tZ-2mo" firstAttribute="top" secondItem="NXj-s0-vx9" secondAttribute="top" constant="299" id="qwR-S8-qC3"/>
+                                            <constraint firstItem="kqm-tZ-2mo" firstAttribute="top" secondItem="NXj-s0-vx9" secondAttribute="top" constant="271" id="qwR-S8-qC3"/>
                                             <constraint firstItem="kqm-tZ-2mo" firstAttribute="trailing" secondItem="YNR-BJ-1SD" secondAttribute="trailing" id="zFo-2A-v8Q"/>
                                             <constraint firstAttribute="bottom" secondItem="kqm-tZ-2mo" secondAttribute="bottom" id="zmT-nZ-izZ"/>
                                         </constraints>

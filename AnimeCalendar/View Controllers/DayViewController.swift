@@ -139,8 +139,8 @@ class DayViewController: NSViewController {
         }
     }
     
-    @IBAction func doubleClickDailyAnimeTable(_ sender: NSTableView) {
-        let row = self.calendarTableView.selectedRow
+    @IBAction func saveAnimeEventToiCloud(_ sender: NSButton) {
+        let row = self.tableView.selectedRow
         let animeData = self.animeDailySchedule[row]
         if let airingInfo = animeData["airing"] as? [String:Any]{
             if let time = airingInfo["time"] as? String{
