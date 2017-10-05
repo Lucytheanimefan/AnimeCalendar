@@ -243,25 +243,6 @@ extension DayViewController: NSTableViewDelegate{
                 }
             }
         }
-        else if ((notification.object as? NSTableView) == self.calendarTableView)
-        {
-//            let row = self.calendarTableView.selectedRow
-//            let animeData = self.animeDailySchedule[row]
-//            if let airingInfo = animeData["airing"] as? [String:Any]{
-//                if let time = airingInfo["time"] as? String{
-//
-//                    let dateFormatter = DateFormatter()
-//                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-//                    let date = dateFormatter.date(from: time)!
-//
-//                    let title = animeData["title_english"] as? String
-//
-//                    // double click => save to actuall iCal
-//                    // Testing
-//                    self.animeEventController.createEvent(title: title, startDate: date, endDate: date, window: NSApp.keyWindow)
-//                }
-//            }
-        }
     }
     
     
