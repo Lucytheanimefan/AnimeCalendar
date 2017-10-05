@@ -15,6 +15,8 @@ class WindowController: NSWindowController {
     
     let CalendarHeaderToolbarID = "calendarToolBarID"
     
+    let calendarTypes = ["Day", "Week", "Month", "Year"]
+    
     @IBOutlet var windowBarView: NSView!
     
     let dayVC = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "dayViewControllerID") as! DayViewController
@@ -35,25 +37,44 @@ class WindowController: NSWindowController {
         }
     }
     
-    
-    @IBAction func switchViews(_ sender: NSButton) {
+    @IBAction func switchCalendarViews(_ sender: NSSegmentedControl) {
+        let calendarType = self.calendarTypes[sender.selectedSegment]
         if let vc = self.contentViewController as? ViewController{
             for sView in vc.containerView.subviews{
                 sView.removeFromSuperview()
             }
             
-            if (sender.title == "Day")
+            if (calendarType == "Day")
             {
                 self.dayVC.view.frame = vc.containerView.bounds
                 vc.containerView.addSubview(self.dayVC.view)
             }
-            else if (sender.title == "Week")
+            else if (calendarType == "Week")
             {
                 self.weekVC.view.frame = vc.containerView.bounds
                 vc.containerView.addSubview(self.weekVC.view)
             }
         }
     }
+    
+//    @IBAction func switchViews(_ sender: NSButton) {
+//        if let vc = self.contentViewController as? ViewController{
+//            for sView in vc.containerView.subviews{
+//                sView.removeFromSuperview()
+//            }
+//            
+//            if (sender.title == "Day")
+//            {
+//                self.dayVC.view.frame = vc.containerView.bounds
+//                vc.containerView.addSubview(self.dayVC.view)
+//            }
+//            else if (sender.title == "Week")
+//            {
+//                self.weekVC.view.frame = vc.containerView.bounds
+//                vc.containerView.addSubview(self.weekVC.view)
+//            }
+//        }
+//    }
     
     @IBAction func showCalendarsSideView(_ sender: NSButton) {
         if let vc = self.contentViewController as? ViewController{

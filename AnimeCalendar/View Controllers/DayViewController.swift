@@ -60,11 +60,6 @@ class DayViewController: NSViewController {
         self.calendarHeaderView.layer?.backgroundColor = NSColor.clear.cgColor
         calculateDateOffset()
         setUpAniList()
-        
-        
-       
-        
-        
     }
     
     override var representedObject: Any? {
@@ -75,7 +70,6 @@ class DayViewController: NSViewController {
     
     override func viewDidAppear() {
         self.animeEventController = AnimeEventController(window: NSApplication.shared().windows.first!)
-        //self.animeEventController.eventAuthFailAlert()
         self.animeEventController.updateAuthStatus()
         self.animeEventController.createCalendars()
     }

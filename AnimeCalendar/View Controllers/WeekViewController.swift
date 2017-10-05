@@ -10,11 +10,12 @@ import Cocoa
 
 class WeekViewController: NSViewController {
     
-    @IBOutlet weak var tableView: NSTableView!
-    
     var newAniList:NewAnimeList! = NewAnimeList.sharedInstance
     
     var animeSchedule:[Int:[[String:Any]]]!
+    
+    @IBOutlet weak var tableView: CustomTableView!
+    var previousSelectedCellView:NSView!
     
     lazy var weekDay = {
         return Calendar.current.component(.weekday, from: Date())
@@ -22,7 +23,10 @@ class WeekViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.selectionHighlightStyle = .none
+        self.tableView.cellSelectionDelegate = self
         self.setUpMonthlyAnime()
+        
     }
     
     func weekDayDict() -> [Int:Int]
@@ -49,6 +53,20 @@ class WeekViewController: NSViewController {
         }
     }
     
+}
+
+extension WeekViewController:CalendarCellSelectionDelegate{
+    func cellViewWasSelected(tableView: NSTableView, row: Int, col: Int) {
+        if (self.previousSelectedCellView != nil)
+        {
+            self.previousSelectedCellView.layer?.backgroundColor = NSColor.clear.cgColor
+        }
+        let cellView = tableView.view(atColumn: col, row: row, makeIfNecessary: false)
+        self.previousSelectedCellView = cellView
+        cellView?.layer?.backgroundColor = NSColor.gray.cgColor
+        
+        // Display the data in anime day tableview
+    }
 }
 
 extension WeekViewController:NSTableViewDataSource
