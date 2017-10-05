@@ -1107,15 +1107,18 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="jp9-Sh-vCf" firstAttribute="leading" secondItem="Gyu-bV-pxv" secondAttribute="leading" id="JSW-v2-g22"/>
+                            <constraint firstAttribute="trailing" secondItem="jp9-Sh-vCf" secondAttribute="trailing" id="K7o-EG-Tea"/>
                             <constraint firstItem="jp9-Sh-vCf" firstAttribute="top" secondItem="Gyu-bV-pxv" secondAttribute="top" constant="39" id="dHb-9U-l8a"/>
                             <constraint firstItem="MVE-Sy-n6h" firstAttribute="top" secondItem="Gyu-bV-pxv" secondAttribute="top" id="ler-kH-Qu9"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MVE-Sy-n6h" secondAttribute="trailing" constant="20" symbolic="YES" id="o7h-m0-VzN"/>
                             <constraint firstAttribute="trailing" secondItem="jp9-Sh-vCf" secondAttribute="trailing" id="oxr-ov-sQU"/>
                             <constraint firstItem="jp9-Sh-vCf" firstAttribute="leading" secondItem="MVE-Sy-n6h" secondAttribute="leading" id="q3K-rJ-qjI"/>
                             <constraint firstAttribute="bottom" secondItem="jp9-Sh-vCf" secondAttribute="bottom" id="vOw-bv-SCL"/>
+                            <constraint firstAttribute="trailing" secondItem="jp9-Sh-vCf" secondAttribute="trailing" id="zJO-Zg-Qai"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="currentMonthYear" destination="MVE-Sy-n6h" id="CRj-cD-053"/>
                         <outlet property="tableView" destination="cHQ-jB-aYq" id="aOr-0P-b3Y"/>
                     </connections>
                 </viewController>
@@ -1227,8 +1230,12 @@
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="lXf-Bn-ila" secondAttribute="bottom" id="2f0-OV-NO3"/>
                                             <constraint firstAttribute="trailing" secondItem="lXf-Bn-ila" secondAttribute="trailing" id="8Gj-BB-EWd"/>
+                                            <constraint firstItem="lXf-Bn-ila" firstAttribute="leading" secondItem="nRU-NE-XhT" secondAttribute="leading" id="GzK-oN-oXG"/>
                                             <constraint firstItem="lXf-Bn-ila" firstAttribute="leading" secondItem="nRU-NE-XhT" secondAttribute="leading" id="WPK-Oy-jro"/>
                                             <constraint firstItem="lXf-Bn-ila" firstAttribute="top" secondItem="nRU-NE-XhT" secondAttribute="top" id="jio-7G-81U"/>
+                                            <constraint firstAttribute="trailing" secondItem="lXf-Bn-ila" secondAttribute="trailing" id="l29-cR-XbG"/>
+                                            <constraint firstAttribute="bottom" secondItem="lXf-Bn-ila" secondAttribute="bottom" id="vH0-1i-Nd7"/>
+                                            <constraint firstItem="lXf-Bn-ila" firstAttribute="top" secondItem="nRU-NE-XhT" secondAttribute="top" id="vzu-kN-d6h"/>
                                         </constraints>
                                     </customView>
                                 </subviews>

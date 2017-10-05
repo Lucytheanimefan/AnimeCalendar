@@ -21,6 +21,8 @@ class WeekViewController: NSViewController {
         return Calendar.current.component(.weekday, from: Date())
     }()
     
+    @IBOutlet weak var currentMonthYear: NSTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.selectionHighlightStyle = .none
@@ -96,7 +98,7 @@ extension WeekViewController:NSTableViewDelegate
                 {
                     if (row < animez.count)
                     {
-                        let anime = animez[row] as! [String:Any]
+                        let anime = animez[row]
                         
                         if let aniTitle = anime["title_english"] as? String{
                             title = aniTitle
