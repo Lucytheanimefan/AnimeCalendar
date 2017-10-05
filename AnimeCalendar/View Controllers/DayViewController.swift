@@ -222,18 +222,21 @@ extension DayViewController: NSTableViewDelegate{
         if ((notification.object as? NSTableView) == self.tableView)
         {
             let row = self.tableView.selectedRow
-            let anime = self.animeDailySchedule[row]
-            if let title = anime["title_english"] as? String
+            if (self.animeDailySchedule.count > row && row >= 0)
             {
-                self.dayTitle.stringValue = title
-                self.dateLabel.stringValue = self.currentlySelectedDateString
-                if let description = anime["description"] as? String
+                let anime = self.animeDailySchedule[row]
+                if let title = anime["title_english"] as? String
                 {
-                    let html = description.data(using: .utf8)
-                    let attributedString = NSAttributedString(html: html!, options: [String : Any](), documentAttributes: nil)
-                    let storage = NSTextStorage(attributedString: attributedString!)
-                    self.dayDetailsView.layoutManager?.replaceTextStorage(storage)
-                    //self.dayDetailsView.string = description
+                    self.dayTitle.stringValue = title
+                    self.dateLabel.stringValue = self.currentlySelectedDateString
+                    if let description = anime["description"] as? String
+                    {
+                        let html = description.data(using: .utf8)
+                        let attributedString = NSAttributedString(html: html!, options: [String : Any](), documentAttributes: nil)
+                        let storage = NSTextStorage(attributedString: attributedString!)
+                        self.dayDetailsView.layoutManager?.replaceTextStorage(storage)
+                        //self.dayDetailsView.string = description
+                    }
                 }
             }
         }
