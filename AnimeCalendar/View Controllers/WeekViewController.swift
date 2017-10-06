@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import os.log
 
 class WeekViewController: NSViewController {
     
@@ -132,13 +133,14 @@ extension WeekViewController:NSTableViewDelegate
         let weekDayColIndex = tableView.tableColumns.index(of: tableColumn!)!
         
         // and the currentDate corresponds to 4 for thursday
-        let weekDayIndex = Calendar.current.component(.weekday, from: self.currentDate)
+        let offset = Calendar.current.component(.weekday, from: self.currentDate)
         
         // the actual monday index should be 3 less than whatever the current date is
-        let offset = weekDayIndex - weekDayColIndex
-        let dayIndex = Calendar.current.component(.day, from: self.currentDate) - offset
-        print("Day index: ")
-        print(dayIndex)
+        // let offset = weekDayIndex - weekDayColIndex
+        let currentEvaluatingDate = Calendar.current.date(byAdding: .day, value: weekDayColIndex, to: self.currentDate)
+        let day = Calendar.current.component(.day, from: currentEvaluatingDate!)
+        let dayIndex = day - offset
+        //os_log("Original day: %@, Offset: %@, New day: %@", Calendar.current.component(.day, from: self.currentDate), offset, dayIndex)
         //if let dayIndex = self.weekDayDict()[weekDayColIndex]{
         
         if (self.animeSchedule != nil)
