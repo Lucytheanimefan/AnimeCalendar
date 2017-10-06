@@ -70,16 +70,13 @@ class WeekViewController: NSViewController {
         self.currentMonthYear.stringValue = monthName + " " + String(describing:yearName)
     }
     
-    func calculateWeekDayOffset(){
-        let weekDay = Calendar.current.component(.weekday, from: self.currentDate)
-        
-    }
     
     
     @IBAction func nextWeek(_ sender: NSButton) {
         if let prevWeek = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: self.currentDate)
         {
-            //resetCalendarTable(month: prevMonth)
+            self.currentDate = prevWeek
+            self.tableView.reloadData()
         }
         
     }
@@ -87,7 +84,8 @@ class WeekViewController: NSViewController {
     @IBAction func prevWeek(_ sender: NSButton) {
         if let nextWeek = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: self.currentDate)
         {
-            //resetCalendarTable(month: prevMonth)
+            self.currentDate = nextWeek
+            self.tableView.reloadData()
         }
     }
     
