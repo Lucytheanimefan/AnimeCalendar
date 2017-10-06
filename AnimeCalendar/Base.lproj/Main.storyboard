@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -700,7 +701,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2a8-po-fby">
-                            <rect key="frame" x="488" y="4" width="76" height="27"/>
+                            <rect key="frame" x="488" y="4" width="76" height="26"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="VOo-s1-4gv" id="Wdx-MM-0jZ">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -760,17 +761,17 @@
             <objects>
                 <viewController storyboardIdentifier="weekViewControllerID" id="90d-jD-pCo" customClass="WeekViewController" customModule="AnimeCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Gyu-bV-pxv">
-                        <rect key="frame" x="0.0" y="0.0" width="670" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="670" height="452"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jp9-Sh-vCf">
-                                <rect key="frame" x="0.0" y="0.0" width="670" height="441"/>
+                                <rect key="frame" x="0.0" y="0.0" width="670" height="413"/>
                                 <clipView key="contentView" id="uPp-w1-IGK">
-                                    <rect key="frame" x="1" y="0.0" width="668" height="440"/>
+                                    <rect key="frame" x="1" y="0.0" width="668" height="412"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="rCf-nT-ywU" viewBased="YES" id="cHQ-jB-aYq" customClass="CustomTableView" customModule="AnimeCalendar" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="668" height="417"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="668" height="389"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -790,7 +791,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="labelCellViewID" id="Rkw-PB-ne4">
-                                                            <rect key="frame" x="1" y="1" width="42.5" height="17"/>
+                                                            <rect key="frame" x="1" y="1" width="42" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="AXl-q6-I0d">
@@ -1049,7 +1050,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="dayCellViewID" id="64Y-nq-9JA">
-                                                            <rect key="frame" x="562.5" y="1" width="103.5" height="17"/>
+                                                            <rect key="frame" x="562.5" y="1" width="103" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Eom-KE-H2p">
@@ -1093,38 +1094,77 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MVE-Sy-n6h">
-                                <rect key="frame" x="-2" y="440" width="37" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="hag-1K-kAo"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="tMR-Rs-p1K">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <box boxType="custom" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="nfc-2p-TUg">
+                                <rect key="frame" x="0.0" y="413" width="670" height="39"/>
+                                <view key="contentView" id="FyD-1e-8uO">
+                                    <rect key="frame" x="1" y="1" width="668" height="37"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GIr-WJ-DqD">
+                                            <rect key="frame" x="540" y="1" width="81" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="Today" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="809-aR-Lbs">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                        </button>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Qu-dW-hPx">
+                                            <rect key="frame" x="512" y="1" width="37" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSLeftFacingTriangleTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9HN-dc-l4f">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="prevWeek:" target="90d-jD-pCo" id="Rib-cQ-FD3"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lqa-yf-QAX">
+                                            <rect key="frame" x="617" y="1" width="37" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSRightFacingTriangleTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NuR-i3-sPb">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="nextWeek:" target="90d-jD-pCo" id="yWK-hi-bTA"/>
+                                            </connections>
+                                        </button>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MVE-Sy-n6h">
+                                            <rect key="frame" x="0.0" y="-1" width="378" height="39"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" drawsBackground="YES" id="tMR-Rs-p1K">
+                                                <font key="font" metaFont="system" size="32"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                </view>
+                                <color key="borderColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <color key="fillColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </box>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="jp9-Sh-vCf" firstAttribute="leading" secondItem="Gyu-bV-pxv" secondAttribute="leading" id="JSW-v2-g22"/>
-                            <constraint firstAttribute="trailing" secondItem="jp9-Sh-vCf" secondAttribute="trailing" id="K7o-EG-Tea"/>
-                            <constraint firstItem="jp9-Sh-vCf" firstAttribute="top" secondItem="Gyu-bV-pxv" secondAttribute="top" constant="39" id="dHb-9U-l8a"/>
-                            <constraint firstItem="MVE-Sy-n6h" firstAttribute="top" secondItem="Gyu-bV-pxv" secondAttribute="top" id="ler-kH-Qu9"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MVE-Sy-n6h" secondAttribute="trailing" constant="20" symbolic="YES" id="o7h-m0-VzN"/>
-                            <constraint firstAttribute="trailing" secondItem="jp9-Sh-vCf" secondAttribute="trailing" id="oxr-ov-sQU"/>
-                            <constraint firstItem="jp9-Sh-vCf" firstAttribute="leading" secondItem="MVE-Sy-n6h" secondAttribute="leading" id="q3K-rJ-qjI"/>
-                            <constraint firstAttribute="bottom" secondItem="jp9-Sh-vCf" secondAttribute="bottom" id="vOw-bv-SCL"/>
-                            <constraint firstAttribute="trailing" secondItem="jp9-Sh-vCf" secondAttribute="trailing" id="zJO-Zg-Qai"/>
+                            <constraint firstAttribute="trailing" secondItem="jp9-Sh-vCf" secondAttribute="trailing" id="0rv-LW-BMM"/>
+                            <constraint firstItem="jp9-Sh-vCf" firstAttribute="top" secondItem="nfc-2p-TUg" secondAttribute="bottom" id="MPr-99-TF6"/>
+                            <constraint firstAttribute="bottom" secondItem="jp9-Sh-vCf" secondAttribute="bottom" id="NFr-ii-dxu"/>
+                            <constraint firstItem="jp9-Sh-vCf" firstAttribute="trailing" secondItem="nfc-2p-TUg" secondAttribute="trailing" id="QUh-DY-edB"/>
+                            <constraint firstItem="jp9-Sh-vCf" firstAttribute="leading" secondItem="Gyu-bV-pxv" secondAttribute="leading" id="ZxR-Ky-TAw"/>
+                            <constraint firstItem="jp9-Sh-vCf" firstAttribute="top" secondItem="Gyu-bV-pxv" secondAttribute="top" constant="39" id="coW-3f-ZVG"/>
+                            <constraint firstItem="jp9-Sh-vCf" firstAttribute="leading" secondItem="nfc-2p-TUg" secondAttribute="leading" id="ntQ-dZ-7Yx"/>
+                            <constraint firstItem="nfc-2p-TUg" firstAttribute="top" secondItem="Gyu-bV-pxv" secondAttribute="top" id="tSg-w9-Le6"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="currentMonthYear" destination="MVE-Sy-n6h" id="CRj-cD-053"/>
+                        <outlet property="mainView" destination="Gyu-bV-pxv" id="0cd-We-LCv"/>
                         <outlet property="tableView" destination="cHQ-jB-aYq" id="aOr-0P-b3Y"/>
                     </connections>
                 </viewController>
                 <customObject id="h1z-aa-irR" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="960" y="1496"/>
+            <point key="canvasLocation" x="960" y="1495"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -1228,14 +1268,10 @@
                                             </containerView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="lXf-Bn-ila" secondAttribute="bottom" id="2f0-OV-NO3"/>
-                                            <constraint firstAttribute="trailing" secondItem="lXf-Bn-ila" secondAttribute="trailing" id="8Gj-BB-EWd"/>
-                                            <constraint firstItem="lXf-Bn-ila" firstAttribute="leading" secondItem="nRU-NE-XhT" secondAttribute="leading" id="GzK-oN-oXG"/>
-                                            <constraint firstItem="lXf-Bn-ila" firstAttribute="leading" secondItem="nRU-NE-XhT" secondAttribute="leading" id="WPK-Oy-jro"/>
-                                            <constraint firstItem="lXf-Bn-ila" firstAttribute="top" secondItem="nRU-NE-XhT" secondAttribute="top" id="jio-7G-81U"/>
-                                            <constraint firstAttribute="trailing" secondItem="lXf-Bn-ila" secondAttribute="trailing" id="l29-cR-XbG"/>
-                                            <constraint firstAttribute="bottom" secondItem="lXf-Bn-ila" secondAttribute="bottom" id="vH0-1i-Nd7"/>
-                                            <constraint firstItem="lXf-Bn-ila" firstAttribute="top" secondItem="nRU-NE-XhT" secondAttribute="top" id="vzu-kN-d6h"/>
+                                            <constraint firstAttribute="trailing" secondItem="lXf-Bn-ila" secondAttribute="trailing" id="1mc-aW-wxH"/>
+                                            <constraint firstAttribute="bottom" secondItem="lXf-Bn-ila" secondAttribute="bottom" id="5QC-uG-ZOm"/>
+                                            <constraint firstItem="lXf-Bn-ila" firstAttribute="leading" secondItem="nRU-NE-XhT" secondAttribute="leading" id="VpO-1A-Y8f"/>
+                                            <constraint firstItem="lXf-Bn-ila" firstAttribute="top" secondItem="nRU-NE-XhT" secondAttribute="top" id="gJw-vB-3vo"/>
                                         </constraints>
                                     </customView>
                                 </subviews>

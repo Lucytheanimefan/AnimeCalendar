@@ -10,6 +10,8 @@ import Cocoa
 
 class WeekViewController: NSViewController {
     
+    @IBOutlet var mainView: NSView!
+    
     var newAniList:NewAnimeList! = NewAnimeList.sharedInstance
     
     var animeSchedule:[Int:[[String:Any]]]!
@@ -21,13 +23,20 @@ class WeekViewController: NSViewController {
         return Calendar.current.component(.weekday, from: Date())
     }()
     
+    var currentDate:Date! = Date()
+    
+    var weekDayOffset:Int = 0
+    
     @IBOutlet weak var currentMonthYear: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.mainView.wantsLayer = true
+        self.mainView.layer?.backgroundColor = NSColor.clear.cgColor
         self.tableView.selectionHighlightStyle = .none
         self.tableView.cellSelectionDelegate = self
         self.setUpMonthlyAnime()
+        self.setDateTitle()
         
     }
     
@@ -55,6 +64,34 @@ class WeekViewController: NSViewController {
         }
     }
     
+    func setDateTitle(){
+        let monthName = DateFormatter().monthSymbols[Calendar.current.component(.month, from: self.currentDate)-1]
+        let yearName = Calendar.current.component(.year, from: self.currentDate)
+        self.currentMonthYear.stringValue = monthName + " " + String(describing:yearName)
+    }
+    
+    func calculateWeekDayOffset(){
+        let weekDay = Calendar.current.component(.weekday, from: self.currentDate)
+        
+    }
+    
+    
+    @IBAction func nextWeek(_ sender: NSButton) {
+        if let prevWeek = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: self.currentDate)
+        {
+            //resetCalendarTable(month: prevMonth)
+        }
+        
+    }
+    
+    @IBAction func prevWeek(_ sender: NSButton) {
+        if let nextWeek = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: self.currentDate)
+        {
+            //resetCalendarTable(month: prevMonth)
+        }
+    }
+    
+    
 }
 
 extension WeekViewController:CalendarCellSelectionDelegate{
@@ -81,6 +118,10 @@ extension WeekViewController:NSTableViewDataSource
         return 40
     }
     
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        setDateTitle()
+    }
+    
 }
 
 extension WeekViewController:NSTableViewDelegate
@@ -88,25 +129,35 @@ extension WeekViewController:NSTableViewDelegate
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         var view:NSView!
         var title:String = ""
+        
+        // if this is 1 for monday
         let weekDayColIndex = tableView.tableColumns.index(of: tableColumn!)!
-        //print(self.weekDayDict())
-        if let dayIndex = self.weekDayDict()[weekDayColIndex]{
-            
-            if (self.animeSchedule != nil)
+        
+        // and the currentDate corresponds to 4 for thursday
+        let weekDayIndex = Calendar.current.component(.weekday, from: self.currentDate)
+        
+        // the actual monday index should be 3 less than whatever the current date is
+        let offset = weekDayIndex - weekDayColIndex
+        let dayIndex = Calendar.current.component(.day, from: self.currentDate) - offset
+        print("Day index: ")
+        print(dayIndex)
+        //if let dayIndex = self.weekDayDict()[weekDayColIndex]{
+        
+        if (self.animeSchedule != nil)
+        {
+            if let animez = self.animeSchedule[dayIndex]
             {
-                if let animez = self.animeSchedule[dayIndex]
+                if (row < animez.count)
                 {
-                    if (row < animez.count)
-                    {
-                        let anime = animez[row]
-                        
-                        if let aniTitle = anime["title_english"] as? String{
-                            title = aniTitle
-                        }
+                    let anime = animez[row]
+                    
+                    if let aniTitle = anime["title_english"] as? String{
+                        title = aniTitle
                     }
                 }
             }
         }
+        //}
         if (tableColumn?.identifier == "labelColumnID")
         {
             view = tableView.make(withIdentifier: "labelCellViewID", owner: nil) as! NSTableCellView
