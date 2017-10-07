@@ -136,12 +136,10 @@ extension WeekViewController:NSTableViewDelegate
         let offset = Calendar.current.component(.weekday, from: self.currentDate)
         
         // the actual monday index should be 3 less than whatever the current date is
-        // let offset = weekDayIndex - weekDayColIndex
         let currentEvaluatingDate = Calendar.current.date(byAdding: .day, value: weekDayColIndex, to: self.currentDate)
         let day = Calendar.current.component(.day, from: currentEvaluatingDate!)
         let dayIndex = day - offset
         //os_log("Original day: %@, Offset: %@, New day: %@", Calendar.current.component(.day, from: self.currentDate), offset, dayIndex)
-        //if let dayIndex = self.weekDayDict()[weekDayColIndex]{
         
         if (self.animeSchedule != nil)
         {
