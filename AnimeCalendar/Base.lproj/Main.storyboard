@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -1075,6 +1076,7 @@
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
+                                                <action trigger="doubleAction" selector="doubleClickTable:" target="90d-jD-pCo" id="yQR-E9-n02"/>
                                                 <outlet property="dataSource" destination="90d-jD-pCo" id="OMM-4c-3zN"/>
                                                 <outlet property="delegate" destination="90d-jD-pCo" id="rCG-KT-jk2"/>
                                             </connections>
@@ -1297,9 +1299,56 @@
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <customView id="Hpu-6r-dht">
-                    <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
+                <customView id="Hpu-6r-dht" customClass="CalendarPopUpMenuView" customModule="AnimeCalendar" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="210" height="222"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5o-6Y-8d6">
+                            <rect key="frame" x="20" y="140" width="170" height="36"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <clipView key="contentView" ambiguous="YES" id="m4c-tb-ohN">
+                                <rect key="frame" x="1" y="1" width="168" height="34"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <textView ambiguous="YES" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="02P-Tb-pDA">
+                                        <rect key="frame" x="0.0" y="0.0" width="168" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <size key="minSize" width="168" height="34"/>
+                                        <size key="maxSize" width="463" height="10000000"/>
+                                        <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </clipView>
+                            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="QjT-oc-Zkl">
+                                <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </scroller>
+                            <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="lth-qg-QMz">
+                                <rect key="frame" x="153" y="1" width="16" height="34"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </scroller>
+                        </scrollView>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ybY-y7-oKI">
+                            <rect key="frame" x="18" y="115" width="37" height="17"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="oRa-xg-Ton">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="85s-wp-NiS">
+                            <rect key="frame" x="0.0" y="184" width="210" height="38"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </stackView>
+                    </subviews>
+                    <connections>
+                        <outlet property="dateField" destination="ybY-y7-oKI" id="6Ev-kW-lZ8"/>
+                        <outlet property="iconStackView" destination="85s-wp-NiS" id="8xc-5x-mPV"/>
+                        <outlet property="titleTextView" destination="02P-Tb-pDA" id="Kwa-UV-F6D"/>
+                    </connections>
                 </customView>
                 <menu id="NSr-Ch-o1O">
                     <items>
@@ -1315,6 +1364,7 @@
                         </menuItem>
                     </items>
                 </menu>
+                <userDefaultsController id="12h-4F-emO"/>
             </objects>
             <point key="canvasLocation" x="277" y="741"/>
         </scene>

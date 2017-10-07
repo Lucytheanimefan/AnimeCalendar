@@ -97,6 +97,9 @@ class WeekViewController: NSViewController {
         }
     }
     
+    @IBAction func doubleClickTable(_ sender: CustomTableView) {
+        
+    }
     
 }
 
@@ -125,7 +128,8 @@ extension WeekViewController:NSTableViewDataSource
     }
     
     func tableViewSelectionDidChange(_ notification: Notification) {
-        setDateTitle()
+        let menu = tableView.menu
+        tableView.menu?.popUp(positioning: menu?.item(at: 0), at: NSEvent.mouseLocation(), in: self.view)
     }
     
 }

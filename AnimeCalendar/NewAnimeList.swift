@@ -95,8 +95,7 @@ class NewAnimeList: NSObject {
     func addAnimeDictToCalendar(date:Date, shouldAdd:Bool, animeData:[String:Any]){
         let dateMonth = Calendar.current.component(.month, from: date)
         let day = Calendar.current.component(.day, from: date)
-        if (shouldAdd/*month == dateMonth*/){
-            //self.addAnimeDictToCalendar(day: day, animeData: animeData)
+        if (shouldAdd){
             if (self.calendarDict[day] != nil)
             {
                 self.calendarDict[day]?.append(animeData)
@@ -105,16 +104,7 @@ class NewAnimeList: NSObject {
             {
                 self.calendarDict[day] = [animeData]
             }
-            //completion()
         }
-//        if (self.calendarDict[day] != nil)
-//        {
-//            self.calendarDict[day]?.append(animeData)
-//        }
-//        else
-//        {
-//            self.calendarDict[day] = [animeData]
-//        }
     }
     
     func generateThisMonthAnime(month:Int,completion:@escaping () -> Void, allAnimeDoneCompletion:@escaping ()->Void){
@@ -141,7 +131,6 @@ class NewAnimeList: NSObject {
                                 if let airingInfo = animeData["airing"] as? [String:Any]{
                                     
                                     if let time = airingInfo["time"] as? String{
-                                        let dateFormatter = DateFormatter()
                                         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
                                         let date = dateFormatter.date(from: time)!
                                         
