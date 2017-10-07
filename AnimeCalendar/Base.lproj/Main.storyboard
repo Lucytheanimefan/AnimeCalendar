@@ -1178,23 +1178,23 @@
                                 <rect key="frame" x="0.0" y="0.0" width="884" height="442"/>
                                 <subviews>
                                     <customView id="ZJs-Uy-pot">
-                                        <rect key="frame" x="0.0" y="0.0" width="208.5" height="442"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="209" height="442"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5eK-Yj-8P4">
-                                                <rect key="frame" x="0.0" y="0.0" width="208" height="442"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="209" height="442"/>
                                                 <clipView key="contentView" id="v0H-gB-HAp">
-                                                    <rect key="frame" x="1" y="0.0" width="206" height="441"/>
+                                                    <rect key="frame" x="1" y="0.0" width="207" height="441"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="0U9-gD-5EL" viewBased="YES" indentationPerLevel="16" outlineTableColumn="bdV-gE-bU0" id="efL-rK-64g">
-                                                            <rect key="frame" x="0.0" y="0.0" width="206" height="418"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="207" height="418"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <size key="intercellSpacing" width="3" height="2"/>
                                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                             <tableColumns>
-                                                                <tableColumn width="203" minWidth="40" maxWidth="1000" id="bdV-gE-bU0">
+                                                                <tableColumn width="204" minWidth="40" maxWidth="1000" id="bdV-gE-bU0">
                                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1208,11 +1208,11 @@
                                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                     <prototypeCellViews>
                                                                         <tableCellView identifier="AnimeCalendar" id="1tQ-kz-JY5">
-                                                                            <rect key="frame" x="1" y="1" width="203" height="17"/>
+                                                                            <rect key="frame" x="1" y="1" width="204" height="17"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OJL-FI-5Wb">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="203" height="17"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="204" height="17"/>
                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" id="9Zb-XA-jFW">
                                                                                         <font key="font" metaFont="system"/>
@@ -1244,7 +1244,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                                 <tableHeaderView key="headerView" id="0U9-gD-5EL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="206" height="23"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="207" height="23"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableHeaderView>
                                             </scrollView>
@@ -1257,11 +1257,11 @@
                                         </constraints>
                                     </customView>
                                     <customView id="nRU-NE-XhT">
-                                        <rect key="frame" x="209.5" y="0.0" width="674.5" height="442"/>
+                                        <rect key="frame" x="210" y="0.0" width="674" height="442"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="lXf-Bn-ila">
-                                                <rect key="frame" x="0.0" y="0.0" width="676" height="442"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="674" height="442"/>
                                                 <connections>
                                                     <segue destination="nkH-L0-mwn" kind="embed" id="FCg-pq-2j5"/>
                                                 </connections>
