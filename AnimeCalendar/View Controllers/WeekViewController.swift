@@ -40,6 +40,13 @@ class WeekViewController: NSViewController {
         self.setUpMonthlyAnime()
         self.setDateTitle()
         
+        // Display pop up menu
+        if (CalendarContextualMenu.shared.menu != nil)
+        {
+            print(CalendarContextualMenu.shared.menu)
+            tableView.menu = CalendarContextualMenu.shared.menu
+        }
+        
     }
     
     func weekDayDict() -> [Int:Int]
@@ -104,12 +111,7 @@ extension WeekViewController:CalendarCellSelectionDelegate{
         self.previousSelectedCellView = cellView
         cellView?.layer?.backgroundColor = NSColor.gray.cgColor
         
-        // Display pop up menu
-        if (CalendarContextualMenu.shared.menu != nil)
-        {
-            print(CalendarContextualMenu.shared.menu)
-            tableView.menu = CalendarContextualMenu.shared.menu
-        }
+        
     }
 }
 

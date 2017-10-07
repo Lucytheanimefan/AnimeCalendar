@@ -37,8 +37,8 @@ class ViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        contextMenu.menu = self.calendarMenu
-        //contextMenu.createMenu(itemView: self.calendarPopUpMenu, target: self)
+        //contextMenu.menu = self.calendarMenu
+        contextMenu.createMenu(itemView: self.calendarPopUpMenu, target: self)
     }
 
     override var representedObject: Any? {
