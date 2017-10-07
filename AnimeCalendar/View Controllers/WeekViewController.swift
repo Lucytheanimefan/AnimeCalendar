@@ -43,7 +43,6 @@ class WeekViewController: NSViewController {
         // Display pop up menu
         if (CalendarContextualMenu.shared.menu != nil)
         {
-            print(CalendarContextualMenu.shared.menu)
             tableView.menu = CalendarContextualMenu.shared.menu
         }
         

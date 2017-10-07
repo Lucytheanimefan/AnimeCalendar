@@ -86,9 +86,35 @@ class NewAnimeList: NSObject {
                 completion(self.calendarDict)
             }, allAnimeDoneCompletion: {() in
                 //print("!----Fully done----!")
+                print(self.calendarDict)
                 fullyDoneCompletion()
             })
         }
+    }
+    
+    func addAnimeDictToCalendar(date:Date, shouldAdd:Bool, animeData:[String:Any]){
+        let dateMonth = Calendar.current.component(.month, from: date)
+        let day = Calendar.current.component(.day, from: date)
+        if (shouldAdd/*month == dateMonth*/){
+            //self.addAnimeDictToCalendar(day: day, animeData: animeData)
+            if (self.calendarDict[day] != nil)
+            {
+                self.calendarDict[day]?.append(animeData)
+            }
+            else
+            {
+                self.calendarDict[day] = [animeData]
+            }
+            //completion()
+        }
+//        if (self.calendarDict[day] != nil)
+//        {
+//            self.calendarDict[day]?.append(animeData)
+//        }
+//        else
+//        {
+//            self.calendarDict[day] = [animeData]
+//        }
     }
     
     func generateThisMonthAnime(month:Int,completion:@escaping () -> Void, allAnimeDoneCompletion:@escaping ()->Void){
@@ -105,31 +131,32 @@ class NewAnimeList: NSObject {
                             allAnimeDoneCompletion()
                         }
                         if let animeData = data as? [String:Any]{
-                            if let airingInfo = animeData["airing"] as? [String:Any]{
-                                if let time = airingInfo["time"] as? String{
- 
-                                    let dateFormatter = DateFormatter()
-                                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-                                    let date = dateFormatter.date(from: time)!
-                                    //print(date)
-                                    let dateMonth = Calendar.current.component(.month, from: date)
-                                    let day = Calendar.current.component(.day, from: date)
-                                    if (month == dateMonth){
+                            if let startDate = animeData["start_date_fuzzy"] as? Int{
+                                let dateFormatter = DateFormatter()
+                                dateFormatter.dateFormat = "yyyyMMdd"
+                                let startdate = dateFormatter.date(from: String(describing:startDate))!
+                                let dateMonth = Calendar.current.component(.month, from: startdate)
+                                self.addAnimeDictToCalendar(date: startdate, shouldAdd: month == dateMonth, animeData: animeData)
+                                
+                                if let airingInfo = animeData["airing"] as? [String:Any]{
+                                    
+                                    if let time = airingInfo["time"] as? String{
+                                        let dateFormatter = DateFormatter()
+                                        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+                                        let date = dateFormatter.date(from: time)!
+                                        
+                                        // Don't add the same anime twice (from both the airing date and starting date)
+                                        if (startdate != date)
+                                        {
+                                            let dateMonth = Calendar.current.component(.month, from: date)
+                                            self.addAnimeDictToCalendar(date: date, shouldAdd: month == dateMonth, animeData: animeData)
+                                            completion()
 
-                                        if (self.calendarDict[day] != nil)
-                                        {
-                                            self.calendarDict[day]?.append(animeData)
                                         }
-                                        else
-                                        {
-                                            self.calendarDict[day] = [animeData]
-                                        }
-                                        
-                                        completion()
-                                        
                                     }
                                 }
                             }
+                            
                         }
                     }
                 }
