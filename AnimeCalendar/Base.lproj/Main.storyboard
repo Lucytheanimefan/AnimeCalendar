@@ -659,7 +659,7 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="AnimeCalendar" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="274" y="-344"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -754,7 +754,7 @@
                     </subviews>
                 </customView>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="277" y="-86"/>
         </scene>
         <!--Week View Controller-->
         <scene sceneID="PgK-ZA-oAC">
@@ -1235,7 +1235,7 @@
                                                         </outlineView>
                                                     </subviews>
                                                 </clipView>
-                                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="uMY-dU-zOn">
+                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="uMY-dU-zOn">
                                                     <rect key="frame" x="1" y="425" width="206" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
@@ -1261,7 +1261,7 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="lXf-Bn-ila">
-                                                <rect key="frame" x="0.0" y="0.0" width="675" height="442"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="676" height="442"/>
                                                 <connections>
                                                     <segue destination="nkH-L0-mwn" kind="embed" id="FCg-pq-2j5"/>
                                                 </connections>
@@ -1289,12 +1289,32 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="calendarMenu" destination="NSr-Ch-o1O" id="QXQ-jn-g4t"/>
+                        <outlet property="calendarPopUpMenu" destination="Hpu-6r-dht" id="6Ow-c6-oSy"/>
                         <outlet property="calendarSideView" destination="ZJs-Uy-pot" id="1Z6-Ao-tXY"/>
                         <outlet property="containerView" destination="lXf-Bn-ila" id="hei-lH-0if"/>
                         <outlet property="outlineView" destination="efL-rK-64g" id="WKY-rn-wgE"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customView id="Hpu-6r-dht">
+                    <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
+                <menu id="NSr-Ch-o1O">
+                    <items>
+                        <menuItem title="Item" id="ddS-I1-aBy">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem title="Item" id="fFx-UX-J0g">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="QRa-hC-RIy"/>
+                        <menuItem title="Item" id="jLe-yo-Ev5">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                    </items>
+                </menu>
             </objects>
             <point key="canvasLocation" x="277" y="741"/>
         </scene>

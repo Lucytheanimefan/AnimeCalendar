@@ -23,6 +23,13 @@ class ViewController: NSViewController {
     
     @IBOutlet weak var calendarSideView: NSView!
     
+    @IBOutlet var calendarPopUpMenu: NSView!
+    
+    @IBOutlet var calendarMenu: NSMenu!
+    
+    
+    let contextMenu = CalendarContextualMenu.shared
+    
     lazy var animeEventController =
         {
             return AnimeEventController(window: NSApp.windows.first!)
@@ -30,7 +37,8 @@ class ViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        contextMenu.menu = self.calendarMenu
+        //contextMenu.createMenu(itemView: self.calendarPopUpMenu, target: self)
     }
 
     override var representedObject: Any? {

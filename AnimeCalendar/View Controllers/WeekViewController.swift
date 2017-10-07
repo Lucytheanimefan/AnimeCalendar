@@ -28,6 +28,7 @@ class WeekViewController: NSViewController {
     
     var weekDayOffset:Int = 0
     
+    
     @IBOutlet weak var currentMonthYear: NSTextField!
     
     override func viewDidLoad() {
@@ -103,7 +104,12 @@ extension WeekViewController:CalendarCellSelectionDelegate{
         self.previousSelectedCellView = cellView
         cellView?.layer?.backgroundColor = NSColor.gray.cgColor
         
-        // Display the data in anime day tableview
+        // Display pop up menu
+        if (CalendarContextualMenu.shared.menu != nil)
+        {
+            print(CalendarContextualMenu.shared.menu)
+            tableView.menu = CalendarContextualMenu.shared.menu
+        }
     }
 }
 
