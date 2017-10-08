@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AnimeCalendar/View Controllers/WeekViewController.swift"
-            timestampString = "529119403.656679"
+            timestampString = "529120911.966843"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "doubleClickTable(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AnimeCalendar/View Controllers/WeekViewController.swift"
-            timestampString = "529119403.657146"
+            timestampString = "529120911.96768"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "doubleClickTable(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AnimeCalendar/View Controllers/WeekViewController.swift"
-            timestampString = "529119403.657486"
+            timestampString = "529120911.968456"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "prevWeek(_:)"
             landmarkType = "7">
          </BreakpointContent>

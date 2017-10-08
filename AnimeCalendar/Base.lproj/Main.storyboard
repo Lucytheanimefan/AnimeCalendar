@@ -1303,35 +1303,43 @@
                     <rect key="frame" x="0.0" y="0.0" width="210" height="222"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
-                        <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5o-6Y-8d6">
+                        <scrollView fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5o-6Y-8d6">
                             <rect key="frame" x="20" y="140" width="170" height="36"/>
                             <autoresizingMask key="autoresizingMask"/>
-                            <clipView key="contentView" ambiguous="YES" id="m4c-tb-ohN">
-                                <rect key="frame" x="1" y="1" width="168" height="34"/>
+                            <clipView key="contentView" ambiguous="YES" copiesOnScroll="NO" id="m4c-tb-ohN">
+                                <rect key="frame" x="0.0" y="0.0" width="170" height="36"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <textView ambiguous="YES" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="02P-Tb-pDA">
-                                        <rect key="frame" x="0.0" y="0.0" width="168" height="34"/>
+                                    <textView ambiguous="YES" editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="02P-Tb-pDA">
+                                        <rect key="frame" x="0.0" y="0.0" width="170" height="36"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <size key="minSize" width="168" height="34"/>
+                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <size key="minSize" width="170" height="36"/>
                                         <size key="maxSize" width="463" height="10000000"/>
                                         <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     </textView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </clipView>
                             <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="QjT-oc-Zkl">
                                 <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                             <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="lth-qg-QMz">
-                                <rect key="frame" x="153" y="1" width="16" height="34"/>
+                                <rect key="frame" x="154" y="0.0" width="16" height="36"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                         </scrollView>
+                        <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="85s-wp-NiS">
+                            <rect key="frame" x="0.0" y="184" width="210" height="38"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </stackView>
+                        <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="On0-eZ-FjN">
+                            <rect key="frame" x="0.0" y="129" width="210" height="5"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </box>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ybY-y7-oKI">
-                            <rect key="frame" x="18" y="115" width="37" height="17"/>
+                            <rect key="frame" x="18" y="106" width="174" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="oRa-xg-Ton">
                                 <font key="font" metaFont="system"/>
@@ -1339,10 +1347,6 @@
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="85s-wp-NiS">
-                            <rect key="frame" x="0.0" y="184" width="210" height="38"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </stackView>
                     </subviews>
                     <connections>
                         <outlet property="dateField" destination="ybY-y7-oKI" id="6Ev-kW-lZ8"/>

@@ -25,6 +25,7 @@ class WeekViewController: NSViewController {
     }()
     
     var currentDate:Date! = Date()
+    var clickedDate:Date! = Date()
     
     var weekDayOffset:Int = 0
     
@@ -104,6 +105,12 @@ class WeekViewController: NSViewController {
     
     @IBAction func doubleClickTable(_ sender: CustomTableView) {
         if let popUpView = self.contextualMenu.menu.item(at: 0)?.view as? CalendarPopUpMenuView {
+            
+            // Clean up icons
+            for view in popUpView.iconStackView.views{
+                popUpView.iconStackView.removeView(view)
+            }
+            
             let dayIndex = Int(self.tableView.tableColumns[self.selectedCol].headerCell.stringValue)
             if let anime = self.animeSchedule[dayIndex!]
             {
@@ -113,19 +120,23 @@ class WeekViewController: NSViewController {
                     
                     if let aniTitle = anime["title_english"] as? String{
                         popUpView.titleTextView.string = aniTitle
+                        
+                        if let aniURL = anime["image_url_sml"] as? String{
+                            let url = URL(string: aniURL)!
+                            let image = NSImage(byReferencing: url)
+                            let imageView = NSImageView(image: image)
+                            popUpView.iconStackView.addView(imageView, in: NSStackViewGravity.center)
+                        }
                     }
+                    
                 }
             }
-            
+            popUpView.dateField.stringValue = self.clickedDate.description
             let menu = sender.menu
             menu?.popUp(positioning: menu?.item(at: 0), at: NSEvent.mouseLocation(), in: nil)
         }
         
     }
-    
-//    func dayIndex() -> Int {
-//
-//    }
     
 }
 
@@ -140,6 +151,10 @@ extension WeekViewController:CalendarCellSelectionDelegate{
         cellView?.layer?.backgroundColor = NSColor.gray.cgColor
         self.selectedRow = row
         self.selectedCol = col
+        
+        let dayIndex = Int(tableView.tableColumns[col].headerCell.stringValue)! - 1
+        let dayDiff = dayIndex - Calendar.current.component(.day, from: self.currentDate)
+        self.clickedDate = Calendar.current.date(byAdding: .day, value: dayDiff, to: self.currentDate)
         
     }
 }
