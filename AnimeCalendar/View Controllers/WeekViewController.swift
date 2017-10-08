@@ -34,6 +34,7 @@ class WeekViewController: NSViewController {
     var selectedRow:Int! = -1
     var selectedCol:Int! = -1
     
+    var hashtag:String!
     
     @IBOutlet weak var currentMonthYear: NSTextField!
     
@@ -105,7 +106,7 @@ class WeekViewController: NSViewController {
     
     @IBAction func doubleClickTable(_ sender: CustomTableView) {
         if let popUpView = self.contextualMenu.menu.item(at: 0)?.view as? CalendarPopUpMenuView {
-            
+            popUpView.imageViewDelegate = self
             // Clean up icons
             for view in popUpView.iconStackView.views{
                 popUpView.iconStackView.removeView(view)
@@ -127,7 +128,21 @@ class WeekViewController: NSViewController {
                             let imageView = NSImageView(image: image)
                             popUpView.iconStackView.addView(imageView, in: NSStackViewGravity.center)
                         }
+                        
+                        if let hashtag = anime["hashtag"] as? String{
+                            // Get rid of the #
+                            self.hashtag = String(hashtag.dropFirst())
+                            let imageView = popUpView.socialImageView!
+                            imageView.image = #imageLiteral(resourceName: "Twitter")
+                            //imageView.isEnabled = true
+                            
+//                            let gestureRec = NSGestureRecognizer(target: self, action: #selector(imageTapped(gestureRec:)))
+//                            gestureRec.isEnabled = true
+//                            imageView.addGestureRecognizer(gestureRec)
+                            //popUpView.iconStackView.addView(imageView, in: NSStackViewGravity.center)
+                        }
                     }
+                    
                     
                 }
             }
@@ -135,8 +150,9 @@ class WeekViewController: NSViewController {
             let menu = sender.menu
             menu?.popUp(positioning: menu?.item(at: 0), at: NSEvent.mouseLocation(), in: nil)
         }
-        
     }
+    
+
     
 }
 
@@ -227,5 +243,17 @@ extension WeekViewController:NSTableViewDelegate
         }
         
         return view
+    }
+}
+
+extension WeekViewController:ImageViewDelegate{
+    func imageViewClicked(imageView: NSImageView) {
+        print("Image view clicked!!!")
+        if (imageView.image == #imageLiteral(resourceName: "Twitter"))
+        {
+            let urlString = "https://twitter.com/hashtag/" + self.hashtag
+            let url = URL(string:urlString)
+            NSWorkspace.shared().open(url!)
+        }
     }
 }
