@@ -28,6 +28,11 @@ class WeekViewController: NSViewController {
     
     var weekDayOffset:Int = 0
     
+    let contextualMenu = CalendarContextualMenu.shared
+    
+    var selectedRow:Int! = -1
+    var selectedCol:Int! = -1
+    
     
     @IBOutlet weak var currentMonthYear: NSTextField!
     
@@ -41,9 +46,9 @@ class WeekViewController: NSViewController {
         self.setDateTitle()
         
         // Display pop up menu
-        if (CalendarContextualMenu.shared.menu != nil)
+        if (self.contextualMenu.menu != nil)
         {
-            tableView.menu = CalendarContextualMenu.shared.menu
+            tableView.menu = self.contextualMenu.menu
         }
         
     }
@@ -98,8 +103,29 @@ class WeekViewController: NSViewController {
     }
     
     @IBAction func doubleClickTable(_ sender: CustomTableView) {
+        if let popUpView = self.contextualMenu.menu.item(at: 0)?.view as? CalendarPopUpMenuView {
+            let dayIndex = Int(self.tableView.tableColumns[self.selectedCol].headerCell.stringValue)
+            if let anime = self.animeSchedule[dayIndex!]
+            {
+                if (self.selectedRow < anime.count)
+                {
+                    let anime = anime[self.selectedRow]
+                    
+                    if let aniTitle = anime["title_english"] as? String{
+                        popUpView.titleTextView.string = aniTitle
+                    }
+                }
+            }
+            
+            let menu = sender.menu
+            menu?.popUp(positioning: menu?.item(at: 0), at: NSEvent.mouseLocation(), in: nil)
+        }
         
     }
+    
+//    func dayIndex() -> Int {
+//
+//    }
     
 }
 
@@ -112,7 +138,8 @@ extension WeekViewController:CalendarCellSelectionDelegate{
         let cellView = tableView.view(atColumn: col, row: row, makeIfNecessary: false)
         self.previousSelectedCellView = cellView
         cellView?.layer?.backgroundColor = NSColor.gray.cgColor
-        
+        self.selectedRow = row
+        self.selectedCol = col
         
     }
 }
@@ -128,8 +155,7 @@ extension WeekViewController:NSTableViewDataSource
     }
     
     func tableViewSelectionDidChange(_ notification: Notification) {
-        let menu = tableView.menu
-        tableView.menu?.popUp(positioning: menu?.item(at: 0), at: NSEvent.mouseLocation(), in: self.view)
+        
     }
     
 }
@@ -137,11 +163,16 @@ extension WeekViewController:NSTableViewDataSource
 extension WeekViewController:NSTableViewDelegate
 {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        // if this is 1 for monday
+        let weekDayColIndex = tableView.tableColumns.index(of: tableColumn!)!
+        
+        if (weekDayColIndex <= 0)
+        {
+            return nil
+        }
         var view:NSView!
         var title:String = ""
         
-        // if this is 1 for monday
-        let weekDayColIndex = tableView.tableColumns.index(of: tableColumn!)!
         
         // and the currentDate corresponds to 4 for thursday
         let offset = Calendar.current.component(.weekday, from: self.currentDate)
@@ -149,8 +180,10 @@ extension WeekViewController:NSTableViewDelegate
         // the actual monday index should be 3 less than whatever the current date is
         let currentEvaluatingDate = Calendar.current.date(byAdding: .day, value: weekDayColIndex, to: self.currentDate)
         let day = Calendar.current.component(.day, from: currentEvaluatingDate!)
-        let dayIndex = day - offset
-        //os_log("Original day: %@, Offset: %@, New day: %@", Calendar.current.component(.day, from: self.currentDate), offset, dayIndex)
+        let dayIndex = day// - offset
+        
+        tableColumn?.headerCell.stringValue = String(describing: day)
+
         
         if (self.animeSchedule != nil)
         {
