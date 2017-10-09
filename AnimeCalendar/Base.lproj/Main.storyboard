@@ -1365,13 +1365,10 @@
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                         </scrollView>
-                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8W1-sk-Gkj">
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8W1-sk-Gkj" customClass="CustomImageView" customModule="AnimeCalendar" customModuleProvider="target">
                             <rect key="frame" x="173" y="184" width="37" height="38"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="f0n-hO-yNl"/>
-                            <connections>
-                                <action selector="clickSocialImageView:" target="Hpu-6r-dht" id="5DJ-CV-YGZ"/>
-                            </connections>
                         </imageView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ybY-y7-oKI">
                             <rect key="frame" x="18" y="106" width="174" height="17"/>
@@ -1386,7 +1383,7 @@
                     <connections>
                         <outlet property="dateField" destination="ybY-y7-oKI" id="6Ev-kW-lZ8"/>
                         <outlet property="iconStackView" destination="85s-wp-NiS" id="8xc-5x-mPV"/>
-                        <outlet property="socialImageView" destination="8W1-sk-Gkj" id="gAD-Gl-DCx"/>
+                        <outlet property="socialImageView" destination="8W1-sk-Gkj" id="TxA-EJ-HvV"/>
                         <outlet property="titleTextView" destination="02P-Tb-pDA" id="Kwa-UV-F6D"/>
                     </connections>
                 </customView>
