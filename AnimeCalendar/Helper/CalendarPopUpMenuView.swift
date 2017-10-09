@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import os.log
 
 protocol ImageViewDelegate{
     func imageViewClicked(imageView:NSImageView)
@@ -39,7 +40,7 @@ class CalendarPopUpMenuView: NSView {
 
 extension CalendarPopUpMenuView:ImageDelegate{
     func imageClicked() {
-        print("IMAGE CLICKED")
+        os_log("%@: Image clicked!", self.className)
         self.imageViewDelegate.imageViewClicked(imageView: socialImageView)
     }
 }

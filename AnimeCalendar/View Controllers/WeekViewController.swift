@@ -252,8 +252,9 @@ extension WeekViewController:ImageViewDelegate{
         if (imageView.image == #imageLiteral(resourceName: "Twitter"))
         {
             let urlString = "https://twitter.com/hashtag/" + self.hashtag
-            let url = URL(string:urlString)
-            NSWorkspace.shared().open(url!)
+            if let url = URL(string:urlString){
+                NSWorkspace.shared().open(url)
+            }
         }
     }
 }

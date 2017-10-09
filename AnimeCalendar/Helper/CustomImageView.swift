@@ -24,4 +24,12 @@ class CustomImageView: NSImageView {
         self.imageDelegate.imageClicked()
     }
     
+    override func performClick(_ sender: Any?) {
+        
+    }
+    
+    override func print(_ sender: Any?) {
+        
+    }
+    
 }
