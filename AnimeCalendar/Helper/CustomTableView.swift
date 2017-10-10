@@ -33,4 +33,8 @@ class CustomTableView: NSTableView {
         
     }
     
+    func clickCell(row:Int, col:Int){
+        self.cellSelectionDelegate.cellViewWasSelected(tableView: self, row: row, col: col)
+    }
+    
 }

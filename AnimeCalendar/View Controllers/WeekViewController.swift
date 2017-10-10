@@ -104,6 +104,11 @@ class WeekViewController: NSViewController {
         }
     }
     
+    @IBAction func today(_ sender: NSButton) {
+        let col = Calendar.current.component(.weekday, from: Date())
+        (self.tableView as! CustomTableView).clickCell(row: 0, col: col)
+    }
+    
     @IBAction func doubleClickTable(_ sender: CustomTableView) {
         if let popUpView = self.contextualMenu.menu.item(at: 0)?.view as? CalendarPopUpMenuView {
             popUpView.imageViewDelegate = self

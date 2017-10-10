@@ -133,6 +133,13 @@ class DayViewController: NSViewController {
         }
     }
     
+    @IBAction func today(_ sender: NSButton) {
+        let today = self.calendar.component(.day, from: Date())
+        let col = today%8
+        let row = today%5
+        (self.calendarTableView as! CustomTableView).clickCell(row: row, col: col)
+    }
+    
     @IBAction func saveAnimeEventToiCloud(_ sender: NSButton) {
         let row = self.tableView.selectedRow
         let animeData = self.animeDailySchedule[row]
