@@ -125,8 +125,9 @@ class WeekViewController: NSViewController {
                         if let aniURL = anime["image_url_sml"] as? String{
                             let url = URL(string: aniURL)!
                             let image = NSImage(byReferencing: url)
-                            let imageView = NSImageView(image: image)
-                            popUpView.iconStackView.addView(imageView, in: NSStackViewGravity.center)
+                            popUpView.mainImageView.image = image
+                            // let imageView = NSImageView(image: image)
+                            //popUpView.iconStackView.addView(imageView, in: NSStackViewGravity.center)
                         }
                         
                         if let hashtag = anime["hashtag"] as? String{
@@ -134,12 +135,12 @@ class WeekViewController: NSViewController {
                             self.hashtag = String(hashtag.dropFirst())
                             let imageView = popUpView.socialImageView!
                             imageView.image = #imageLiteral(resourceName: "Twitter")
-                            //imageView.isEnabled = true
-                            
-//                            let gestureRec = NSGestureRecognizer(target: self, action: #selector(imageTapped(gestureRec:)))
-//                            gestureRec.isEnabled = true
-//                            imageView.addGestureRecognizer(gestureRec)
-                            //popUpView.iconStackView.addView(imageView, in: NSStackViewGravity.center)
+
+                        }
+                        
+                        if let description = anime["description"] as? String{
+                            let storage = stringToHTML(description: description)
+                            popUpView.summaryTextView.layoutManager?.replaceTextStorage(storage)
                         }
                     }
                     
@@ -258,3 +259,4 @@ extension WeekViewController:ImageViewDelegate{
         }
     }
 }
+

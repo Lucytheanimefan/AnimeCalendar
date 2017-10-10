@@ -21,8 +21,11 @@ class CalendarPopUpMenuView: NSView {
     
     @IBOutlet weak var dateField: NSTextField!
     
+    @IBOutlet var summaryTextView: NSTextView!
     
     @IBOutlet weak var socialImageView: CustomImageView!
+    
+    @IBOutlet weak var mainImageView: NSImageView!
     
     var imageViewDelegate:ImageViewDelegate!
     

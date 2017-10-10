@@ -231,9 +231,10 @@ extension DayViewController: NSTableViewDelegate{
                     self.dateLabel.stringValue = self.currentlySelectedDateString
                     if let description = anime["description"] as? String
                     {
-                        let html = description.data(using: .utf8)
-                        let attributedString = NSAttributedString(html: html!, options: [String : Any](), documentAttributes: nil)
-                        let storage = NSTextStorage(attributedString: attributedString!)
+                        let storage = stringToHTML(description:description)
+//                        let html = description.data(using: .utf8)
+//                        let attributedString = NSAttributedString(html: html!, options: [String : Any](), documentAttributes: nil)
+//                        let storage = NSTextStorage(attributedString: attributedString!)
                         self.dayDetailsView.layoutManager?.replaceTextStorage(storage)
                         //self.dayDetailsView.string = description
                     }
