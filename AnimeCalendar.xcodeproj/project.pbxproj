@@ -17,6 +17,7 @@
 		7C45DD691F896FE9000F5CE8 /* CalendarPopUpMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C45DD681F896FE9000F5CE8 /* CalendarPopUpMenuView.swift */; };
 		7C45DD6B1F8AF9B0000F5CE8 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C45DD6A1F8AF9B0000F5CE8 /* CustomImageView.swift */; };
 		7C45DD6D1F8C56CC000F5CE8 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C45DD6C1F8C56CC000F5CE8 /* Helper.swift */; };
+		7C45DD711F8DA5C2000F5CE8 /* MonthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C45DD701F8DA5C2000F5CE8 /* MonthViewController.swift */; };
 		7C56DFBB1F7368A2005DD6DB /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C56DFBA1F7368A2005DD6DB /* EventKit.framework */; };
 		7C56DFBD1F7368D8005DD6DB /* AnimeEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C56DFBC1F7368D8005DD6DB /* AnimeEventController.swift */; };
 		7C63B2B71F6E0DCE00FF4996 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C63B2B61F6E0DCE00FF4996 /* AppDelegate.swift */; };
@@ -48,6 +49,7 @@
 		7C45DD681F896FE9000F5CE8 /* CalendarPopUpMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPopUpMenuView.swift; sourceTree = "<group>"; };
 		7C45DD6A1F8AF9B0000F5CE8 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		7C45DD6C1F8C56CC000F5CE8 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		7C45DD701F8DA5C2000F5CE8 /* MonthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewController.swift; sourceTree = "<group>"; };
 		7C56DFBA1F7368A2005DD6DB /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		7C56DFBC1F7368D8005DD6DB /* AnimeEventController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimeEventController.swift; sourceTree = "<group>"; };
 		7C63B2B31F6E0DCE00FF4996 /* AnimeCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimeCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				7C63B2B81F6E0DCE00FF4996 /* ViewController.swift */,
+				7C45DD701F8DA5C2000F5CE8 /* MonthViewController.swift */,
 				7C340B4C1F774DBF005A8CA9 /* WeekViewController.swift */,
 				7C340B4E1F775081005A8CA9 /* DayViewController.swift */,
 			);
@@ -269,6 +272,7 @@
 				7C340B4D1F774DBF005A8CA9 /* WeekViewController.swift in Sources */,
 				7C63B2B91F6E0DCE00FF4996 /* ViewController.swift in Sources */,
 				7C340B4B1F773724005A8CA9 /* WindowController.swift in Sources */,
+				7C45DD711F8DA5C2000F5CE8 /* MonthViewController.swift in Sources */,
 				7C3E5C061F6F4496002D5AD6 /* NewAnimeList.swift in Sources */,
 				7C56DFBD1F7368D8005DD6DB /* AnimeEventController.swift in Sources */,
 				7C340B511F7A5995005A8CA9 /* CustomTableView.swift in Sources */,
