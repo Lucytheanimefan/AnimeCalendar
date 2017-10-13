@@ -21,7 +21,7 @@ class WindowController: NSWindowController {
     
     let dayVC = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "dayViewControllerID") as! DayViewController
     let weekVC = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "weekViewControllerID") as! WeekViewController
-    //let monthVC = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "monthViewControllerID") as! MonthViewController
+    let monthVC = NSStoryboard(name: "Month", bundle: nil).instantiateController(withIdentifier: "monthViewControllerID") as! MonthViewController
     
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -56,11 +56,11 @@ class WindowController: NSWindowController {
                 self.weekVC.view.frame = vc.containerView.bounds
                 vc.containerView.addSubview(self.weekVC.view)
             }
-//            else if (calendarType == "Month")
-//            {
-//                self.monthVC.view.frame = vc.containerView.bounds
-//                vc.containerView.addSubview(self.monthVC.view)
-//            }
+            else if (calendarType == "Month")
+            {
+                self.monthVC.view.frame = vc.containerView.bounds
+                vc.containerView.addSubview(self.monthVC.view)
+            }
         }
     }
     
